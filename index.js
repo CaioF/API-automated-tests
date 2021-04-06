@@ -1,7 +1,7 @@
 'use strict'
 
 /**
- * Usage:  mocha index.js
+ * Usage:  npx mocha index.js
  */
 
 const SwaggerParser = require('swagger-parser')
@@ -23,11 +23,10 @@ describe('LifeGuard v2 API Test', function () {
       dereferencedSwagger = api
       done()
     })
-    console.log('parsed file')
   })
 
-  describe("should login the default Manager and receive an auth token", () => {
-      it('works when the request matches the swagger file', (done) => {
+  describe('should login the default Manager and receive an auth token', () => {
+      it('returns 200 when the request body params matche the DB entry', (done) => {
           hippie(dereferencedSwagger)
             .post(`${basePath}/api/v1/AuthManagerLogin`)
             .send({
@@ -45,5 +44,39 @@ describe('LifeGuard v2 API Test', function () {
                 }
             })
       })
+      it('returns 401 when the request body params do not match the DB entry', (done) => {
+        hippie(dereferencedSwagger)
+          .post(`${basePath}/api/v1/AuthManagerLogin`)
+          .send({
+              "email": "fadmin@fadmin.com",
+              "password": "fadmin123"
+            })
+          .expectStatus(401)
+          .expectValue('code', 16)
+          .end( (err, res, body) =>
+          {  
+              if (err) throw err;
+              else {
+                  done()
+              }
+          })
+    })
+    it('returns 400 when the request body params are null', (done) => {
+        hippie(dereferencedSwagger)
+          .post(`${basePath}/api/v1/AuthManagerLogin`)
+          .send({
+              "email": null,
+              "password": null
+            })
+          .expectStatus(400)
+          .expectValue('code', 3)
+          .end( (err, res, body) =>
+          {  
+              if (err) throw err;
+              else {
+                  done()
+              }
+          })
+    })
   })
 })
