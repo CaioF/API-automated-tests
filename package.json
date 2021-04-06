@@ -1,0 +1,24 @@
+{
+  "name": "integration-tests",
+  "version": "1.0.0",
+  "description": "tests for the lifeguard API",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@lab.qoollo.com:lifeguard/backend/integration-tests.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Caio Fleury",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "hippie": "^0.6.1",
+    "hippie-swagger": "^3.3.1",
+    "mocha": "^8.3.2"
+  }
+}
