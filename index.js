@@ -1,81 +1,49 @@
 'use strict'
 
 /**
- * Example for demonstrating hippie-swagger usage, including dereferencing
- *
- * Usage:  mocha example/index.js
+ * Usage:  mocha index.js
  */
 
-var SwaggerParser = require('swagger-parser')
-var parser = new SwaggerParser()
-var hippie = require('..')
-var app = require('./server')
-var expect = require('chai').expect
-var path = require('path')
-var dereferencedSwagger
+const SwaggerParser = require('swagger-parser')
+const parser = new SwaggerParser()
+const hippie = require('hippie-swagger')
+const expect = require('chai').expect
+const path = require('path')
+const basePath = 'http://localhost:3000'
 
-describe('Example of', function () {
+var dereferencedSwagger
+var managerToken
+
+describe('LifeGuard v2 API Test', function () {
   this.timeout(10000) // very large swagger files may take a few seconds to parse
 
   before(function (done) {
-    // if using mocha, dereferencing can be performed prior during initialization via the delay flag:
-    // https://mochajs.org/#delayed-root-suite
-    parser.dereference(path.join(__dirname, './api.swagger.json'), function (err, api) {
+    parser.dereference(path.join(__dirname, './gen_openapiv2_api.swagger.json'), function (err, api) {
       if (err) return done(err)
       dereferencedSwagger = api
       done()
     })
+    console.log('parsed file')
   })
 
-  describe('correct usage', function () {
-    it('works when the request matches the swagger file', function (done) {
-      hippie(app, dereferencedSwagger)
-        .get('/tags/{tagId}')
-        .pathParams({
-          tagId: 1
-        })
-        .expectStatus(200)
-        .expectValue('[0].id', 1)
-        .expectValue('[0].name', 'user')
-        .expectValue('[1].id', 2)
-        .expectValue('[1].name', 'store')
-        .end(done)
-    })
-  })
-
-  describe('things hippie-swagger will punish you for:', function () {
-    it('validates paths', function (done) {
-      try {
-        hippie(app, dereferencedSwagger)
-          .get('/undocumented-endpoint')
-          .end(done)
-      } catch (ex) {
-        expect(ex.message).to.equal('Swagger spec does not define path: /undocumented-endpoint')
-        done()
-      }
-    })
-
-    it('validates parameters', function (done) {
-      try {
-        hippie(app, dereferencedSwagger)
-          .get('/tags/{tagId}')
-          .qs({ username: 'not-in-swagger' })
-          .end(done)
-      } catch (ex) {
-        expect(ex.message).to.equal('query parameter not mentioned in swagger spec: "username", available params: tagId')
-        done()
-      }
-    })
-
-    it('validates responses', function (done) {
-      hippie(app, dereferencedSwagger)
-        .get('/tags/invalidResponse')
-        .end(function (err) {
-          expect(err.message).to.match(/Response failed validation/)
-          done()
-        })
-    })
-
-    it('validates many other things!  See README for the complete list of validations.')
+  describe("should login the default Manager and receive an auth token", () => {
+      it('works when the request matches the swagger file', (done) => {
+          hippie(dereferencedSwagger)
+            .post(`${basePath}/api/v1/AuthManagerLogin`)
+            .send({
+                "email": "admin@admin.com",
+                "password": "admin123"
+              })
+            .expectStatus(200)
+            .expectValue('data.email', 'admin@admin.com')
+            .end( (err, res, body) =>
+            {  
+                if (err) throw err;
+                else {
+                    managerToken = body.token;
+                    done()
+                }
+            })
+      })
   })
 })

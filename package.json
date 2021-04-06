@@ -19,6 +19,8 @@
     "chai": "^4.3.4",
     "hippie": "^0.6.1",
     "hippie-swagger": "^3.3.1",
-    "mocha": "^8.3.2"
+    "mocha": "^8.3.2",
+    "path": "^0.12.7",
+    "swagger-parser": "^10.0.2"
   }
 }
