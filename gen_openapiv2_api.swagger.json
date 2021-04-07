@@ -35,18 +35,34 @@
               "$ref": "#/definitions/AuthAuthByTimedTokenResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -84,22 +100,34 @@
               "$ref": "#/definitions/AuthLoginEmployeeResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "401": {
-            "description": "Returned when the email or password is incorrect",
-            "schema": {}
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -137,22 +165,34 @@
               "$ref": "#/definitions/AuthLoginManagerResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "401": {
-            "description": "Returned when the email or password is incorrect",
-            "schema": {}
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -190,18 +230,34 @@
               "$ref": "#/definitions/apiAutomationsCreateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -243,18 +299,34 @@
               "$ref": "#/definitions/apiChatMessagesCreateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -298,18 +370,34 @@
               "$ref": "#/definitions/apiDevicesCreateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -351,18 +439,34 @@
               "$ref": "#/definitions/apiEmployeesCreateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -405,18 +509,34 @@
               "$ref": "#/definitions/apiEmployeeGroupsCreateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -459,18 +579,34 @@
               "$ref": "#/definitions/apiIncidentsCreateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -512,18 +648,34 @@
               "$ref": "#/definitions/apiManagersCreateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -566,18 +718,34 @@
               "$ref": "#/definitions/apiMetricsCreateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -620,18 +788,34 @@
               "$ref": "#/definitions/apiPluginsCreateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -673,18 +857,34 @@
               "$ref": "#/definitions/apiSensorTypesCreateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -727,18 +927,34 @@
               "$ref": "#/definitions/apiZonesCreateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -781,18 +997,34 @@
               "$ref": "#/definitions/apiAutomationsDeleteResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -834,18 +1066,34 @@
               "$ref": "#/definitions/apiDevicesDeleteResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -887,18 +1135,34 @@
               "$ref": "#/definitions/apiEmployeesDeleteResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -941,18 +1205,34 @@
               "$ref": "#/definitions/apiEmployeeGroupsDeleteResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -995,18 +1275,34 @@
               "$ref": "#/definitions/apiIncidentsDeleteResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1048,18 +1344,34 @@
               "$ref": "#/definitions/apiManagersDeleteResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1102,18 +1414,34 @@
               "$ref": "#/definitions/apiPluginsDeleteResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1155,18 +1483,34 @@
               "$ref": "#/definitions/apiSensorTypesDeleteResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1209,18 +1553,34 @@
               "$ref": "#/definitions/apiZonesDeleteResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1263,18 +1623,34 @@
               "$ref": "#/definitions/PriorityQueueDeprioritizeResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1317,18 +1693,34 @@
               "$ref": "#/definitions/AuthGenerateAuthQRResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1371,18 +1763,34 @@
               "$ref": "#/definitions/apiAutomationsGetResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1423,18 +1831,34 @@
               "$ref": "#/definitions/apiDevicesGetResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1493,18 +1917,34 @@
               "$ref": "#/definitions/apiEmployeesGetResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1546,18 +1986,34 @@
               "$ref": "#/definitions/apiEmployeeGroupsGetResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1599,18 +2055,34 @@
               "$ref": "#/definitions/apiIncidentsGetResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1652,18 +2124,34 @@
               "$ref": "#/definitions/apiManagersGetResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1705,18 +2193,34 @@
               "$ref": "#/definitions/apiPluginsGetResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1758,18 +2262,34 @@
               "$ref": "#/definitions/apiSensorsGetResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1811,18 +2331,34 @@
               "$ref": "#/definitions/apiSensorTypesGetResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1864,18 +2400,34 @@
               "$ref": "#/definitions/apiZonesGetResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1918,18 +2470,34 @@
               "$ref": "#/definitions/apiAreaSettingsListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -1970,18 +2538,34 @@
               "$ref": "#/definitions/apiAutomationsListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2029,18 +2613,34 @@
               "$ref": "#/definitions/apiChatMessagesListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2097,18 +2697,34 @@
               "$ref": "#/definitions/apiDevicesListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2174,18 +2790,34 @@
               "$ref": "#/definitions/apiEmployeeGroupsListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2234,18 +2866,34 @@
               "$ref": "#/definitions/apiEmployeesListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2294,18 +2942,34 @@
               "$ref": "#/definitions/apiEventsListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2354,18 +3018,34 @@
               "$ref": "#/definitions/apiIncidentsListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2427,18 +3107,34 @@
               "$ref": "#/definitions/apiManagersListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2487,18 +3183,34 @@
               "$ref": "#/definitions/apiMetricsListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2554,18 +3266,34 @@
               "$ref": "#/definitions/apiPluginsListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2613,18 +3341,34 @@
               "$ref": "#/definitions/apiSensorTypesListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2673,18 +3417,34 @@
               "$ref": "#/definitions/apiSensorsListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2733,18 +3493,34 @@
               "$ref": "#/definitions/apiSystemSettingsListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2785,18 +3561,34 @@
               "$ref": "#/definitions/apiZonesListResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2846,18 +3638,34 @@
               "$ref": "#/definitions/PriorityQueuePrioritizeResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2900,18 +3708,34 @@
               "$ref": "#/definitions/IncidentsQueueHelpResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -2954,18 +3778,34 @@
               "$ref": "#/definitions/IncidentsResolveResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3008,18 +3848,34 @@
               "$ref": "#/definitions/apiDevicesRollTokenResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3061,18 +3917,34 @@
               "$ref": "#/definitions/apiEmployeesRollTokenResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3115,18 +3987,34 @@
               "$ref": "#/definitions/apiManagersRollTokenResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3169,18 +4057,34 @@
               "$ref": "#/definitions/IncidentsSkipResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3232,18 +4136,34 @@
               "title": "Stream result of DevicesTrackingStreamServerMessage"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3290,18 +4210,34 @@
               "$ref": "#/definitions/DevicesTrackingStartTrackingResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3343,18 +4279,34 @@
               "$ref": "#/definitions/DevicesTrackingStopTrackingResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3396,18 +4348,34 @@
               "$ref": "#/definitions/apiAreaSettingsUpdateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3450,18 +4418,34 @@
               "$ref": "#/definitions/apiAutomationsUpdateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3503,18 +4487,34 @@
               "$ref": "#/definitions/apiDevicesUpdateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3556,18 +4556,34 @@
               "$ref": "#/definitions/apiEmployeesUpdateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3610,18 +4626,34 @@
               "$ref": "#/definitions/apiEmployeeGroupsUpdateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3664,18 +4696,34 @@
               "$ref": "#/definitions/apiIncidentsUpdateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3718,18 +4766,34 @@
               "$ref": "#/definitions/apiManagersUpdateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3772,18 +4836,34 @@
               "$ref": "#/definitions/apiPluginsUpdateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3826,18 +4906,34 @@
               "$ref": "#/definitions/apiSensorsUpdateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3879,18 +4975,34 @@
               "$ref": "#/definitions/apiSensorTypesUpdateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3933,18 +5045,34 @@
               "$ref": "#/definitions/apiSystemSettingsUpdateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -3987,18 +5115,34 @@
               "$ref": "#/definitions/apiZonesUpdateResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -4041,18 +5185,34 @@
               "$ref": "#/definitions/AuthValidateTokenResponse"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -4090,18 +5250,34 @@
               "$ref": "#/definitions/apiSystemHealthStatus"
             }
           },
+          "400": {
+            "description": "Returned when the request body does not match the API's specifications - bad request.",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Returned when the user tries to login to a resource with an incorrect login info - unathorized",
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
+          },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "404": {
             "description": "Returned when the resource does not exist.",
-            "schema": {}
+            "schema": {
+              "$ref": "#/definitions/apiErrorResponse"
+            }
           },
           "500": {
             "description": "Server error",
             "schema": {
-              "$ref": "#/definitions/apiErrorResponse"
+              "$ref": "#/definitions/apiInternalErrorResponse"
             }
           },
           "default": {
@@ -5314,7 +6490,7 @@
         }
       }
     },
-    "apiErrorObject": {
+    "apiErrorResponse": {
       "type": "object",
       "properties": {
         "code": {
@@ -5329,20 +6505,14 @@
           "description": "Response message",
           "title": "message",
           "pattern": "^[a-zA-Z0-9]{1, 32}$"
-        }
-      }
-    },
-    "apiErrorResponse": {
-      "type": "object",
-      "properties": {
-        "correlationId": {
-          "type": "string",
-          "description": "Unique event identifier for server requests",
-          "title": "x-correlation-id",
-          "pattern": "^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$"
         },
-        "error": {
-          "$ref": "#/definitions/apiErrorObject"
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          },
+          "description": "Response details",
+          "title": "details"
         }
       }
     },
@@ -5694,6 +6864,38 @@
       "properties": {
         "incident": {
           "$ref": "#/definitions/apiIncident"
+        }
+      }
+    },
+    "apiInternalErrorResponse": {
+      "type": "object",
+      "properties": {
+        "correlationId": {
+          "type": "string",
+          "description": "Unique event identifier for server requests",
+          "title": "x-correlation-id",
+          "pattern": "^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Response code",
+          "title": "code",
+          "pattern": "^[0-9]$"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message",
+          "title": "message",
+          "pattern": "^[a-zA-Z0-9]{1, 32}$"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          },
+          "description": "Response details",
+          "title": "details"
         }
       }
     },
