@@ -6503,8 +6503,7 @@
         "message": {
           "type": "string",
           "description": "Response message",
-          "title": "message",
-          "pattern": "^[a-zA-Z0-9]{1, 32}$"
+          "title": "message"
         },
         "details": {
           "type": "array",
@@ -6886,8 +6885,7 @@
         "message": {
           "type": "string",
           "description": "Response message",
-          "title": "message",
-          "pattern": "^[a-zA-Z0-9]{1, 32}$"
+          "title": "message"
         },
         "details": {
           "type": "array",

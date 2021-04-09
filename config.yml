@@ -1,0 +1,82 @@
+app:
+  log_level: debug # panic, fatal, error, warn, info, debug, trace
+  
+  camera:
+    dampeningTime: 120
+    errorRetryTime: 5
+    watchdogTime: 10
+
+  admin:
+    email: admin@admin.com
+    password: admin123 # at least 6 symbols
+
+  images:
+    allowed_types:
+      - jpeg
+      - gif
+      - png
+      - jpg
+    avatar:
+      min_dimension: 128 # in pixels
+      max_dimension: 512 # in pixels
+
+auth:
+  timed_token:
+    valid_time: 120 # in seconds
+  jwt:
+    secret: fAWnFGKUwRmRX2B9e7DPTywM3XRvjeWcfysJ
+
+database:
+  driver: postgres # currently, only postgres is supported
+  host: localhost
+  port: 5432
+  user: api_test_user
+  password: api_test_user_123
+  db: api_test_db
+  slow_request_threshold: 1s
+  logs_level: 1
+
+queue:
+  test_mode: false
+  enabled: false
+  reconnect_delay: 5s
+  user: guest
+  password: guest
+  host: localhost
+  port: 5672
+  path: "/"
+  exchanges:
+    sensors:
+      delivery_mode: 2
+    events:
+      delivery_mode: 2
+
+server:
+  interface: 0.0.0.0
+  port: 3000
+  http:
+    enabled: true
+
+automations:
+  manager: docker # currently, only docker is supported
+  docker:
+    registry: docker.io/library
+    images:
+      default: alpine:3.12.3
+      python: 3.9.1-alpine3.12
+
+metrics:
+  bunch:
+    flush_timeout: 5s # интервал автоматической выгрузки данных со всех батчей
+    pool_size: 10 # размер батчей, который хранится в пуле
+    size: 100 # размер одного батча
+
+dictionary:
+  mode: memory   # redis / memory
+  redis:
+    user: default
+    password: ""
+    host: localhost
+    port: 6379
+
+
