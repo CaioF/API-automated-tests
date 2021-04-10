@@ -9,15 +9,18 @@ psql -c "CREATE DATABASE api_test_db;"
 psql -c "GRANT ALL PRIVILEGES ON DATABASE api_test_db TO api_test_user;"
 EOF
 
-# Initiate test server and disown the process (this leaves an errant process)
+# Initiate test server and disown the process (this leaves an errant process named 'api_test_server')
+echo 'INITIALIZE SERVER'
 ./api_test_server </dev/null >/dev/null 2>&1 & disown
 
 # Wait 10 seconds for the database to load and run tests
 sleep 10
+echo 'RUN TESTS'
 npx mocha index.js
 
-# Wait 10 seconds and kill the errant process
-sleep 10
+# Kill the errant process
+echo 'KILL SERVER'
 killall api_test_server
 
+echo 'EXIT'
 exit

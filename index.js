@@ -4,14 +4,15 @@ const SwaggerParser = require('swagger-parser')
 const parser = new SwaggerParser()
 const hippie = require('hippie-swagger')
 const path = require('path')
+const util = require('util')
 
 const basePath = 'http://localhost:3000'
 var dereferencedSwagger
-global.managerToken = '';
-global.employeeToken = '';
-global.deviceToken = '';
+global.managerToken = ''
+global.employeeToken = ''
+global.deviceToken = ''
 
-describe('LifeGuard v2 API Test', function () {
+describe('LifeGuard V1 API Test', function () {
   this.timeout(10000) // very large swagger files may take a few seconds to parse
 
   before(function (done) {
@@ -23,7 +24,7 @@ describe('LifeGuard v2 API Test', function () {
   })
  
   // POST /api/v1/AuthManagerLogin
-  describe('should login the default Manager and receive an auth token', () => {
+  describe('Logs in a manager user, returns a token and usertype', () => {
       it('returns 200 when the request body params match the DB entry', (done) => {
           hippie(dereferencedSwagger)
             .post(`${basePath}/api/v1/AuthManagerLogin`)
@@ -78,39 +79,38 @@ describe('LifeGuard v2 API Test', function () {
             }
           })
     })
-    // if(global.managerToken === '')
-    // {
-    //   console.log('Manager Token was not generated, test cannot be run');
-    //   process.exit(401)
-    // }
   })
 
-    // POST /api/v1/CreateEmployeeGroup
-    describe('should create an Employee Group', () => {
-      it('returns 200 when the request body params match the swagger specification', (done) => {
-          hippie(dereferencedSwagger)
-            .header('Authorization', global.managerToken)
-            .post(`${basePath}/api/v1/CreateEmployeeGroup`)
-            .send({
-              "title": "group1",
-              "description": "group1",
-              "slug": "group1"
-            })
-            .expectStatus(200)
-            .end( (err, res, body) =>
-            {  
-              if (err) {
-                throw err
-              } else {
-                  done()
-              }
-            })
-      })
+                                            //////////////
+                                            //  CREATE  //
+                                            //////////////
+
+  // POST /api/v1/CreateEmployeeGroup
+  describe('Creates an Employee Group and returns that Employee Group', () => {
+    it('returns 200 when the request body params match the swagger specification', (done) => {
+        hippie(dereferencedSwagger)
+          .header('Authorization', global.managerToken)
+          .post(`${basePath}/api/v1/CreateEmployeeGroup`)
+          .send({
+            "title": "group1",
+            "description": "group1",
+            "slug": "group1"
+          })
+          .expectStatus(200)
+          .end( (err, res, body) =>
+          {  
+            if (err) {
+              throw err
+            } else {
+                done()
+            }
+          })
     })
+  })
   
 
   // POST /api/v1/CreateEmployee
-  describe('should create an Employee', () => {
+  describe('Creates an Employee and returns that Employee', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
         hippie(dereferencedSwagger)
           .header('Authorization', global.managerToken)
@@ -141,6 +141,169 @@ describe('LifeGuard v2 API Test', function () {
     })
   })
 
+  // POST /api/v1/CreateDevice
+  describe('Creates a Device and returns that Device and a Token', () => {
+    it('returns 200 when the request body params match the swagger specification', (done) => {
+        hippie(dereferencedSwagger)
+          .header('Authorization', global.managerToken)
+          .post(`${basePath}/api/v1/CreateDevice`)
+          .send({
+            "title": "device_1_title",
+            "description": "device_1_description",
+            "physicalID": "device_1_ID",
+            "type": "device_1",
+            "employeeID": 1,
+            "data": "eyAia2V5IjogInZhbHVlIiB9"
+          })
+          .expectStatus(200)
+          .end( (err, res, body) =>
+          {  
+            if (err) {
+              throw err
+            } else {
+                global.deviceToken = body.token;
+                done()
+            }
+          })
+    })
+  })
+
+  // POST /api/v1/CreateSensorType
+  describe('Creates a Sensor Type and returns that Sensor Type', () => {
+    it('returns 200 when the request body params match the swagger specification', (done) => {
+        hippie(dereferencedSwagger)
+          .header('Authorization', global.managerToken)
+          .post(`${basePath}/api/v1/CreateSensorType`)
+          .send({
+            "title": "sensor_type_1",
+            "description": "string",
+            "slug": "sensor_type_1",
+            "graphType": "GRAPH_TYPE_LINE",
+            "dataType": "DATA_TYPE_INT32"
+          })
+          .expectStatus(200)
+          .end( (err, res, body) =>
+          {  
+            if (err) {
+              throw err
+            } else {
+                done()
+            }
+          })
+    })
+  })
+
+  // TODO: POST /api/v1/CreateSensor
+
+  // POST /api/v1/CreateIncident
+  describe('Creates an Incident and returns that Incident', () => {
+    it('returns 200 when the request body params match the swagger specification', (done) => {
+        hippie(dereferencedSwagger)
+          .header('Authorization', global.managerToken)
+          .post(`${basePath}/api/v1/CreateIncident`)
+          .send({
+            "description": "incident_1",
+            "employeeID": 1,
+            "deviceID": 1,
+            "sensorID": 1,
+            "initialZone": 1,
+            "reason": "accident",
+            "status": "INCIDENT_STATUS_RESOLVED"
+          })
+          .expectStatus(200)
+          .end( (err, res, body) =>
+          {  
+            if (err) {
+              throw err
+            } else {
+                done()
+            }
+          })
+    })
+  })
+
+  // POST /api/v1/CreateManager
+  describe('Creates a Manager and returns that Manager', () => {
+    it('returns 200 when the request body params match the swagger specification', (done) => {
+        hippie(dereferencedSwagger)
+          .header('Authorization', global.managerToken)
+          .post(`${basePath}/api/v1/CreateManager`)
+          .send({
+            "description": "manager_2",
+            "person": {
+              "firstName": "manager_2",
+              "lastName": "manager_2",
+              "image": "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",
+              "email": "manager_2@mail.com",
+              "phone": "string"
+            },
+            "credentials": {
+              "password": "manager_2_123"
+            },
+            "capabilities": {
+              "viewSingle": [
+                "a"
+              ],
+              "viewSeveral": [
+                "a"
+              ],
+              "editSingle": [
+                "a"
+              ],
+              "editSeveral": [
+                "a"
+              ],
+              "create": [
+                "a"
+              ],
+              "delete": [
+                "a"
+              ]
+            }
+          })
+          .expectStatus(200)
+          .end( (err, res, body) =>
+          {  
+            if (err) {
+              throw err
+            } else {
+                done()
+            }
+          })
+    })
+  })
+
+  // POST /api/v1/CreateZone
+  describe('Creates a Zone and returns that Zone', () => {
+    it('returns 200 when the request body params match the swagger specification', (done) => {
+        hippie(dereferencedSwagger)
+          .header('Authorization', global.managerToken)
+          .post(`${basePath}/api/v1/CreateZone`)
+          .send({
+            "title": "zone_1",
+            "description": "zone_1",
+            "permissions": {
+              "allowedEmployees": [
+                1
+              ]
+            },
+            "path": {
+              "geojson": "ewogICJ0eXBlIjogIlBvbHlnb24iLAogICJjb29yZGluYXRlcyI6IFsKICAgIFsKICAgICAgWwogICAgICAgIC00OS45NjU4MjAzMTI1LAogICAgICAgIDcwLjU2ODgwMzMxNzYzMzQxCiAgICAgIF0sCiAgICAgIFsKICAgICAgICAtMzkuMzMxMDU0Njg3NSwKICAgICAgICA3MC41Njg4MDMzMTc2MzM0MQogICAgICBdLAogICAgICBbCiAgICAgICAgLTM5LjMzMTA1NDY4NzUsCiAgICAgICAgNzQuMDQzNzIyNTk4MTMyNQogICAgICBdLAogICAgICBbCiAgICAgICAgLTQ5Ljk2NTgyMDMxMjUsCiAgICAgICAgNzQuMDQzNzIyNTk4MTMyNQogICAgICBdLAogICAgICBbCiAgICAgICAgLTQ5Ljk2NTgyMDMxMjUsCiAgICAgICAgNzAuNTY4ODAzMzE3NjMzNDEKICAgICAgXQogICAgXQogIF0KfQ=="
+            }
+          })
+          .expectStatus(200)
+          .end( (err, res, body) =>
+          {  
+            if (err) {
+              throw err
+            } else {
+                done()
+            }
+          })
+    })
+  })
+
+
   // POST /api/v1/AuthEmployeeLogin
   describe('should login an Employee', () => {
     it('returns 200 when the request body params match the DB entry', (done) => {
@@ -149,7 +312,8 @@ describe('LifeGuard v2 API Test', function () {
           .post(`${basePath}/api/v1/AuthEmployeeLogin`)
           .send({
               "email": "ivanxxx@mail.com",
-              "password": "ivanxxx123"
+              "password": "ivanxxx123",
+              "devicePhysicalID": "test_device_1"
             })
           .expectStatus(200)
           .end( (err, res, body) =>
