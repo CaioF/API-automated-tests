@@ -1,39 +1,30 @@
 'use strict'
 
-const SwaggerParser = require('swagger-parser');
-const parser = new SwaggerParser();
-const hippie = require('hippie-swagger');
-const path = require('path');
-const util = require('util');
-
-const basePath = 'http://localhost:3000';
-var dereferencedSwagger;
+const hippie = require('hippie');
 global.managerToken = '';
 global.employeeToken = '';
 global.deviceToken = '';
-const options = {
-  validateResponseSchema: true,
-  validateParameterSchema: false,
-  errorOnExtraParameters: true,
-  errorOnExtraHeaderParameters: false
-};
+
+function api() {
+  return hippie()
+    .json()
+    .base('http://localhost:3000/api/v1')
+    // .auth('user', 'pass')
+    // .serializer(customSerializer)
+    // .parser(customParser)
+    // .use(somethingSpecial)
+    // .expect(somethingRepeatable);
+}
 
 describe('LifeGuard V1 API Test', function () {
-  this.timeout(10000) // very large swagger files may take a few seconds to parse
 
-  before(function (done) {
-    parser.dereference(path.join(__dirname, './gen_openapiv2_api.swagger.json'), function (err, api) {
-      if (err) return done(err)
-      dereferencedSwagger = api;
-      done()
-    })
-  })
- 
   // POST /api/v1/AuthManagerLogin
   describe('Logs in a manager user, returns a token and usertype', () => {
       it('returns 200 when the request body params match the DB entry', (done) => {
-          hippie(dereferencedSwagger, options)
-            .post(`${basePath}/api/v1/AuthManagerLogin`)
+          hippie()
+          .json()
+          .base('http://localhost:3000/api/v1')
+            .post(`/AuthManagerLogin`)
             .send({
                 "email": "admin@admin.com",
                 "password": "admin123"
@@ -50,8 +41,10 @@ describe('LifeGuard V1 API Test', function () {
             })
       });
       it('returns 401 when the request body params do not match the DB entry', (done) => {
-                  hippie(dereferencedSwagger, options)
-          .post(`${basePath}/api/v1/AuthManagerLogin`)
+          hippie()
+          .json()
+          .base('http://localhost:3000/api/v1')
+          .post(`/AuthManagerLogin`)
           .send({
               "email": "fadmin@fadmin.com",
               "password": "fadmin123"
@@ -68,8 +61,10 @@ describe('LifeGuard V1 API Test', function () {
           })
     });
     it('returns 400 when the request body params are null', (done) => {
-                  hippie(dereferencedSwagger, options)
-          .post(`${basePath}/api/v1/AuthManagerLogin`)
+          hippie()
+          .json()
+          .base('http://localhost:3000/api/v1')
+          .post(`/AuthManagerLogin`)
           .send({
               "email": null,
               "password": null
@@ -94,9 +89,11 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateEmployeeGroup
   describe('Creates an Employee Group and returns that Employee Group', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-                  hippie(dereferencedSwagger, options)
+          hippie()
+          .json()
+          .base('http://localhost:3000/api/v1')
           .header('Authorization', global.managerToken)
-          .post(`${basePath}/api/v1/CreateEmployeeGroup`)
+          .post(`/CreateEmployeeGroup`)
           .send({
             "title": "group1",
             "description": "group1",
@@ -118,9 +115,11 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateEmployee
   describe('Creates an Employee and returns that Employee', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-                  hippie(dereferencedSwagger, options)
+          hippie()
+          .json()
+          .base('http://localhost:3000/api/v1')
           .header('Authorization', global.managerToken)
-          .post(`${basePath}/api/v1/CreateEmployee`)
+          .post(`/CreateEmployee`)
           .send({
             "description": "Ivan Ivanovich",
             "person": {
@@ -150,9 +149,11 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateDevice
   describe('Creates a Device and returns that Device and a Token', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-                  hippie(dereferencedSwagger, options)
+          hippie()
+          .json()
+          .base('http://localhost:3000/api/v1')
           .header('Authorization', global.managerToken)
-          .post(`${basePath}/api/v1/CreateDevice`)
+          .post(`/CreateDevice`)
           .send({
             "title": "device_1_title",
             "description": "device_1_description",
@@ -177,9 +178,11 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateSensorType
   describe('Creates a Sensor Type and returns that Sensor Type', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-                  hippie(dereferencedSwagger, options)
+          hippie()
+          .json()
+          .base('http://localhost:3000/api/v1')
           .header('Authorization', global.managerToken)
-          .post(`${basePath}/api/v1/CreateSensorType`)
+          .post(`/CreateSensorType`)
           .send({
             "title": "sensor_type_1",
             "description": "string",
@@ -204,9 +207,11 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateIncident
   describe('Creates an Incident and returns that Incident', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-                  hippie(dereferencedSwagger, options)
+          hippie()
+          .json()
+          .base('http://localhost:3000/api/v1')
           .header('Authorization', global.managerToken)
-          .post(`${basePath}/api/v1/CreateIncident`)
+          .post(`/CreateIncident`)
           .send({
             "description": "incident_1",
             "employeeID": 1,
@@ -231,9 +236,11 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateManager
   describe('Creates a Manager and returns that Manager', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-                  hippie(dereferencedSwagger, options)
+          hippie()
+          .json()
+          .base('http://localhost:3000/api/v1')
           .header('Authorization', global.managerToken)
-          .post(`${basePath}/api/v1/CreateManager`)
+          .post(`/CreateManager`)
           .send({
             "description": "manager_2",
             "person": {
@@ -282,9 +289,11 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateZone
   describe('Creates a Zone and returns that Zone', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-                  hippie(dereferencedSwagger, options)
+          hippie()
+          .json()
+          .base('http://localhost:3000/api/v1')
           .header('Authorization', global.managerToken)
-          .post(`${basePath}/api/v1/CreateZone`)
+          .post(`/CreateZone`)
           .send({
             "title": "zone_1",
             "description": "zone_1",
@@ -313,9 +322,11 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/AuthEmployeeLogin
   describe('should login an Employee', () => {
     it('returns 200 when the request body params match the DB entry', (done) => {
-                  hippie(dereferencedSwagger, options)
+          hippie()
+          .json()
+          .base('http://localhost:3000/api/v1')
           .header('Authorization', global.managerToken)
-          .post(`${basePath}/api/v1/AuthEmployeeLogin`)
+          .post(`/AuthEmployeeLogin`)
           .send({
               "email": "ivanxxx@mail.com",
               "password": "ivanxxx123",
@@ -336,8 +347,10 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/GenerateAuthQR
   describe('should get an QR code', () => {
     it('returns 200 when the request body params match the DB entry', (done) => {
-                  hippie(dereferencedSwagger, options)
-          .post(`${basePath}/api/v1/GenerateAuthQR`)
+          hippie()
+          .json()
+          .base('http://localhost:3000/api/v1')
+          .post(`/GenerateAuthQR`)
           .send({
               "ID": 1
             })
@@ -356,8 +369,10 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/AuthByTimedToken
   describe('should authorize an employee via the generated timed token from the QR code', () => {
     it('returns 200 when the request body params match the DB entry', (done) => {
-                  hippie(dereferencedSwagger, options)
-          .post(`${basePath}/api/v1/AuthByTimedToken`)
+          hippie()
+          .json()
+          .base('http://localhost:3000/api/v1')
+          .post(`/AuthByTimedToken`)
           .send({
               "token": "fAWnFGKUwRmRX2B9e7DPTywM3XRvjeWcfysJ"
             })

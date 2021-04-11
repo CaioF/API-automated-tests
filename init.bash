@@ -12,9 +12,9 @@ EOF
 
 # Initiate test server and disown the process (this leaves an errant process named 'api_test_server')
 echo 'INITIALIZE SERVER'
-./api_test_server </dev/null >/dev/null 2>&1 & disown
+bash -c './api_test_server </dev/null >/dev/null 2>&1 & disown'
 
-# Wait 10 seconds for the database to load and run tests
+# Wait 5 seconds for the database to load and run tests
 sleep 5
 echo 'RUN TESTS'
 npx mocha index.js
