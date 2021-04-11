@@ -1,4 +1,3 @@
-#WARN: If this script is terminated before being completed it will leave an errant process
 #!/bin/bash
 
 # Create user and test database
@@ -10,9 +9,11 @@ psql -c "CREATE DATABASE api_test_db;"
 psql -c "GRANT ALL PRIVILEGES ON DATABASE api_test_db TO api_test_user;"
 EOF
 
-# Initiate test server and disown the process (this leaves an errant process named 'api_test_server')
+# Initiate test server and disowna the process 
+# NOTE: This leaves an errant process, wait for script completion to kill it
+# Or run 'killall api_test_server'
 echo 'INITIALIZE SERVER'
-bash -c './api_test_server </dev/null >/dev/null 2>&1 & disown'
+bash -c 'cd test_server && ./api_test_server </dev/null >/dev/null 2>&1 & disown'
 
 # Wait 5 seconds for the database to load and run tests
 sleep 5
