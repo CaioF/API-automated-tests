@@ -1,3 +1,4 @@
+#WARN: If this script is terminated before being completed it will leave an errant process
 #!/bin/bash
 
 # Create user and test database
@@ -14,7 +15,7 @@ echo 'INITIALIZE SERVER'
 ./api_test_server </dev/null >/dev/null 2>&1 & disown
 
 # Wait 10 seconds for the database to load and run tests
-sleep 10
+sleep 5
 echo 'RUN TESTS'
 npx mocha index.js
 
