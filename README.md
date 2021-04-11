@@ -8,5 +8,5 @@
 
 ### Usage
 - `npm install`
-- `./init.sh`
+- `./init.bash`
 
