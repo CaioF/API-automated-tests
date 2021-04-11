@@ -22,64 +22,64 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/AuthManagerLogin
   describe('Logs in a manager user, returns a token and usertype', () => {
       it('returns 200 when the request body params match the DB entry', (done) => {
-          hippie()
-          .json()
-          .base('http://localhost:3000/api/v1')
-            .post(`/AuthManagerLogin`)
-            .send({
-                "email": "admin@admin.com",
-                "password": "admin123"
-              })
-            .expectStatus(200)
-            .end( (err, res, body) =>
-            {  
-              if (err) {
-                throw err
-              } else {
-                global.managerToken = body.token;
-                done()
-              }
+        hippie()
+        .json()
+        .base('http://localhost:3000/api/v1')
+          .post(`/AuthManagerLogin`)
+          .send({
+              "email": "admin@admin.com",
+              "password": "admin123"
             })
+          .expectStatus(200)
+          .end( (err, res, body) =>
+          {  
+            if (err) {
+              throw err
+            } else {
+              global.managerToken = body.token;
+              done()
+            }
+          })
       });
       it('returns 401 when the request body params do not match the DB entry', (done) => {
-          hippie()
-          .json()
-          .base('http://localhost:3000/api/v1')
-          .post(`/AuthManagerLogin`)
-          .send({
-              "email": "fadmin@fadmin.com",
-              "password": "fadmin123"
-            })
-          .expectStatus(401)
-          .expectValue('code', 16)
-          .end( (err, res, body) =>
-          {  
-            if (err) {
-              throw err
-            } else {
-                done()
-            }
+        hippie()
+        .json()
+        .base('http://localhost:3000/api/v1')
+        .post(`/AuthManagerLogin`)
+        .send({
+            "email": "fadmin@fadmin.com",
+            "password": "fadmin123"
           })
+        .expectStatus(401)
+        .expectValue('code', 16)
+        .end( (err, res, body) =>
+        {  
+          if (err) {
+            throw err
+          } else {
+              done()
+          }
+        })
     });
     it('returns 400 when the request body params are null', (done) => {
-          hippie()
-          .json()
-          .base('http://localhost:3000/api/v1')
-          .post(`/AuthManagerLogin`)
-          .send({
-              "email": null,
-              "password": null
-            })
-          .expectStatus(400)
-          .expectValue('code', 3)
-          .end( (err, res, body) =>
-          {  
-            if (err) {
-              throw err
-            } else {
-                done()
-            }
-          })
+      hippie()
+      .json()
+      .base('http://localhost:3000/api/v1')
+      .post(`/AuthManagerLogin`)
+      .send({
+          "email": null,
+          "password": null
+        })
+      .expectStatus(400)
+      .expectValue('code', 3)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
     })
   })
 
@@ -89,27 +89,90 @@ describe('LifeGuard V1 API Test', function () {
 
   // POST /api/v1/CreateEmployeeGroup
   describe('Creates an Employee Group and returns that Employee Group', () => {
-    it('returns 200 when the request body params match the swagger specification', (done) => {
-          hippie()
-          .json()
-          .base('http://localhost:3000/api/v1')
-          .header('Authorization', global.managerToken)
-          .post(`/CreateEmployeeGroup`)
-          .send({
-            "title": "group1",
-            "description": "group1",
-            "slug": "group1"
-          })
-          .expectStatus(200)
-          .end( (err, res, body) =>
-          {  
-            if (err) {
-              throw err
-            } else {
-                done()
-            }
-          })
-    })
+    it('returns 200 when the request body params do match the swagger specification', (done) => {
+      hippie()
+      .json()
+      .base('http://localhost:3000/api/v1')
+      .header('Authorization', global.managerToken)
+      .post(`/CreateEmployeeGroup`)
+      .send({
+        "title": "group1",
+        "description": "group1",
+        "slug": "group1"
+      })
+      .expectStatus(200)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 400 when the request body params do not match the swagger specification', (done) => {
+      hippie()
+      .json()
+      .base('http://localhost:3000/api/v1')
+      .header('Authorization', global.managerToken)
+      .post(`/CreateEmployeeGroup`)
+      .send({
+        "title": "a",
+        "description": "a",
+        "slug": "a"
+      })
+      .expectStatus(400)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 400 when the required request body params are null', (done) => {
+      hippie()
+      .json()
+      .base('http://localhost:3000/api/v1')
+      .header('Authorization', global.managerToken)
+      .post(`/CreateEmployeeGroup`)
+      .send({
+        "title": null,
+        "description": "group1",
+        "slug": null,
+      })
+      .expectStatus(400)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 200 when the optional request body params match are null', (done) => {
+      hippie()
+      .json()
+      .base('http://localhost:3000/api/v1')
+      .header('Authorization', global.managerToken)
+      .post(`/CreateEmployeeGroup`)
+      .send({
+        "title": "group2",
+        "description": null,
+        "slug": "group2"
+      })
+      .expectStatus(200)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
   })
   
 
