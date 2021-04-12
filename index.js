@@ -542,12 +542,12 @@ describe('LifeGuard V1 API Test', function () {
       .header('Authorization', global.managerToken)
       .post(`/CreateIncident`)
       .send({
-        "description": "incident_1",
+        "description": "description",
         "employeeID": 1,
         "deviceID": 1,
         "sensorID": 1,
         "initialZone": 1,
-        "reason": "accident",
+        "reason": "reason_1",
         "status": "INCIDENT_STATUS_RESOLVED"
       })
       .expectStatus(200)
@@ -559,7 +559,172 @@ describe('LifeGuard V1 API Test', function () {
             done()
         }
       })
-    })
+    });
+    it('returns 200 when the optional request body params match are null', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateIncident`)
+      .send({
+        "description": null,
+        "employeeID": 1,
+        "deviceID": 1,
+        "sensorID": 1,
+        "initialZone": 1,
+        "reason": "reason_2",
+        "status": "INCIDENT_STATUS_RESOLVED"
+      })
+      .expectStatus(200)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 400 when the request body params do not match the swagger specification', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateIncident`)
+      .send({
+        "description": "a",
+        "employeeID": 1,
+        "deviceID": 1,
+        "sensorID": 1,
+        "initialZone": 1,
+        "reason": "a",
+        "status": "a"
+      })
+      .expectStatus(400)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 400 when the required request body params are null', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateIncident`)
+      .send({
+        "description": "description",
+        "employeeID": 1,
+        "deviceID": 1,
+        "sensorID": 1,
+        "initialZone": 1,
+        "reason": null,
+        "status": null,
+      })
+      .expectStatus(400)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 404 when the specified Employee ID is not in the DB', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateIncident`)
+      .send({
+        "description": "description",
+        "employeeID": 99, // FIXME: Is this acceptable?
+        "deviceID": 1,
+        "sensorID": 1,
+        "initialZone": 1,
+        "reason": "reason_3",
+        "status": "INCIDENT_STATUS_RESOLVED"
+      })
+      .expectStatus(404)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          console.error(body); 
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 404 when the specified Device ID is not in the DB', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateIncident`)
+      .send({
+        "description": "description",
+        "employeeID": 1,
+        "deviceID": 99, // FIXME: Is this acceptable?
+        "sensorID": 1,
+        "initialZone": 1,
+        "reason": "reason_3",
+        "status": "INCIDENT_STATUS_RESOLVED"
+      })
+      .expectStatus(404)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          console.error(body); 
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 404 when the specified Sensor ID is not in the DB', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateIncident`)
+      .send({
+        "description": "description",
+        "employeeID": 1,
+        "deviceID": 1,
+        "sensorID": 99, // FIXME: Is this acceptable?
+        "initialZone": 1,
+        "reason": "reason_3",
+        "status": "INCIDENT_STATUS_RESOLVED"
+      })
+      .expectStatus(404)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          console.error(body); 
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 404 when the specified Initial Zone ID is not in the DB', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateIncident`)
+      .send({
+        "description": "description",
+        "employeeID": 1,
+        "deviceID": 1,
+        "sensorID": 1,
+        "initialZone": 99, // FIXME: Is this acceptable?
+        "reason": "reason_3",
+        "status": "INCIDENT_STATUS_RESOLVED"
+      })
+      .expectStatus(404)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          console.error(body); 
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
   })
 
   // POST /api/v1/CreateManager
