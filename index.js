@@ -7,25 +7,23 @@ global.employeeToken = '';
 global.deviceToken = '';
 
 // TODO: Add custom swagger parser validator
-// function api() {
-//   return hippie()
-//     .json()
-//     .base('http://localhost:3000/api/v1')
+function api() {
+  return hippie()
+    .json()
+    .base('http://localhost:3000/api/v1')
 //     .auth('user', 'pass')
 //     .serializer(customSerializer)
 //     .parser(customParser)
 //     .use(somethingSpecial)
 //     .expect(somethingRepeatable);
-// }
+}
 
 describe('LifeGuard V1 API Test', function () {
 
   // POST /api/v1/AuthManagerLogin
   describe('Logs in a manager user, returns a token and usertype', () => {
       it('returns 200 when the request body params match the DB entry', (done) => {
-        hippie()
-        .json()
-        .base('http://localhost:3000/api/v1')
+        api()
           .post(`/AuthManagerLogin`)
           .send({
               "email": "admin@admin.com",
@@ -43,9 +41,7 @@ describe('LifeGuard V1 API Test', function () {
           })
       });
       it('returns 401 when the request body params do not match the DB entry', (done) => {
-        hippie()
-        .json()
-        .base('http://localhost:3000/api/v1')
+        api()
         .post(`/AuthManagerLogin`)
         .send({
             "email": "fadmin@fadmin.com",
@@ -63,9 +59,7 @@ describe('LifeGuard V1 API Test', function () {
         })
     });
     it('returns 400 when the request body params are null', (done) => {
-      hippie()
-      .json()
-      .base('http://localhost:3000/api/v1')
+      api()
       .post(`/AuthManagerLogin`)
       .send({
           "email": null,
@@ -91,9 +85,7 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateEmployeeGroup
   describe('Creates an Employee Group and returns that Employee Group', () => {
     it('returns 200 when the request body params do match the swagger specification', (done) => {
-      hippie()
-      .json()
-      .base('http://localhost:3000/api/v1')
+      api()
       .header('Authorization', global.managerToken)
       .post(`/CreateEmployeeGroup`)
       .send({
@@ -112,9 +104,7 @@ describe('LifeGuard V1 API Test', function () {
       })
     });
     it('returns 400 when the request body params do not match the swagger specification', (done) => {
-      hippie()
-      .json()
-      .base('http://localhost:3000/api/v1')
+      api()
       .header('Authorization', global.managerToken)
       .post(`/CreateEmployeeGroup`)
       .send({
@@ -133,9 +123,7 @@ describe('LifeGuard V1 API Test', function () {
       })
     });
     it('returns 400 when the required request body params are null', (done) => {
-      hippie()
-      .json()
-      .base('http://localhost:3000/api/v1')
+      api()
       .header('Authorization', global.managerToken)
       .post(`/CreateEmployeeGroup`)
       .send({
@@ -154,9 +142,7 @@ describe('LifeGuard V1 API Test', function () {
       })
     });
     it('returns 200 when the optional request body params match are null', (done) => {
-      hippie()
-      .json()
-      .base('http://localhost:3000/api/v1')
+      api()
       .header('Authorization', global.managerToken)
       .post(`/CreateEmployeeGroup`)
       .send({
@@ -180,9 +166,7 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateEmployee
   describe('Creates an Employee and returns that Employee', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-      hippie()
-      .json()
-      .base('http://localhost:3000/api/v1')
+      api()
       .header('Authorization', global.managerToken)
       .post(`/CreateEmployee`)
       .send({
@@ -209,10 +193,36 @@ describe('LifeGuard V1 API Test', function () {
         }
       })
     });
+    it('returns 200 when the optional request body params match are null', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateEmployee`)
+      .send({
+        "description": null,
+        "person": {
+          "firstName": "Ivan2",
+          "lastName": "Ivanovich2",
+          "image": base64.image,
+          "email": "ivanxxx2@mail.com",
+          "phone": "string"
+        },
+        "credentials": {
+          "password": "ivanxxx2123"
+        },
+        "group": 1
+      })
+      .expectStatus(200)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
     it('returns 400 when the request body params do not match the swagger specification', (done) => {
-      hippie()
-      .json()
-      .base('http://localhost:3000/api/v1')
+      api()
       .header('Authorization', global.managerToken)
       .post(`/CreateEmployee`)
       .send({
@@ -240,9 +250,7 @@ describe('LifeGuard V1 API Test', function () {
       })
     });
     it('returns 400 when the required request body params are null', (done) => {
-      hippie()
-      .json()
-      .base('http://localhost:3000/api/v1')
+      api()
       .header('Authorization', global.managerToken)
       .post(`/CreateEmployee`)
       .send({
@@ -269,40 +277,8 @@ describe('LifeGuard V1 API Test', function () {
         }
       })
     });
-    it('returns 200 when the optional request body params match are null', (done) => {
-      hippie()
-      .json()
-      .base('http://localhost:3000/api/v1')
-      .header('Authorization', global.managerToken)
-      .post(`/CreateEmployee`)
-      .send({
-        "description": "Ivan Ivanovich 2",
-        "person": {
-          "firstName": "Ivan2",
-          "lastName": "Ivanovich2",
-          "image": base64.image,
-          "email": "ivanxxx2@mail.com",
-          "phone": "string"
-        },
-        "credentials": {
-          "password": "ivanxxx2123"
-        },
-        "group": 1
-      })
-      .expectStatus(200)
-      .end( (err, res, body) =>
-      {  
-        if (err) {
-          throw err
-        } else {
-            done()
-        }
-      })
-    });
     it('returns 404 when the specified Employee Group ID is not in the DB', (done) => {
-      hippie()
-      .json()
-      .base('http://localhost:3000/api/v1')
+      api()
       .header('Authorization', global.managerToken)
       .post(`/CreateEmployee`)
       .send({
@@ -334,38 +310,145 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateDevice
   describe('Creates a Device and returns that Device and a Token', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-          hippie()
-          .json()
-          .base('http://localhost:3000/api/v1')
-          .header('Authorization', global.managerToken)
-          .post(`/CreateDevice`)
-          .send({
-            "title": "device_1_title",
-            "description": "device_1_description",
-            "physicalID": "device_1_ID",
-            "type": "device_1",
-            "employeeID": 1,
-            "data": "eyAia2V5IjogInZhbHVlIiB9"
-          })
-          .expectStatus(200)
-          .end( (err, res, body) =>
-          {  
-            if (err) {
-              throw err
-            } else {
-                global.deviceToken = body.token;
-                done()
-            }
-          })
-    })
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateDevice`)
+      .send({
+        "title": "device_1_title",
+        "description": "device_1_description",
+        "physicalID": "device_1_ID",
+        "type": "device_1",
+        "employeeID": 1,
+        "data": "eyAia2V5IjogInZhbHVlIiB9"
+      })
+      .expectStatus(200)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            global.deviceToken = body.token;
+            done()
+        }
+      })
+    });
+    it('returns 200 when the optional request body params match are null', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateDevice`)
+      .send({
+        "title": "device_2_title",
+        "description": null,
+        "physicalID": "device_2_ID",
+        "type": "device_2",
+        "employeeID": 2,
+        "data": "eyAia2V5IjogInZhbHVlIiB9"
+      })
+      .expectStatus(200)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 400 when the request body params do not match the swagger specification', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateEmployee`)
+      .send({
+        "title": "a",
+        "description": "a",
+        "physicalID": "a",
+        "type": "a",
+        "employeeID": 1,
+        "data": "a"
+      })
+      .expectStatus(400)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 400 when the required request body params are null', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateEmployee`)
+      .send({
+        "title": null,
+        "description": null,
+        "physicalID": null,
+        "type": null,
+        "employeeID": null,
+        "data": null
+      })
+      .expectStatus(400)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 400(?) when the specified Employee ID is not in the DB', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateEmployee`)
+      .send({
+        "title": "device_3_title",
+        "description": "device_3_description",
+        "physicalID": "device_3_ID",
+        "type": "device_3",
+        "employeeID": 6,
+        "data": "eyAia2V5IjogInZhbHVlIiB9"
+      })
+      .expectStatus(400) // FIXME: This should be a 404(?)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          console.error(body); 
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 400 when the specified Employee ID is already attached to another device', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateEmployee`)
+      .send({
+        "title": "device_3_title",
+        "description": "device_3_description",
+        "physicalID": "device_3_ID",
+        "type": "device_3",
+        "employeeID": 1,
+        "data": "eyAia2V5IjogInZhbHVlIiB9"
+      })
+      .expectStatus(400)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
   })
 
   // POST /api/v1/CreateSensorType
   describe('Creates a Sensor Type and returns that Sensor Type', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-          hippie()
-          .json()
-          .base('http://localhost:3000/api/v1')
+          api()
           .header('Authorization', global.managerToken)
           .post(`/CreateSensorType`)
           .send({
@@ -392,9 +475,7 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateIncident
   describe('Creates an Incident and returns that Incident', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-          hippie()
-          .json()
-          .base('http://localhost:3000/api/v1')
+          api()
           .header('Authorization', global.managerToken)
           .post(`/CreateIncident`)
           .send({
@@ -421,9 +502,7 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateManager
   describe('Creates a Manager and returns that Manager', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-          hippie()
-          .json()
-          .base('http://localhost:3000/api/v1')
+          api()
           .header('Authorization', global.managerToken)
           .post(`/CreateManager`)
           .send({
@@ -474,9 +553,7 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateZone
   describe('Creates a Zone and returns that Zone', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-          hippie()
-          .json()
-          .base('http://localhost:3000/api/v1')
+          api()
           .header('Authorization', global.managerToken)
           .post(`/CreateZone`)
           .send({
@@ -507,9 +584,7 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/AuthEmployeeLogin
   describe('should login an Employee', () => {
     it('returns 200 when the request body params match the DB entry', (done) => {
-          hippie()
-          .json()
-          .base('http://localhost:3000/api/v1')
+          api()
           .post(`/AuthEmployeeLogin`)
           .send({
               "email": "ivanxxx@mail.com",
@@ -531,9 +606,7 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/GenerateAuthQR
   describe('should get an QR code', () => {
     it('returns 200 when the request body params match the DB entry', (done) => {
-          hippie()
-          .json()
-          .base('http://localhost:3000/api/v1')
+          api()
           .header('Authorization', global.managerToken)
           .post(`/GenerateAuthQR`)
           .send({
