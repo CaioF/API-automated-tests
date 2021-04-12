@@ -17,4 +17,4 @@ Battery of automated tests for the CRUD endpoints of the LifeGuard API
 1.    Server (`/test_server/api_test_server`) needs to be manually downloaded/renamed with every change pushed to the [API's master repository](https://lab.qoollo.com/lifeguard/backend/api/-/tree/master_v2).
 This could be automated via a workflow.
 2.    Swagger parser was removed due to [this error](https://github.com/ajv-validator/ajv/issues/461). A new swagger parser needs to be added.
-3.    Finish adding tests
+3.    Finish adding the tests described on [this spreadsheet](https://docs.google.com/spreadsheets/d/17hh7UODqE6ab2o93NhpY_IglIwGZ4VBC39dRmwiyji0/edit?usp=sharing)
