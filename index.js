@@ -357,7 +357,7 @@ describe('LifeGuard V1 API Test', function () {
     it('returns 400 when the request body params do not match the swagger specification', (done) => {
       api()
       .header('Authorization', global.managerToken)
-      .post(`/CreateEmployee`)
+      .post(`/CreateDevice`)
       .send({
         "title": "a",
         "description": "a",
@@ -379,7 +379,7 @@ describe('LifeGuard V1 API Test', function () {
     it('returns 400 when the required request body params are null', (done) => {
       api()
       .header('Authorization', global.managerToken)
-      .post(`/CreateEmployee`)
+      .post(`/CreateDevice`)
       .send({
         "title": null,
         "description": null,
@@ -398,10 +398,10 @@ describe('LifeGuard V1 API Test', function () {
         }
       })
     });
-    it('returns 400(?) when the specified Employee ID is not in the DB', (done) => {
+    it('returns 404 when the specified Employee ID is not in the DB', (done) => {
       api()
       .header('Authorization', global.managerToken)
-      .post(`/CreateEmployee`)
+      .post(`/CreateDevice`)
       .send({
         "title": "device_3_title",
         "description": "device_3_description",
@@ -410,7 +410,7 @@ describe('LifeGuard V1 API Test', function () {
         "employeeID": 6,
         "data": "eyAia2V5IjogInZhbHVlIiB9"
       })
-      .expectStatus(400) // FIXME: This should be a 404(?)
+      .expectStatus(404)
       .end( (err, res, body) =>
       {  
         if (err) {
@@ -424,7 +424,7 @@ describe('LifeGuard V1 API Test', function () {
     it('returns 400 when the specified Employee ID is already attached to another device', (done) => {
       api()
       .header('Authorization', global.managerToken)
-      .post(`/CreateEmployee`)
+      .post(`/CreateDevice`)
       .send({
         "title": "device_3_title",
         "description": "device_3_description",
@@ -448,26 +448,89 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateSensorType
   describe('Creates a Sensor Type and returns that Sensor Type', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-          api()
-          .header('Authorization', global.managerToken)
-          .post(`/CreateSensorType`)
-          .send({
-            "title": "sensor_type_1",
-            "description": "string",
-            "slug": "sensor_type_1",
-            "graphType": "GRAPH_TYPE_LINE",
-            "dataType": "DATA_TYPE_INT32"
-          })
-          .expectStatus(200)
-          .end( (err, res, body) =>
-          {  
-            if (err) {
-              throw err
-            } else {
-                done()
-            }
-          })
-    })
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateSensorType`)
+      .send({
+        "title": "sensor_type_1",
+        "description": "string",
+        "slug": "sensor_type_1",
+        "graphType": "GRAPH_TYPE_LINE",
+        "dataType": "DATA_TYPE_INT32"
+      })
+      .expectStatus(200)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 200 when the optional request body params match are null', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateSensorType`)
+      .send({
+        "title": "sensor_type_2",
+        "description": null,
+        "slug": "sensor_type_2",
+        "graphType": "GRAPH_TYPE_LINE",
+        "dataType": "DATA_TYPE_INT32"
+      })
+      .expectStatus(200)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 400 when the request body params do not match the swagger specification', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateSensorType`)
+      .send({
+        "title": "a",
+        "description": "a",
+        "slug": "a",
+        "graphType": "a",
+        "dataType": "a"
+      })
+      .expectStatus(400)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 400 when the required request body params are null', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateSensorType`)
+      .send({
+        "title": null,
+        "description": null,
+        "slug": null,
+        "graphType": null,
+        "dataType": null
+      })
+      .expectStatus(400)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
   })
 
   // TODO: POST /api/v1/CreateSensor
