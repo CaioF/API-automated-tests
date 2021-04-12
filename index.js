@@ -969,31 +969,130 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateZone
   describe('Creates a Zone and returns that Zone', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-          api()
-          .header('Authorization', global.managerToken)
-          .post(`/CreateZone`)
-          .send({
-            "title": "zone_1",
-            "description": "zone_1",
-            "permissions": {
-              "allowedEmployees": [
-                1
-              ]
-            },
-            "path": {
-              "geojson": base64.geojson
-            }
-          })
-          .expectStatus(200)
-          .end( (err, res, body) =>
-          {  
-            if (err) {
-              throw err
-            } else {
-                done()
-            }
-          })
-    })
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateZone`)
+      .send({
+        "title": "zone_1",
+        "description": "zone_1",
+        "permissions": {
+          "allowedEmployees": [
+            1
+          ]
+        },
+        "path": {
+          "geojson": base64.geojson
+        }
+      })
+      .expectStatus(200)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 200 when the optional request body params match are null', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateZone`)
+      .send({
+        "title": "zone_2",
+        "description": null,
+        "permissions": {
+          "allowedEmployees": [
+            1
+          ]
+        },
+        "path": {
+          "geojson": base64.geojson
+        }
+      })
+      .expectStatus(200)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 400 when the request body params do not match the swagger specification', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateZone`)
+      .send({
+        "title": "a",
+        "description": "a",
+        "permissions": {
+          "allowedEmployees": [
+            1
+          ]
+        },
+        "path": {
+          "geojson": base64.geojson
+        }
+      })
+      .expectStatus(400)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 400 when the required request body params are null', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateZone`)
+      .send({
+        "title": null,
+        "description": "zone_3",
+        "permissions": null,
+        "path": null
+      })
+      .expectStatus(400)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
+    it('returns 404 when the specified Allowed Employee IDs are not in the DB', (done) => {
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateZone`)
+      .send({
+        "title": "zone_3",
+        "description": "zone_3",
+        "permissions": {
+          "allowedEmployees": [
+            99
+          ]
+        },
+        "path": {
+          "geojson": base64.geojson
+        }
+      })
+      .expectStatus(404)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          console.error(body); 
+          throw err
+        } else {
+            done()
+        }
+      })
+    });
   })
 
 
