@@ -538,27 +538,27 @@ describe('LifeGuard V1 API Test', function () {
   // POST /api/v1/CreateIncident
   describe('Creates an Incident and returns that Incident', () => {
     it('returns 200 when the request body params match the swagger specification', (done) => {
-          api()
-          .header('Authorization', global.managerToken)
-          .post(`/CreateIncident`)
-          .send({
-            "description": "incident_1",
-            "employeeID": 1,
-            "deviceID": 1,
-            "sensorID": 1,
-            "initialZone": 1,
-            "reason": "accident",
-            "status": "INCIDENT_STATUS_RESOLVED"
-          })
-          .expectStatus(200)
-          .end( (err, res, body) =>
-          {  
-            if (err) {
-              throw err
-            } else {
-                done()
-            }
-          })
+      api()
+      .header('Authorization', global.managerToken)
+      .post(`/CreateIncident`)
+      .send({
+        "description": "incident_1",
+        "employeeID": 1,
+        "deviceID": 1,
+        "sensorID": 1,
+        "initialZone": 1,
+        "reason": "accident",
+        "status": "INCIDENT_STATUS_RESOLVED"
+      })
+      .expectStatus(200)
+      .end( (err, res, body) =>
+      {  
+        if (err) {
+          throw err
+        } else {
+            done()
+        }
+      })
     })
   })
 
