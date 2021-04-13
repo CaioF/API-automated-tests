@@ -21,7 +21,10 @@ sleep 5
 
 # Run tests, for more options read: https://mochajs.org/api/cli_options.js.html
 echo 'RUN TESTS'
-npx mocha index.js
+# Use the following command for a json-stream to a report.log file:
+npx mocha -R json-stream  "./tests/**/*test.js" > ./log/report.log
+# Use the following command for a formated/colored output to console:
+# npx mocha "tests/**/*test.js" 
 
 # Kill the errant process
 echo 'KILL SERVER'

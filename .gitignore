@@ -2,3 +2,4 @@ node_modules
 api_test_server
 config.yml
 result.log
+tokens.json

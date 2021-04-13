@@ -30,9 +30,9 @@ database:
   driver: postgres # currently, only postgres is supported
   host: localhost
   port: 5432
-  user: api_test_user
-  password: api_test_user_123
-  db: api_test_db
+  user: api_test_user # take a look at init.bash
+  password: api_test_user_123 # take a look at init.bash
+  db: api_test_db # take a look at init.bash
   slow_request_threshold: 1s
   logs_level: 1
 

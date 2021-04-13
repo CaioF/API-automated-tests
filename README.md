@@ -11,7 +11,8 @@ Battery of automated tests for the CRUD endpoints of the LifeGuard API
 2.    `cd integration-tests/`
 3.    `git checkout feature/LGS-177-hippie-API-tests`
 4.    `npm install`
-5.    `./init.bash`
+5.    `download api server and rename it to /test_server/api_test_server`
+6.    `./init.bash`
 
 ### TODO
 1.    Server (`/test_server/api_test_server`) needs to be manually downloaded/renamed with every change pushed to the [API's master repository](https://lab.qoollo.com/lifeguard/backend/api/-/tree/master_v2).
