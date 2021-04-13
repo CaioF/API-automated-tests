@@ -1,2 +1,4 @@
 node_modules
-test_server
+api_test_server
+config.yml
+result.log
