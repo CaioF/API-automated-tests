@@ -13,6 +13,7 @@ function api() {
 
 // POST /api/v1/CreateEmployeeGroup
 describe('Creates an Employee Group and returns that Employee Group', () => {
+
   it('returns 200 when the request body params do match the swagger specification', (done) => {
     api()
     .send({
@@ -30,6 +31,7 @@ describe('Creates an Employee Group and returns that Employee Group', () => {
       }
     })
   });
+
   it('returns 400 when the request body params do not match the swagger specification', (done) => {
     api()
     .send({
@@ -47,6 +49,7 @@ describe('Creates an Employee Group and returns that Employee Group', () => {
       }
     })
   });
+
   it('returns 400 when the required request body params are null', (done) => {
     api()
     .send({
@@ -64,6 +67,7 @@ describe('Creates an Employee Group and returns that Employee Group', () => {
       }
     })
   });
+
   it('returns 200 when the optional request body params match are null', (done) => {
     api()
     .send({
@@ -81,4 +85,5 @@ describe('Creates an Employee Group and returns that Employee Group', () => {
       }
     })
   })
+  
 })

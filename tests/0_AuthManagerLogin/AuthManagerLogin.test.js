@@ -22,6 +22,7 @@ function api() {
 
 // POST /api/v1/AuthManagerLogin
 describe('Logs in a manager user, returns a token and usertype', () => {
+
   it('returns 200 when the request body params match the DB entry', (done) => {
     api()
       .post(`/AuthManagerLogin`)
@@ -30,9 +31,11 @@ describe('Logs in a manager user, returns a token and usertype', () => {
           "password": "admin123"
         })
       .expectStatus(200)
+      .expectValue('data.email', 'admin@admin.com')
       .end( (err, res, body) =>
       {  
         if (err) {
+          console.error(body);
           throw err
         } else {
           tokens.managerToken = body.token;
@@ -41,9 +44,9 @@ describe('Logs in a manager user, returns a token and usertype', () => {
         }
       })
   });
+
   it('returns 401 when the request body params do not match the DB entry', (done) => {
     api()
-    
     .send({
         "email": "fadmin@fadmin.com",
         "password": "fadmin123"
@@ -59,6 +62,7 @@ describe('Logs in a manager user, returns a token and usertype', () => {
       }
     })
   });
+
   it('returns 400 when the request body params are null', (done) => {
     api()
     .post(`/AuthManagerLogin`)
@@ -77,4 +81,5 @@ describe('Logs in a manager user, returns a token and usertype', () => {
       }
     })
   })
+
 })
