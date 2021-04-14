@@ -32,6 +32,8 @@ describe('Creates an Employee and returns that Employee', () => {
       "group": 1
     })
     .expectStatus(200)
+    .expectValue('employee.person.email', 'ivanxxx@mail.com')
+    .expectValue('employee.credentials.password', '')
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -59,6 +61,8 @@ describe('Creates an Employee and returns that Employee', () => {
       "group": 1
     })
     .expectStatus(200)
+    .expectValue('employee.person.email', 'ivanxxx2@mail.com')
+    .expectValue('employee.credentials.password', '')
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -86,6 +90,7 @@ describe('Creates an Employee and returns that Employee', () => {
       "group": "a"
     })
     .expectStatus(400)
+    .expectValue('code', 3)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -113,6 +118,7 @@ describe('Creates an Employee and returns that Employee', () => {
       "group": null
     })
     .expectStatus(400)
+    .expectValue('code', 3)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -140,6 +146,7 @@ describe('Creates an Employee and returns that Employee', () => {
       "group": 99
     })
     .expectStatus(404)
+    .expectValue('code', 5)
     .end( (err, res, body) =>
     {  
       if (err) {
