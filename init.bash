@@ -1,9 +1,14 @@
 #!/bin/bash
-
 echo 'Start'
+
 # Create data files
-touch tests/data_files/tokens.json
+echo 'CREATE DATA FILES'
 touch tests/data_files/report.log
+cat > tests/data_files/tokens.json <<EOF
+{
+
+}
+EOF
 
 # Create user and test database
 sudo su postgres <<EOF
