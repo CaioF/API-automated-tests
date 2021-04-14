@@ -36,6 +36,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
     })
     .expectStatus(200)
     .expectValue('device.title', 'device_1_title')
+    .expectValue('device.employee.ID', 1)
     .expectValue('device.sensors[0].ID', 1)
     .end( (err, res, body) =>
     {  
@@ -61,6 +62,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
     })
     .expectStatus(200)
     .expectValue('device.title', 'device_2_title')
+    .expectValue('device.employee.ID', 2)
     .expectValue('device.sensors[0].ID', 7)
     .end( (err, res, body) =>
     {  
