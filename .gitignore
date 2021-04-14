@@ -1,5 +1,4 @@
 node_modules
 api_test_server
 config.yml
-report.log
-tokens.json
+*.log

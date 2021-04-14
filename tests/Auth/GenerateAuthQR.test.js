@@ -1,7 +1,7 @@
 'use strict'
 
 const hippie = require('hippie');
-const tokens = require('../../log/tokens.json');
+const tokens = require('../data_files/tokens.json');
 
 function api() {
   return hippie()
