@@ -159,6 +159,29 @@ describe('Creates a Device and returns that Device and a Token', () => {
           done()
       }
     })
+  });
+
+  // FIXME: This needs to be updated once a fix has been pushed to the API
+  it('returns 400(?) when the specified Physical ID is already attached to another device', (done) => {
+    api()
+    .send({
+      "title": "device_3_title",
+      "description": "device_3_description",
+      "physicalID": "device_1_ID",
+      "type": "device_3",
+      "employeeID": 1, // Update this
+      "data": "eyAia2V5IjogInZhbHVlIiB9"
+    })
+    .expectStatus(400)
+    .expectValue('code', 9)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw err
+      } else {
+          done()
+      }
+    })
   })
 
 })

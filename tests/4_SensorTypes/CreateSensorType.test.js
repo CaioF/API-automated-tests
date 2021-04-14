@@ -24,6 +24,7 @@ describe('Creates a Sensor Type and returns that Sensor Type', () => {
       "dataType": "DATA_TYPE_INT32"
     })
     .expectStatus(200)
+    .expectValue('sensorType.slug', 'sensor_type_1')
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -44,6 +45,7 @@ describe('Creates a Sensor Type and returns that Sensor Type', () => {
       "dataType": "DATA_TYPE_INT32"
     })
     .expectStatus(200)
+    .expectValue('sensorType.slug', 'sensor_type_2')
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -64,6 +66,7 @@ describe('Creates a Sensor Type and returns that Sensor Type', () => {
       "dataType": "a"
     })
     .expectStatus(400)
+    .expectValue('code', 3)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -84,6 +87,7 @@ describe('Creates a Sensor Type and returns that Sensor Type', () => {
       "dataType": null
     })
     .expectStatus(400)
+    .expectValue('code', 3)
     .end( (err, res, body) =>
     {  
       if (err) {
