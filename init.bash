@@ -29,9 +29,9 @@ sleep 5
 
 # Run tests, for more options read: https://mochajs.org/api/cli_options.js.html
 echo 'RUN TESTS'
-# Use the following command for a json-stream to a report.log file:
-# npx mocha -R json-stream  "./tests/**/*test.js" > ./log/report.log
-# Use the following command for a formated/colored output to console:
+# Use the following command for a json-stream into report.log file:
+## npx mocha -R json-stream  "./tests/**/*test.js" > ./tests/data_files/report.log
+# Use the following command for a formated/colored output into console:
 npx mocha "tests/**/*test.js" 
 
 # Kill the errant process
