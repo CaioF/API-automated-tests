@@ -30,11 +30,13 @@ describe('Creates a Device and returns that Device and a Token', () => {
       "title": "device_1_title",
       "description": "device_1_description",
       "physicalID": "device_1_ID",
-      "type": "device_1",
+      "type": "mobile", // creates a sensor
       "employeeID": 1,
       "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
     .expectStatus(200)
+    .expectValue('device.title', 'device_1_title')
+    .expectValue('device.sensors[0].ID', 1)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -53,11 +55,13 @@ describe('Creates a Device and returns that Device and a Token', () => {
       "title": "device_2_title",
       "description": null,
       "physicalID": "device_2_ID",
-      "type": "device_2",
+      "type": "mobile", // creates a sensor
       "employeeID": 2,
       "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
     .expectStatus(200)
+    .expectValue('device.title', 'device_2_title')
+    .expectValue('device.sensors[0].ID', 7)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -79,6 +83,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
       "data": "a"
     })
     .expectStatus(400)
+    .expectValue('code', 3)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -100,6 +105,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
       "data": null
     })
     .expectStatus(400)
+    .expectValue('code', 3)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -121,6 +127,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
       "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
     .expectStatus(404)
+    .expectValue('code', 5)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -143,6 +150,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
       "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
     .expectStatus(400)
+    .expectValue('code', 9)
     .end( (err, res, body) =>
     {  
       if (err) {

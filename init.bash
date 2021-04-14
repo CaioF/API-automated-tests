@@ -1,15 +1,6 @@
 #!/bin/bash
 echo 'Start'
 
-# Create data files
-echo 'CREATE DATA FILES'
-touch tests/data_files/report.log
-cat > tests/data_files/tokens.json <<EOF
-{
-
-}
-EOF
-
 # Create user and test database
 sudo su postgres <<EOF
 psql -c "DROP DATABASE IF EXISTS api_test_db;"
@@ -17,6 +8,15 @@ psql -c "DROP USER IF EXISTS api_test_user;"
 psql -c "CREATE USER api_test_user WITH ENCRYPTED PASSWORD 'api_test_user_123';"
 psql -c "CREATE DATABASE api_test_db;"
 psql -c "GRANT ALL PRIVILEGES ON DATABASE api_test_db TO api_test_user;"
+EOF
+
+# Create data files
+echo 'CREATE DATA FILES'
+touch tests/data_files/report.log
+cat > tests/data_files/tokens.json <<EOF
+{
+
+}
 EOF
 
 # Initiate test server and disown the process 
