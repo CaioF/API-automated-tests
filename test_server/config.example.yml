@@ -20,6 +20,9 @@ app:
       min_dimension: 128 # in pixels
       max_dimension: 512 # in pixels
 
+  realtime:
+    command_queue_size: 500
+    
 auth:
   timed_token:
     valid_time: 120 # in seconds
@@ -55,7 +58,7 @@ server:
   interface: 0.0.0.0
   port: 3000
   http:
-    enabled: true
+    enabled: false
 
 automations:
   manager: docker # currently, only docker is supported
@@ -72,11 +75,9 @@ metrics:
     size: 100 # размер одного батча
 
 dictionary:
-  mode: memory   # redis / memory
+  mode: redis   # redis / memory
   redis:
     user: default
     password: ""
     host: localhost
     port: 6379
-
-
