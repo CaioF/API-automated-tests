@@ -22,42 +22,7 @@ describe('Creates an Employee Group and returns that Employee Group', () => {
       "slug": "group1"
     })
     .expectStatus(200)
-    .end( (err, res, body) =>
-    {  
-      if (err) {
-        throw err
-      } else {
-          done()
-      }
-    })
-  });
-
-  it('returns 400 when the request body params do not match the swagger specification', (done) => {
-    api()
-    .send({
-      "title": "a",
-      "description": "a",
-      "slug": "a"
-    })
-    .expectStatus(400)
-    .end( (err, res, body) =>
-    {  
-      if (err) {
-        throw err
-      } else {
-          done()
-      }
-    })
-  });
-
-  it('returns 400 when the required request body params are null', (done) => {
-    api()
-    .send({
-      "title": null,
-      "description": "group1",
-      "slug": null,
-    })
-    .expectStatus(400)
+    .expectValue('employeeGroup.slug', 'group1')
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -76,6 +41,45 @@ describe('Creates an Employee Group and returns that Employee Group', () => {
       "slug": "group2"
     })
     .expectStatus(200)
+    .expectValue('employeeGroup.slug', 'group2')
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw err
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('returns 400 when the request body params do not match the swagger specification', (done) => {
+    api()
+    .send({
+      "title": "a",
+      "description": "a",
+      "slug": "a"
+    })
+    .expectStatus(400)
+    .expectValue('code', 3)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw err
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('returns 400 when the required request body params are null', (done) => {
+    api()
+    .send({
+      "title": null,
+      "description": "group1",
+      "slug": null
+    })
+    .expectStatus(400)
+    .expectValue('code', 3)
     .end( (err, res, body) =>
     {  
       if (err) {

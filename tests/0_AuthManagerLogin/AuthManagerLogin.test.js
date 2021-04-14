@@ -7,7 +7,7 @@ const tokens = require('../data_files/tokens.json');
 function updateTokens()
 {
   fs.writeFile(
-    './log/tokens.json', 
+    './tests/data_files/tokens.json', 
     JSON.stringify(tokens, null, 2), 
     function writeJSON(err) {if (err) return console.log(err)}
     )

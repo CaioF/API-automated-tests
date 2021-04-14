@@ -1,6 +1,9 @@
 #!/bin/bash
 
 echo 'Start'
+# Create data files
+touch tests/data_files/tokens.json
+touch tests/data_files/report.log
 
 # Create user and test database
 sudo su postgres <<EOF
