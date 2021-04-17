@@ -12,9 +12,9 @@ EOF
 
 # Create data files
 echo 'CREATE DATA FILES'
-touch tests/data_files/server_report.log
-touch tests/data_files/tests_report.log
-cat > tests/data_files/tokens.json <<EOF
+touch logs/server_report.log
+touch logs/tests_report.log
+cat > tests/tokens.json <<EOF
 {
 
 }
@@ -23,7 +23,7 @@ EOF
 # Initiate test server and disown the process, output from the server is redirected to server_report.log
 # NOTE: This leaves an errant process, wait for script end to kill it, or run 'killall api_test_server'
 echo 'INITIALIZE SERVER'
-bash -c 'cd test_server && ./api_test_server &> "../tests/data_files/server_report.log" & disown'
+bash -c 'cd test_server && ./api_test_server &> "../logs/server_report.log" & disown'
 
 # Wait 5 seconds for the database to load
 sleep 5
@@ -31,7 +31,7 @@ sleep 5
 # Run tests, for more options read: https://mochajs.org/api/cli_options.js.html
 echo 'RUN TESTS'
 # Use the following command for a json-stream into tests_report.log file:
-## npx mocha -R json-stream  "./tests/**/*test.js" > ./tests/data_files/tests_report.log
+## npx mocha -R json-stream  "./tests/**/*test.js" > ./logs/tests_report.log
 # Use the following command for a formated/colored output into console:
 npx mocha "tests/**/*test.js" 
 
