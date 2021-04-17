@@ -70,6 +70,7 @@ describe('Creates a Sensor Metric', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -92,6 +93,7 @@ describe('Creates a Sensor Metric', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

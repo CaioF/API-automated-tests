@@ -56,6 +56,7 @@ describe('Logs in a manager user, returns a token and usertype', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -75,6 +76,7 @@ describe('Logs in a manager user, returns a token and usertype', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

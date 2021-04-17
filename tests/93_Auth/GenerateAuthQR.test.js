@@ -24,6 +24,7 @@ describe('should get an QR code', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err;
       } else {
           done()

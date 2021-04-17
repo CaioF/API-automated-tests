@@ -23,6 +23,7 @@ describe('Returns an Employee Group by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -38,6 +39,7 @@ describe('Returns an Employee Group by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -53,6 +55,7 @@ describe('Returns an Employee Group by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -68,6 +71,7 @@ describe('Returns an Employee Group by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

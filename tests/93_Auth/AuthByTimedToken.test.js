@@ -27,6 +27,7 @@ describe('should authorize an employee via the generated timed token from the QR
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err;
       } else {
           done()

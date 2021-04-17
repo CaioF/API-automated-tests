@@ -2,7 +2,6 @@
 
 const hippie = require('hippie');
 const tokens = require('../data_files/tokens.json');
-var group_ID;
 
 function api() {
   return hippie()
@@ -24,6 +23,7 @@ describe('Deletes an Employee by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -42,6 +42,7 @@ describe('Deletes an Employee by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -59,6 +60,7 @@ describe('Deletes an Employee by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -76,6 +78,7 @@ describe('Deletes an Employee by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -93,6 +96,7 @@ describe('Deletes an Employee by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

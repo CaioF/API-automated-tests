@@ -38,6 +38,7 @@ describe('Update an Employee by ID and returns that Employee ', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -56,6 +57,7 @@ describe('Update an Employee by ID and returns that Employee ', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -82,6 +84,7 @@ describe('Update an Employee by ID and returns that Employee ', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -111,6 +114,7 @@ describe('Update an Employee by ID and returns that Employee ', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -140,6 +144,7 @@ describe('Update an Employee by ID and returns that Employee ', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

@@ -8,16 +8,16 @@ function api() {
     .json()
     .base('http://localhost:3000/api/v1')
     .header('Authorization', tokens.managerToken)
-    .del(`/DeleteEmployeeGroup`)
+    .del(`/RollDeviceToken`)
 }
 
-// DELETE /api/v1/DeleteEmployeeGroup
-describe('Deletes an Employee Group by ID', () => {
+// DELETE /api/v1/RollDeviceToken
+describe('Deletes all previous authorization tokens of a Device by ID', () => {
 
-  it('returns 200 when the specified Employee Group ID is in the DB', (done) => {
+  it('returns 200 when the specified Device ID is in the DB', (done) => {
     api()
     .send({
-      "ID": 4
+      "ID": 2
     })
     .expectStatus(200)
     .end( (err, res, body) =>
@@ -31,26 +31,7 @@ describe('Deletes an Employee Group by ID', () => {
     })
   });
 
-  it('check to see if the Employee Group was truly deleted', (done) => {
-    hippie()
-    .json()
-    .base('http://localhost:3000/api/v1')
-    .header('Authorization', tokens.managerToken)
-    .get(`/GetEmployeeGroup?ID=4`)
-    .expectStatus(404)
-    .expectValue('code', 5)
-    .end( (err, res, body) =>
-    {  
-      if (err) {
-        console.error(body);
-        throw err
-      } else {
-          done()
-      }
-    })
-  });
-
-  it('returns 404 when the specified Employee Group ID is not in the DB', (done) => {
+  it('returns 404 when the specified Device ID is not in the DB', (done) => {
     api()
     .send({
       "ID": 99

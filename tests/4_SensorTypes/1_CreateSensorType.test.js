@@ -28,6 +28,7 @@ describe('Creates a Sensor Type and returns that Sensor Type', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -49,6 +50,7 @@ describe('Creates a Sensor Type and returns that Sensor Type', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -70,6 +72,7 @@ describe('Creates a Sensor Type and returns that Sensor Type', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -91,6 +94,7 @@ describe('Creates a Sensor Type and returns that Sensor Type', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

@@ -23,6 +23,7 @@ describe('Returns an Device by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -42,6 +43,7 @@ describe('Returns an Device by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -57,6 +59,7 @@ describe('Returns an Device by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -72,6 +75,7 @@ describe('Returns an Device by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -87,6 +91,7 @@ describe('Returns an Device by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

@@ -56,6 +56,7 @@ describe('Creates a Manager and returns that Manager', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -104,6 +105,7 @@ describe('Creates a Manager and returns that Manager', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -151,6 +153,7 @@ describe('Creates a Manager and returns that Manager', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -198,6 +201,7 @@ describe('Creates a Manager and returns that Manager', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -245,6 +249,7 @@ describe('Creates a Manager and returns that Manager', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

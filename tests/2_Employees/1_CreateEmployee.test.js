@@ -37,6 +37,7 @@ describe('Creates an Employee and returns that Employee', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -66,6 +67,7 @@ describe('Creates an Employee and returns that Employee', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -95,6 +97,7 @@ describe('Creates an Employee and returns that Employee', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -123,6 +126,7 @@ describe('Creates an Employee and returns that Employee', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -151,6 +155,7 @@ describe('Creates an Employee and returns that Employee', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -179,6 +184,7 @@ describe('Creates an Employee and returns that Employee', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

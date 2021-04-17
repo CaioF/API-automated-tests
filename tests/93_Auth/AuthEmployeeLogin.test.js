@@ -23,6 +23,7 @@ describe('should login an Employee', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err;
       } else {
           done()

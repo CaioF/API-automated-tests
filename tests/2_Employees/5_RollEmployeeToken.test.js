@@ -23,6 +23,7 @@ describe('Deletes all previous authorization tokens of an Employee by ID', () =>
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -40,6 +41,7 @@ describe('Deletes all previous authorization tokens of an Employee by ID', () =>
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -57,6 +59,7 @@ describe('Deletes all previous authorization tokens of an Employee by ID', () =>
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -74,6 +77,7 @@ describe('Deletes all previous authorization tokens of an Employee by ID', () =>
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

@@ -35,6 +35,7 @@ describe('Creates a Zone and returns that Zone', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -62,6 +63,7 @@ describe('Creates a Zone and returns that Zone', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -87,6 +89,7 @@ describe('Creates a Zone and returns that Zone', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -106,6 +109,7 @@ describe('Creates a Zone and returns that Zone', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

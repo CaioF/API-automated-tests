@@ -41,6 +41,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           tokens.deviceToken = body.token;
@@ -67,6 +68,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -89,6 +91,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -111,6 +114,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -156,6 +160,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -179,6 +184,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

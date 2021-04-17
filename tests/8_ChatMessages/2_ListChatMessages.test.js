@@ -28,6 +28,7 @@ describe('Returns a list of all ChatMessages with pagination', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -48,6 +49,7 @@ describe('Returns a list of all ChatMessages with pagination', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -65,6 +67,7 @@ describe('Returns a list of all ChatMessages with pagination', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -82,6 +85,7 @@ describe('Returns a list of all ChatMessages with pagination', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -99,6 +103,7 @@ describe('Returns a list of all ChatMessages with pagination', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -116,6 +121,7 @@ describe('Returns a list of all ChatMessages with pagination', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

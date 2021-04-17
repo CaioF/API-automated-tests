@@ -27,6 +27,7 @@ describe('Creates a Chat Message by Employee ID and returns that Chat Message', 
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -45,6 +46,7 @@ describe('Creates a Chat Message by Employee ID and returns that Chat Message', 
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -63,6 +65,7 @@ describe('Creates a Chat Message by Employee ID and returns that Chat Message', 
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -81,6 +84,7 @@ describe('Creates a Chat Message by Employee ID and returns that Chat Message', 
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()

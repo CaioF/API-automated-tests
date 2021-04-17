@@ -27,6 +27,7 @@ describe('Update an Employee Group by ID and returns that Employee Group', () =>
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -45,6 +46,7 @@ describe('Update an Employee Group by ID and returns that Employee Group', () =>
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -67,6 +69,7 @@ describe('Update an Employee Group by ID and returns that Employee Group', () =>
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -87,6 +90,7 @@ describe('Update an Employee Group by ID and returns that Employee Group', () =>
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
@@ -107,6 +111,7 @@ describe('Update an Employee Group by ID and returns that Employee Group', () =>
     .end( (err, res, body) =>
     {  
       if (err) {
+        console.error(body);
         throw err
       } else {
           done()
