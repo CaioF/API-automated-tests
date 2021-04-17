@@ -23,10 +23,7 @@ describe('Update an Device by ID and returns that Device ', () => {
       "physicalID": "up_device_2_ID",
       "type": "mobile",
       "employeeID": 3,
-      "data": "eyAia2V5IjogInZhbHVlIiB9",
-      "loadInfo": {
-        "loadSensors": true
-      }
+      "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
     .expectStatus(200)
     .expectValue('device.employee.person.email', 'ivanxxx3@mail.com')
@@ -69,10 +66,7 @@ describe('Update an Device by ID and returns that Device ', () => {
       "physicalID": null,
       "type": null,
       "employeeID": 3,
-      "data": null,
-      "loadInfo": {
-        "loadSensors": true
-      }
+      "data": null
     })
     .expectStatus(200)
     .expectValue('device.employee.person.email', 'ivanxxx3@mail.com')
@@ -99,10 +93,7 @@ describe('Update an Device by ID and returns that Device ', () => {
       "physicalID": "a",
       "type": "a",
       "employeeID": 3,
-      "data": "a",
-      "loadInfo": {
-        "loadSensors": true
-      }
+      "data": "a"
     })
     .expectStatus(400)
     .expectValue('code', 3)
@@ -125,10 +116,7 @@ describe('Update an Device by ID and returns that Device ', () => {
       "physicalID": "up_device_2_ID",
       "type": "mobile",
       "employeeID": 3,
-      "data": "eyAia2V5IjogInZhbHVlIiB9",
-      "loadInfo": {
-        "loadSensors": true
-      }
+      "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
     .expectStatus(404)
     .expectValue('code', 5)
@@ -151,10 +139,7 @@ describe('Update an Device by ID and returns that Device ', () => {
       "physicalID": "up_device_2_ID",
       "type": "mobile",
       "employeeID": 99,
-      "data": "eyAia2V5IjogInZhbHVlIiB9",
-      "loadInfo": {
-        "loadSensors": true
-      }
+      "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
     .expectStatus(404)
     .expectValue('code', 5)
@@ -177,10 +162,7 @@ describe('Update an Device by ID and returns that Device ', () => {
       "physicalID": "up_device_2_ID",
       "type": "mobile",
       "employeeID": 1,
-      "data": "eyAia2V5IjogInZhbHVlIiB9",
-      "loadInfo": {
-        "loadSensors": true
-      }
+      "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
     .expectStatus(409)
     .expectValue('code', 6)
@@ -203,10 +185,7 @@ describe('Update an Device by ID and returns that Device ', () => {
       "physicalID": "device_1_ID",
       "type": "mobile",
       "employeeID": 3,
-      "data": "eyAia2V5IjogInZhbHVlIiB9",
-      "loadInfo": {
-        "loadSensors": true
-      }
+      "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
     .expectStatus(409)
     .expectValue('code', 6)
