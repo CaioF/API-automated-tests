@@ -57,13 +57,13 @@ describe('Creates a Device and returns that Device and a Token', () => {
       "description": null,
       "physicalID": "device_2_ID",
       "type": "mobile", // creates a sensor
-      "employeeID": 2,
+      "employeeID": 3,
       "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
     .expectStatus(200)
     .expectValue('device.title', 'device_2_title')
-    .expectValue('device.employee.ID', 2)
-    .expectValue('device.sensors[0].ID', 7)
+    .expectValue('device.employee.ID', 3)
+    .expectKey('device.sensors[0].ID')
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -141,7 +141,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
     })
   });
 
-  it('returns 400 when the specified Employee ID is already attached to another device', (done) => {
+  it('returns 409 when the specified Employee ID is already attached to another device', (done) => {
     api()
     .send({
       "title": "device_3_title",
@@ -151,8 +151,8 @@ describe('Creates a Device and returns that Device and a Token', () => {
       "employeeID": 1,
       "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
-    .expectStatus(400)
-    .expectValue('code', 9)
+    .expectStatus(409)
+    .expectValue('code', 6)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -164,7 +164,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
   });
 
   // FIXME: This needs to be updated once a fix has been pushed to the API
-  it('returns 400(?) when the specified Physical ID is already attached to another device', (done) => {
+  it('returns 409 when the specified Physical ID is already attached to another device', (done) => {
     api()
     .send({
       "title": "device_3_title",
@@ -174,8 +174,8 @@ describe('Creates a Device and returns that Device and a Token', () => {
       "employeeID": 1, // Update this
       "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
-    .expectStatus(400)
-    .expectValue('code', 9)
+    .expectStatus(409)
+    .expectValue('code', 6)
     .end( (err, res, body) =>
     {  
       if (err) {

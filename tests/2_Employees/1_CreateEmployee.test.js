@@ -73,6 +73,35 @@ describe('Creates an Employee and returns that Employee', () => {
     })
   });
 
+  it('create another employee so that the other tests do not fail', (done) => {
+    api()
+    .send({
+      "description": "Ivan Ivanovich 3",
+      "person": {
+        "firstName": "Ivan3",
+        "lastName": "Ivanovich3",
+        "image": base64.image,
+        "email": "ivanxxx3@mail.com",
+        "phone": "string3"
+      },
+      "credentials": {
+        "password": "ivanxxx3123"
+      },
+      "group": 1
+    })
+    .expectStatus(200)
+    .expectValue('employee.person.email', 'ivanxxx3@mail.com')
+    .expectValue('employee.credentials.password', '')
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw err
+      } else {
+          done()
+      }
+    })
+  });
+
   it('returns 400 when the request body params do not match the swagger specification', (done) => {
     api()
     .send({
