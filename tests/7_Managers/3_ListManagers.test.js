@@ -25,8 +25,7 @@ describe('Returns a list of all Managers with pagination', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
-        console.error(body);
-        throw err
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
           done()
       }
@@ -44,8 +43,7 @@ describe('Returns a list of all Managers with pagination', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
-        console.error(body);
-        throw err
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
           done()
       }
@@ -61,8 +59,7 @@ describe('Returns a list of all Managers with pagination', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
-        console.error(body);
-        throw err
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
           done()
       }
@@ -78,8 +75,7 @@ describe('Returns a list of all Managers with pagination', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
-        console.error(body);
-        throw err
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
           done()
       }
@@ -95,8 +91,7 @@ describe('Returns a list of all Managers with pagination', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
-        console.error(body);
-        throw err
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
           done()
       }

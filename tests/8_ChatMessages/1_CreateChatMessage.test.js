@@ -27,8 +27,7 @@ describe('Creates a Chat Message by Employee ID and returns that Chat Message', 
     .end( (err, res, body) =>
     {  
       if (err) {
-        console.error(body);
-        throw err
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
           done()
       }
@@ -46,8 +45,7 @@ describe('Creates a Chat Message by Employee ID and returns that Chat Message', 
     .end( (err, res, body) =>
     {  
       if (err) {
-        console.error(body);
-        throw err
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
           done()
       }
@@ -65,8 +63,7 @@ describe('Creates a Chat Message by Employee ID and returns that Chat Message', 
     .end( (err, res, body) =>
     {  
       if (err) {
-        console.error(body);
-        throw err
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
           done()
       }
@@ -84,8 +81,7 @@ describe('Creates a Chat Message by Employee ID and returns that Chat Message', 
     .end( (err, res, body) =>
     {  
       if (err) {
-        console.error(body);
-        throw err
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
           done()
       }
