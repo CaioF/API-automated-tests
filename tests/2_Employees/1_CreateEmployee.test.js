@@ -13,7 +13,7 @@ function api() {
 }
 
 // POST /api/v1/CreateEmployee
-describe('Creates an Employee and returns that Employee', () => {
+describe('Creates an Employee and returns that Employee and a Token', () => {
 
   it('returns 200 when the request body params match the swagger specification', (done) => {
     api()
@@ -39,7 +39,7 @@ describe('Creates an Employee and returns that Employee', () => {
       if (err) {
         throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
-          done()
+        done()
       }
     })
   });

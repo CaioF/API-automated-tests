@@ -1,6 +1,17 @@
 'use strict'
 
 const hippie = require('hippie');
+const fs = require('fs');
+const tokens = require('../data_files/tokens.json');
+
+function updateTokens()
+{
+  fs.writeFile(
+    './tests/data_files/tokens.json', 
+    JSON.stringify(tokens, null, 2), 
+    function writeJSON(err) {if (err) return console.log(err)}
+    )
+}
 
 function api() {
   return hippie()
@@ -25,7 +36,9 @@ describe('should login an Employee', () => {
       if (err) {
         throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`);
       } else {
-          done()
+        tokens.employeeToken = body.token;
+        updateTokens();
+        done()
       }
     })
   })

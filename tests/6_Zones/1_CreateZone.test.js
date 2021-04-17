@@ -49,7 +49,7 @@ describe('Creates a Zone and returns that Zone', () => {
       "description": null,
       "permissions": {
         "allowedEmployees": [
-          2
+          3
         ]
       },
       "path": {
@@ -58,7 +58,7 @@ describe('Creates a Zone and returns that Zone', () => {
     })
     .expectStatus(200)
     .expectValue('zone.title', 'zone_2')
-    .expectValue('zone.allowedEmployees[0].employee.ID', 2)
+    .expectValue('zone.allowedEmployees[0].employee.ID', 3)
     .end( (err, res, body) =>
     {  
       if (err) {

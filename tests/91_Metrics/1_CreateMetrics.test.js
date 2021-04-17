@@ -7,7 +7,7 @@ function api() {
   return hippie()
     .json()
     .base('http://localhost:3000/api/v1')
-    .header('Authorization', tokens.deviceToken)
+    .header('Authorization', tokens.employeeToken)
     .post(`/CreateMetrics`)
 }
 
