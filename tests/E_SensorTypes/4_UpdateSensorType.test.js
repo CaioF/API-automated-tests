@@ -12,7 +12,7 @@ function api() {
 }
 
 // PUT /api/v1/UpdateSensorType
-describe('Update an Sensor Type by ID and returns that Sensor Type', () => {
+describe('Update a Sensor Type by ID and returns that Sensor Type', () => {
 
   it('returns 200 when the request body params do match the swagger specification', (done) => {
     api()
@@ -47,7 +47,7 @@ describe('Update an Sensor Type by ID and returns that Sensor Type', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
-        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+        throw new Error(`\nMOCHA ERR:\n${err.message}`)
       } else {
           done()
       }

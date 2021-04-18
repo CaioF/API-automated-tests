@@ -12,7 +12,7 @@ function api() {
 }
 
 // DELETE /api/v1/DeleteSensorType
-describe('Deletes an Sensor Type by ID', () => {
+describe('Deletes a Sensor Type by ID', () => {
 
   it('returns 200 when the specified Sensor Type ID is in the DB', (done) => {
     api()
@@ -41,7 +41,7 @@ describe('Deletes an Sensor Type by ID', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
-        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+        throw new Error(`\nMOCHA ERR:\n${err.message}`)
       } else {
           done()
       }

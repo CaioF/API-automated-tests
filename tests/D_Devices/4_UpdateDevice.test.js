@@ -50,7 +50,7 @@ describe('Update an Device by ID and returns that Device ', () => {
     .end( (err, res, body) =>
     {  
       if (err) {
-        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+        throw new Error(`\nMOCHA ERR:\n${err.message}`)
       } else {
           done()
       }

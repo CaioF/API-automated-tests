@@ -8,23 +8,22 @@ function api() {
     .json()
     .base('http://localhost:3000/api/v1')
     .header('Authorization', tokens.managerToken)
-    .post(`/CreateSensorType`)
+    .put(`/UpdateSensor`)
 }
 
-// POST /api/v1/CreateSensorType
-describe('Creates a Sensor Type and returns that Sensor Type', () => {
+// PUT /api/v1/UpdateSensor
+describe('Update a Sensor by ID and returns that Sensor', () => {
 
-  it('returns 200 when the request body params match the swagger specification', (done) => {
+  it('returns 200 when the request body params do match the swagger specification', (done) => {
     api()
     .send({
-      "title": "sensor_type_1",
-      "description": "string",
-      "slug": "sensor_type_1",
-      "graphType": "GRAPH_TYPE_LINE",
-      "dataType": "DATA_TYPE_INT32"
+      "ID": 1,
+      "title": "UP Smartphone battery",
+      "description": "UP Smartphone battery",
+      "graph": "GRAPH_TYPE_NUMBER"
     })
     .expectStatus(200)
-    .expectValue('sensorType.slug', 'sensor_type_1')
+    .expectValue('sensor.title', 'UP Smartphone battery')
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -35,17 +34,35 @@ describe('Creates a Sensor Type and returns that Sensor Type', () => {
     })
   });
 
+  it('check to see if the Sensor was truly updated', (done) => {
+    hippie()
+    .json()
+    .base('http://localhost:3000/api/v1')
+    .header('Authorization', tokens.managerToken)
+    .get(`/GetSensor?ID=1`)
+    .expectStatus(200)
+    .expectValue('sensor.title', 'UP Smartphone battery')
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}`)
+      } else {
+          done()
+      }
+    })
+  });
+
   it('returns 200 when the optional request body params match are null', (done) => {
     api()
     .send({
-      "title": "sensor_type_2",
+      "ID": 1,
+      "title": null,
       "description": null,
-      "slug": "sensor_type_2",
-      "graphType": "GRAPH_TYPE_LINE",
-      "dataType": "DATA_TYPE_INT32"
+      "graph": "GRAPH_TYPE_NUMBER"
     })
     .expectStatus(200)
-    .expectValue('sensorType.slug', 'sensor_type_2')
+    .expectValue('sensor.description', 'UP Smartphone battery')
+    .expectValue('sensor.title', 'UP Smartphone battery')
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -59,11 +76,10 @@ describe('Creates a Sensor Type and returns that Sensor Type', () => {
   it('returns 400 when the request body params do not match the swagger specification', (done) => {
     api()
     .send({
-      "title": "a",
-      "description": "a",
-      "slug": "a",
-      "graphType": "a",
-      "dataType": "a"
+      "ID": 1,
+      "title": 'a',
+      "description": 'a',
+      "graph": 'a'
     })
     .expectStatus(400)
     .expectValue('code', 3)
@@ -77,17 +93,16 @@ describe('Creates a Sensor Type and returns that Sensor Type', () => {
     })
   });
 
-  it('returns 400 when the required request body params are null', (done) => {
+  it('returns 404 when the specified Sensor ID is not in the DB', (done) => {
     api()
     .send({
+      "ID": 99,
       "title": null,
       "description": null,
-      "slug": null,
-      "graphType": null,
-      "dataType": null
+      "graph": "GRAPH_TYPE_NUMBER"
     })
-    .expectStatus(400)
-    .expectValue('code', 3)
+    .expectStatus(404)
+    .expectValue('code', 5)
     .end( (err, res, body) =>
     {  
       if (err) {

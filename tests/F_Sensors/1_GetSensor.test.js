@@ -13,7 +13,7 @@ function api() {
 }
 
 // GET /api/v1/GetSensorType
-describe('Returns an SensorType by ID', () => {
+describe('Returns a SensorType by ID', () => {
 
   it('returns 200 when the specified SensorType ID is in the DB', (done) => {
     SensorType_ID = 1;
