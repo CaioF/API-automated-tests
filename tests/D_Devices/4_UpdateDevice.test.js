@@ -14,7 +14,7 @@ function api() {
 // PUT /api/v1/UpdateDevice
 describe('Update an Device by ID and returns that Device ', () => {
 
-  it('returns 200 when the request body params do match the swagger specification', (done) => {
+  it('returns 200 when the request body params do match the specification', (done) => {
     api()
     .send({
       "ID": 2,
@@ -84,7 +84,7 @@ describe('Update an Device by ID and returns that Device ', () => {
     })
   });
 
-  it('returns 400 when the request body params do not match the swagger specification', (done) => {
+  it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
       "ID": 2,

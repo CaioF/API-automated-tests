@@ -15,7 +15,7 @@ function api() {
 // POST /api/v1/CreateEmployee
 describe('Creates an Employee and returns that Employee and a Token', () => {
 
-  it('returns 200 when the request body params match the swagger specification', (done) => {
+  it('returns 200 when the request body params match the specification', (done) => {
     api()
     .send({
       "description": "Ivan Ivanovich",
@@ -102,7 +102,7 @@ describe('Creates an Employee and returns that Employee and a Token', () => {
     })
   });
 
-  it('returns 400 when the request body params do not match the swagger specification', (done) => {
+  it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
       "description": "a",

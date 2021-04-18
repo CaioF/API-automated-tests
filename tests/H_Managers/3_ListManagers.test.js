@@ -16,7 +16,7 @@ function api() {
 // GET /api/v1/ListManagers
 describe('Returns a list of all Managers with pagination', () => {
 
-  it('returns 200 when the path params do match the swagger specification', (done) => {
+  it('returns 200 when the path params match the specification', (done) => {
     pageNumber = 2;
     resultPerPage = 1;
     api()
@@ -50,7 +50,7 @@ describe('Returns a list of all Managers with pagination', () => {
     })
   });
 
-  it('returns 400 when the path params do not match the swagger specification', (done) => {
+  it('returns 400 when the path params do not match the specification', (done) => {
     pageNumber = 'a';
     resultPerPage = 'a';
     api()

@@ -14,7 +14,7 @@ function api() {
 // POST /api/v1/CreateMetrics
 describe('Creates a Sensor Metric', () => {
 
-  it('returns 200 when the request body params match the swagger specification', (done) => {
+  it('returns 200 when the request body params match the specification', (done) => {
     api()
     .send({
       "ts": "2021-04-03T12:20:27.330Z",
@@ -35,7 +35,7 @@ describe('Creates a Sensor Metric', () => {
     })
   });
 
-  it('returns 400 when the request body params do not match the swagger specification', (done) => {
+  it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
       "ts": "a",

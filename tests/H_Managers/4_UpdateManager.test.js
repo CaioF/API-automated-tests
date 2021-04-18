@@ -15,7 +15,7 @@ function api() {
 // PUT /api/v1/UpdateManager
 describe('Update a Manager by ID and returns that Manager ', () => {
 
-  it('returns 200 when the request body params do match the swagger specification', (done) => {
+  it('returns 200 when the request body params do match the specification', (done) => {
     api()
     .send({
       "ID": 2,
@@ -107,7 +107,7 @@ describe('Update a Manager by ID and returns that Manager ', () => {
     })
   });
 
-  it('returns 400 when the request body params do not match the swagger specification', (done) => {
+  it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
       "ID": 2,

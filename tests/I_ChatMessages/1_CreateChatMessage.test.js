@@ -14,7 +14,7 @@ function api() {
 // POST /api/v1/CreateChatMessage
 describe('Creates a Chat Message by Employee ID and returns that Chat Message', () => {
 
-  it('returns 200 when the request body params match the swagger specification', (done) => {
+  it('returns 200 when the request body params match the specification', (done) => {
     api()
     .send({
       "employeeID": 1,
@@ -34,7 +34,7 @@ describe('Creates a Chat Message by Employee ID and returns that Chat Message', 
     })
   });
 
-  it('returns 400 when the request body params do not match the swagger specification', (done) => {
+  it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
       "employeeID": 1,

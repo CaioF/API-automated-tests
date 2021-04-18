@@ -47,7 +47,7 @@ describe('Deletes all previous authorization tokens of a Manager by ID', () => {
     })
   });
 
-  it('returns 400 when the request body params do not match the swagger specification', (done) => {
+  it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
       "ID": 'a'

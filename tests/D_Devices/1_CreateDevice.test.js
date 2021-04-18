@@ -24,7 +24,7 @@ function api() {
 // POST /api/v1/CreateDevice
 describe('Creates a Device and returns that Device and a Token', () => {
 
-  it('returns 200 when the request body params match the swagger specification', (done) => {
+  it('returns 200 when the request body params match the specification', (done) => {
     api()
     .send({
       "title": "device_1_title",
@@ -74,7 +74,7 @@ describe('Creates a Device and returns that Device and a Token', () => {
     })
   });
 
-  it('returns 400 when the request body params do not match the swagger specification', (done) => {
+  it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
       "title": "a",

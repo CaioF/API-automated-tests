@@ -45,7 +45,7 @@ describe('Returns an Employee by ID', () => {
     })
   });
 
-  it('returns 400 when the path params do not match the swagger specification', (done) => {
+  it('returns 400 when the path params do not match the specification', (done) => {
     Employee_ID = 'a';
     api()
     .expectStatus(400)

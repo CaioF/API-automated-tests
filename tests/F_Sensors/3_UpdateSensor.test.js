@@ -14,7 +14,7 @@ function api() {
 // PUT /api/v1/UpdateSensor
 describe('Update a Sensor by ID and returns that Sensor', () => {
 
-  it('returns 200 when the request body params do match the swagger specification', (done) => {
+  it('returns 200 when the request body params do match the specification', (done) => {
     api()
     .send({
       "ID": 1,
@@ -73,7 +73,7 @@ describe('Update a Sensor by ID and returns that Sensor', () => {
     })
   });
 
-  it('returns 400 when the request body params do not match the swagger specification', (done) => {
+  it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
       "ID": 1,

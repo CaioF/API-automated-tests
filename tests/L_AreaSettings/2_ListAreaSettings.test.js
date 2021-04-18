@@ -2,24 +2,25 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
-var Zone_ID;
+
+var section;
 
 function api() {
   return hippie()
     .json()
     .base('http://localhost:3000/api/v1')
     .header('Authorization', tokens.managerToken)
-    .get(`/GetZone?ID=${Zone_ID}`)
+    .get(`/ListAreaSettings?section=${section}`)
 }
 
-// GET /api/v1/GetZone
-describe('Returns an Zone by ID', () => {
+// GET /api/v1/ListAreaSettings
+describe('Returns a list of all Area Settings with pagination', () => {
 
-  it('returns 200 when the specified Zone ID is in the DB', (done) => {
-    Zone_ID = 1;
+  it('returns 200 when the path params match the specification', (done) => {
+    section = 'devices_1';
     api()
     .expectStatus(200)
-    .expectValue('zone.ID', 1)
+    .expectValue('settings[0].key', 'devices_1')
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -30,11 +31,11 @@ describe('Returns an Zone by ID', () => {
     })
   });
 
-  it('returns 404 when the specified Zone ID is not in the DB', (done) => {
-    Zone_ID = 99;
+  it('returns 200 and an empty array when the path params do not match the specification', (done) => {
+    section = 1;
     api()
-    .expectStatus(404)
-    .expectValue('code', 5)
+    .expectStatus(200)
+    .expectValue('settings', [])
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -45,26 +46,11 @@ describe('Returns an Zone by ID', () => {
     })
   });
 
-  it('returns 400 when the path params do not match the specification', (done) => {
-    Zone_ID = 'a';
+  it('returns 200 and an empty array when the path params are null', (done) => {
+    section = null;
     api()
-    .expectStatus(400)
-    .expectValue('code', 3)
-    .end( (err, res, body) =>
-    {  
-      if (err) {
-        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
-      } else {
-          done()
-      }
-    })
-  });
-
-  it('returns 400 when the path params are null', (done) => {
-    Zone_ID = null;
-    api()
-    .expectStatus(400)
-    .expectValue('code', 3)
+    .expectStatus(200)
+    .expectValue('settings', [])
     .end( (err, res, body) =>
     {  
       if (err) {

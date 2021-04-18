@@ -14,7 +14,7 @@ function api() {
 // PUT /api/v1/UpdateEmployeeGroup
 describe('Update an Employee Group by ID and returns that Employee Group', () => {
 
-  it('returns 200 when the request body params do match the swagger specification', (done) => {
+  it('returns 200 when the request body params do match the specification', (done) => {
     api()
     .send({
       "ID": 3,
@@ -74,7 +74,7 @@ describe('Update an Employee Group by ID and returns that Employee Group', () =>
     })
   });
 
-  it('returns 400 when the request body params do not match the swagger specification', (done) => {
+  it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
       "ID": 3,

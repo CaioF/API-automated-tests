@@ -14,7 +14,7 @@ function api() {
 // POST /api/v1/CreateSensorType
 describe('Creates a Sensor Type and returns that Sensor Type', () => {
 
-  it('returns 200 when the request body params match the swagger specification', (done) => {
+  it('returns 200 when the request body params match the specification', (done) => {
     api()
     .send({
       "title": "sensor_type_1",
@@ -56,7 +56,7 @@ describe('Creates a Sensor Type and returns that Sensor Type', () => {
     })
   });
 
-  it('returns 400 when the request body params do not match the swagger specification', (done) => {
+  it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
       "title": "a",

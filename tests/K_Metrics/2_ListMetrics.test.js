@@ -2,29 +2,28 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
-var pageNumber;
-var resultPerPage;
-var employee_ID;
+var sensorID;
+var startDate;
+var endDate;
 
 function api() {
   return hippie()
     .json()
     .base('http://localhost:3000/api/v1')
     .header('Authorization', tokens.managerToken)
-    .get(`/ListChatMessages?pagination.pageNumber=${pageNumber}&pagination.resultPerPage=${resultPerPage}&employeeID=${employee_ID}`)
+    .get(`/ListMetrics?sensorID=${sensorID}&startDate=${startDate}&endDate=${endDate}`)
 }
 
-// GET /api/v1/ListChatMessages
-describe('Returns a list of all ChatMessages with pagination', () => {
+// GET /api/v1/ListMetrics
+describe('Returns a list of all Metrics with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
-    pageNumber = 1;
-    resultPerPage = 1;
-    employee_ID = 1;
+    sensorID = 2;
+    startDate = '2021-03-03T10:34:44.423Z';
+    endDate = '2021-04-03T10:34:44.423Z';
     api()
     .expectStatus(200)
-    .expectValue('messages[0].ID', 1)
-    .expectValue('messages[0].employee.ID', 1)
+    .expectKey('values')
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -35,31 +34,12 @@ describe('Returns a list of all ChatMessages with pagination', () => {
     })
   });
 
-  it('returns 200 when the pagination path params are omitted', (done) => {
-    employee_ID = 1;
+  it('returns 404 when the path params are omitted', (done) => {
     hippie()
     .json()
     .base('http://localhost:3000/api/v1')
     .header('Authorization', tokens.managerToken)
-    .get(`/ListChatMessages?employeeID=${employee_ID}`)
-    .expectStatus(200)
-    .expectValue('messages[0].ID', 1)
-    .expectValue('messages[0].employee.ID', 1)
-    .end( (err, res, body) =>
-    {  
-      if (err) {
-        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
-      } else {
-          done()
-      }
-    })
-  });
-
-  it('returns 404 when the Employee ID is not in the DB', (done) => {
-    pageNumber = 1;
-    resultPerPage = 1;
-    employee_ID = 99;
-    api()
+    .get(`/ListMetrics`)
     .expectStatus(404)
     .expectValue('code', 5)
     .end( (err, res, body) =>
@@ -70,29 +50,12 @@ describe('Returns a list of all ChatMessages with pagination', () => {
           done()
       }
     })
-  })
-
-  it('returns 400 when the path params do not match the specification', (done) => {
-    pageNumber = 'a';
-    resultPerPage = 'a';
-    employee_ID = 'a';
-    api()
-    .expectStatus(400)
-    .expectValue('code', 3)
-    .end( (err, res, body) =>
-    {  
-      if (err) {
-        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
-      } else {
-          done()
-      }
-    })
   });
 
-  it('returns 400 when the pagination is incorrectly omitted from the path params', (done) => {
-    pageNumber = '';
-    resultPerPage = '';
-    employee_ID = 1;
+  it('returns 400 when the path params do not match the specification', (done) => {
+    sensorID = 'a';
+    startDate = 'a';
+    endDate = 'a';
     api()
     .expectStatus(400)
     .expectValue('code', 3)
@@ -107,9 +70,9 @@ describe('Returns a list of all ChatMessages with pagination', () => {
   });
 
   it('returns 400 when the path params are null', (done) => {
-    pageNumber = null;
-    resultPerPage = null;
-    employee_ID = 1;
+    sensorID = null;
+    startDate = null;
+    endDate = null;
     api()
     .expectStatus(400)
     .expectValue('code', 3)
@@ -121,6 +84,23 @@ describe('Returns a list of all ChatMessages with pagination', () => {
           done()
       }
     })
-  })
+  });
+
+  it('returns 404 when the specified sensorID is not in the DB', (done) => {
+    sensorID = 99;
+    startDate = '2021-03-03T10:34:44.423Z';
+    endDate = '2021-04-03T10:34:44.423Z';
+    api()
+    .expectStatus(404)
+    .expectValue('code', 5)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
 
 })

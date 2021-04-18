@@ -29,6 +29,57 @@ describe('should get an QR code', () => {
           done()
       }
     })
+  });
+
+  it('returns 404 when the specified Employee ID is not in the DB', (done) => {
+    api()
+    .send({
+      "employeeID": 99
+    })
+    .expectStatus(404)
+    .expectValue('code', 5)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('returns 400 when the request body params do not match the specification', (done) => {
+    api()
+    .send({
+      "employeeID": 'a'
+    })
+    .expectStatus(400)
+    .expectValue('code', 3)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('returns 404 when the request body params are null', (done) => {
+    api()
+    .send({
+      "employeeID": null
+    })
+    .expectStatus(404)
+    .expectValue('code', 5)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
   })
 
 })

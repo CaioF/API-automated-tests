@@ -14,7 +14,7 @@ function api() {
 // POST /api/v1/CreateEmployeeGroup
 describe('Creates an Employee Group and returns that Employee Group', () => {
 
-  it('returns 200 when the request body params do match the swagger specification', (done) => {
+  it('returns 200 when the request body params do match the specification', (done) => {
     api()
     .send({
       "title": "group1",
@@ -52,7 +52,7 @@ describe('Creates an Employee Group and returns that Employee Group', () => {
     })
   });
 
-  it('returns 400 when the request body params do not match the swagger specification', (done) => {
+  it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
       "title": "a",
