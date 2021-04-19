@@ -13,8 +13,7 @@ function api() {
     .get(`/ListSystemSettings?section=${section}`)
 }
 
-// GET /api/v1/ListSystemSettings
-describe('Returns a list of all System Settings with pagination', () => {
+describe('GET /ListSystemSettings\nReturns a list of all System Settings with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
     section = 'devices_1';

@@ -11,8 +11,7 @@ function api() {
     .post(`/CreateChatMessage`)
 }
 
-// POST /api/v1/CreateChatMessage
-describe('Creates a Chat Message by Employee ID and returns that Chat Message', () => {
+describe('POST /CreateChatMessage\nCreates  a Chat Message by Employee ID and returns that Chat Message', () => {
 
   it('returns 200 when the request body params match the specification', (done) => {
     api()

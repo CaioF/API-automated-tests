@@ -11,8 +11,7 @@ function api() {
     .del(`/RollEmployeeToken`)
 }
 
-// DELETE /api/v1/RollEmployeeToken
-describe('Deletes all previous authorization tokens of an Employee by ID', () => {
+describe('DEL /RollEmployeeToken\nDeletes all previous authorization tokens of an Employee by ID', () => {
 
   it('returns 200 when the specified Employee ID is in the DB', (done) => {
     api()

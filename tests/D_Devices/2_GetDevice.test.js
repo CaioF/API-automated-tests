@@ -12,8 +12,7 @@ function api() {
     .get(`/GetDevice?ID=${Device_ID}`)
 }
 
-// GET /api/v1/GetDevice
-describe('Returns an Device by ID', () => {
+describe('GET /GetDevice\nReturns an Device by ID', () => {
 
   it('returns 200 when the specified Device ID is in the DB', (done) => {
     Device_ID = 1;

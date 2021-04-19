@@ -11,8 +11,7 @@ function api() {
     .del(`/RollManagerToken`)
 }
 
-// DELETE /api/v1/RollManagerToken
-describe('Deletes all previous authorization tokens of a Manager by ID', () => {
+describe('DEL /RollManagerToken\nDeletes all previous authorization tokens of a Manager by ID', () => {
 
   it('returns 200 when the specified Manager ID is in the DB', (done) => {
     api()

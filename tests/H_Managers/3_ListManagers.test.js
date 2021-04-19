@@ -13,8 +13,7 @@ function api() {
     .get(`/ListManagers?pagination.pageNumber=${pageNumber}&pagination.resultPerPage=${resultPerPage}`)
 }
 
-// GET /api/v1/ListManagers
-describe('Returns a list of all Managers with pagination', () => {
+describe('GET /ListManagers\nReturns a list of all Managers with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
     pageNumber = 2;

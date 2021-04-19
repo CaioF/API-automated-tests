@@ -14,8 +14,7 @@ function api() {
     .get(`/ListMetrics?sensorID=${sensorID}&startDate=${startDate}&endDate=${endDate}`)
 }
 
-// GET /api/v1/ListMetrics
-describe('Returns a list of all Metrics with pagination', () => {
+describe('GET /ListMetrics\nReturns a list of all Metrics with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
     sensorID = 2;

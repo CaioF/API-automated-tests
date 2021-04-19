@@ -11,8 +11,7 @@ function api() {
     .put(`/UpdateDevice`)
 }
 
-// PUT /api/v1/UpdateDevice
-describe('Update an Device by ID and returns that Device ', () => {
+describe('PUT /UpdateDevice\nUpdate an Device by ID and returns that Device ', () => {
 
   it('returns 200 when the request body params do match the specification', (done) => {
     api()

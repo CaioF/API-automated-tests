@@ -12,8 +12,7 @@ function api() {
     .get(`/GetManager?ID=${Manager_ID}`)
 }
 
-// GET /api/v1/GetManager
-describe('Returns a Manager by ID', () => {
+describe('GET /GetManager\nReturns a Manager by ID', () => {
 
   it('returns 200 when the specified Manager ID is in the DB', (done) => {
     Manager_ID = 1;

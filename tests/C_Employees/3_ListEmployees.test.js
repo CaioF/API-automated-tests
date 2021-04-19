@@ -13,8 +13,7 @@ function api() {
     .get(`/ListEmployees?pagination.pageNumber=${pageNumber}&pagination.resultPerPage=${resultPerPage}`)
 }
 
-// GET /api/v1/ListEmployees
-describe('Returns a list of all Employees with pagination', () => {
+describe('GET /ListEmployees\nReturns a list of all Employees with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
     pageNumber = 2;

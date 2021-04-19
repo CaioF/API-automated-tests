@@ -11,8 +11,7 @@ function api() {
     .post(`/CreateSensorType`)
 }
 
-// POST /api/v1/CreateSensorType
-describe('Creates a Sensor Type and returns that Sensor Type', () => {
+describe('POST /CreateSensorType\nCreates a Sensor Type and returns that Sensor Type', () => {
 
   it('returns 200 when the request body params match the specification', (done) => {
     api()

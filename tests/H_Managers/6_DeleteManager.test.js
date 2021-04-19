@@ -11,8 +11,7 @@ function api() {
     .del(`/DeleteManager`)
 }
 
-// DELETE /api/v1/DeleteManager
-describe('Deletes a Manager by ID', () => {
+describe('DEL /DeleteManager\nDeletes a Manager by ID', () => {
 
   it('returns 200 when the specified Manager ID is in the DB', (done) => {
     api()

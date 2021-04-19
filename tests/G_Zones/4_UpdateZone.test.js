@@ -12,8 +12,7 @@ function api() {
     .put(`/UpdateZone`)
 }
 
-// PUT /api/v1/UpdateZone
-describe('Update a Zone by ID and returns that Zone', () => {
+describe('PUT /UpdateZone\nUpdate a Zone by ID and returns that Zone', () => {
 
   it('returns 200 when the request body params do match the specification', (done) => {
     api()

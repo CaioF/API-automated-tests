@@ -13,8 +13,7 @@ function api() {
     .get(`/ListSensors?pagination.pageNumber=${pageNumber}&pagination.resultPerPage=${resultPerPage}`)
 }
 
-// GET /api/v1/ListSensors
-describe('Returns a list of all Sensors with pagination', () => {
+describe('GET /ListSensors\nReturns a list of all Sensors with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
     pageNumber = 2;

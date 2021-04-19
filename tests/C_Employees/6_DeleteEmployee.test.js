@@ -11,8 +11,7 @@ function api() {
     .del(`/DeleteEmployee`)
 }
 
-// DELETE /api/v1/DeleteEmployee
-describe('Deletes an Employee by ID', () => {
+describe('DEL /DeleteEmployee\nDeletes an Employee by ID', () => {
 
   it('returns 200 when the specified Employee ID is in the DB', (done) => {
     api()

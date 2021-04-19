@@ -14,8 +14,7 @@ function api() {
     .get(`/ListChatMessages?pagination.pageNumber=${pageNumber}&pagination.resultPerPage=${resultPerPage}&employeeID=${employee_ID}`)
 }
 
-// GET /api/v1/ListChatMessages
-describe('Returns a list of all ChatMessages with pagination', () => {
+describe('GET /ListChatMessages\nReturns a list of all Chat Messages with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
     pageNumber = 1;

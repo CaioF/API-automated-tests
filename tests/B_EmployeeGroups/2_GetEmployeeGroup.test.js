@@ -12,8 +12,7 @@ function api() {
     .get(`/GetEmployeeGroup?ID=${group_ID}`)
 }
 
-// GET /api/v1/GetEmployeeGroup
-describe('Returns an Employee Group by ID', () => {
+describe('GET /GetEmployeeGroup\nReturns an Employee Group by ID', () => {
 
   it('returns 200 when the specified Employee Group ID is in the DB', (done) => {
     group_ID = 1;

@@ -13,8 +13,7 @@ function api() {
     .get(`/ListZones?pagination.pageNumber=${pageNumber}&pagination.resultPerPage=${resultPerPage}`)
 }
 
-// GET /api/v1/ListZones
-describe('Returns a list of all Zones with pagination', () => {
+describe('GET /ListZones\nReturns a list of all Zones with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
     pageNumber = 2;

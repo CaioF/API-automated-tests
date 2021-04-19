@@ -14,8 +14,7 @@
 //     .post(`/AuthByTimedToken`)  
 // }
 
-// //POST /api/v1/AuthByTimedToken
-// describe('should authorize an employee via the generated timed token from the QR code', () => {
+// describe('POST /AuthByTimedToken\nShould authorize an employee via the generated timed token from the QR code', () => {
 
 //   it('returns 200 when the request body params match the DB entry', (done) => {
 //     api()

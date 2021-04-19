@@ -12,8 +12,7 @@ function api() {
     .get(`/GetEmployee?ID=${Employee_ID}`)
 }
 
-// GET /api/v1/GetEmployee
-describe('Returns an Employee by ID', () => {
+describe('GET /GetEmployee\nReturns an Employee by ID', () => {
 
   it('returns 200 when the specified Employee ID is in the DB', (done) => {
     Employee_ID = 1;

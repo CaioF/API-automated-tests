@@ -20,8 +20,7 @@ function api() {
     .post(`/AuthManagerLogin`)
 }
 
-// POST /api/v1/AuthManagerLogin
-describe('Logs in a manager user, returns a token and usertype', () => {
+describe('POST /AuthManagerLogin\nLogs in a manager user, returns a token and usertype', () => {
 
   it('returns 200 when the request body params match the DB entry', (done) => {
     api()

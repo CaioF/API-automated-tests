@@ -12,8 +12,7 @@ function api() {
     .post(`/CreateManager`)
 }
 
-// POST /api/v1/CreateManager
-describe('Creates a Manager and returns that Manager', () => {
+describe('POST /CreateManager\nCreates  a Manager and returns that Manager', () => {
 
   it('returns 200 when the request body params match the specification', (done) => {
     api()

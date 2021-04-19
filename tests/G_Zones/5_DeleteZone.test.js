@@ -11,8 +11,7 @@ function api() {
     .del(`/DeleteZone`)
 }
 
-// DELETE /api/v1/DeleteZone
-describe('Deletes a Zone by ID', () => {
+describe('DEL /DeleteZone\nDeletes a Zone by ID', () => {
 
   it('returns 200 when the specified Zone ID is in the DB', (done) => {
     api()

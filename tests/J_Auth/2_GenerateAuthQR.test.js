@@ -11,8 +11,7 @@ function api() {
     .post(`/GenerateAuthQR`)  
 }
 
-// POST /api/v1/GenerateAuthQR
-describe('should get an QR code', () => {
+describe('POST /GenerateAuthQR\nShould get an QR code', () => {
 
   it('returns 200 when the request body params match the DB entry', (done) => {
     api()

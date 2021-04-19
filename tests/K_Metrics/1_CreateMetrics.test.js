@@ -11,8 +11,7 @@ function api() {
     .post(`/CreateMetrics`)
 }
 
-// POST /api/v1/CreateMetrics
-describe('Creates a Sensor Metric', () => {
+describe('POST /CreateMetrics\nCreates a Sensor Metric', () => {
 
   it('returns 200 when the request body params match the specification', (done) => {
     api()

@@ -13,8 +13,7 @@ function api() {
     .get(`/ListAreaSettings?section=${section}`)
 }
 
-// GET /api/v1/ListAreaSettings
-describe('Returns a list of all Area Settings with pagination', () => {
+describe('GET ListAreaSettings\nReturns a list of all Area Settings with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
     section = 'devices_1';

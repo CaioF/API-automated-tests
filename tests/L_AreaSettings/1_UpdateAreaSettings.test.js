@@ -12,8 +12,7 @@ function api() {
     .put(`/UpdateAreaSettings`)
 }
 
-// PUT /api/v1/UpdateAreaSettings
-describe('Update an Area Settings by ID and returns that Area Settings', () => {
+describe('PUT /UpdateAreaSettings\nUpdate an Area Settings by ID and returns that Area Settings', () => {
 
   it('returns 200, creating a new Area Settings, when the request body params match the specification and the specified Key is not in the DB', (done) => {
     api()

@@ -12,8 +12,7 @@ function api() {
     .get(`/GetZone?ID=${Zone_ID}`)
 }
 
-// GET /api/v1/GetZone
-describe('Returns an Zone by ID', () => {
+describe('GET /GetZone\nReturns an Zone by ID', () => {
 
   it('returns 200 when the specified Zone ID is in the DB', (done) => {
     Zone_ID = 1;

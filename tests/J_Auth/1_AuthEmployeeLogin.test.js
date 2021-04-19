@@ -20,8 +20,7 @@ function api() {
     .post(`/AuthEmployeeLogin`)  
 }
 
-// POST /api/v1/AuthEmployeeLogin
-describe('should login an Employee', () => {
+describe('POST /AuthEmployeeLogin\nShould login an Employee', () => {
 
   it('returns 200 when the request body params match the DB entry', (done) => {
     api()

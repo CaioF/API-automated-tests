@@ -13,8 +13,7 @@ function api() {
     .get(`/ListDevices?pagination.pageNumber=${pageNumber}&pagination.resultPerPage=${resultPerPage}`)
 }
 
-// GET /api/v1/ListDevices
-describe('Returns a list of all Devices with pagination', () => {
+describe('GET /ListDevices\nReturns a list of all Devices with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
     pageNumber = 2;

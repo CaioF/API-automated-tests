@@ -11,8 +11,7 @@ function api() {
     .post(`/CreateEmployeeGroup`)
 }
 
-// POST /api/v1/CreateEmployeeGroup
-describe('Creates an Employee Group and returns that Employee Group', () => {
+describe('POST /CreateEmployeeGroup\nCreates an Employee Group and returns that Employee Group', () => {
 
   it('returns 200 when the request body params do match the specification', (done) => {
     api()

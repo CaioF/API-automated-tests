@@ -12,8 +12,7 @@ function api() {
     .post(`/CreateZone`)
 }
 
-// POST /api/v1/CreateZone
-describe('Creates a Zone and returns that Zone', () => {
+describe('POST /CreateZone\nCreates  a Zone and returns that Zone', () => {
 
   it('returns 200 when the request body params match the specification', (done) => {
     api()

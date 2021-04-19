@@ -11,8 +11,7 @@ function api() {
     .del(`/DeleteSensorType`)
 }
 
-// DELETE /api/v1/DeleteSensorType
-describe('Deletes a Sensor Type by ID', () => {
+describe('DEL /DeleteSensorType\nDeletes a Sensor Type by ID', () => {
 
   it('returns 200 when the specified Sensor Type ID is in the DB', (done) => {
     api()

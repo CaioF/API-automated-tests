@@ -11,8 +11,7 @@ function api() {
     .put(`/UpdateEmployeeGroup`)
 }
 
-// PUT /api/v1/UpdateEmployeeGroup
-describe('Update an Employee Group by ID and returns that Employee Group', () => {
+describe('PUT /UpdateEmployeeGroup\nUpdate an Employee Group by ID and returns that Employee Group', () => {
 
   it('returns 200 when the request body params do match the specification', (done) => {
     api()

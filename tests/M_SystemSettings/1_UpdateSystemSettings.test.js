@@ -12,8 +12,7 @@ function api() {
     .put(`/UpdateSystemSettings`)
 }
 
-// PUT /api/v1/UpdateSystemSettings
-describe('Update an System Settings by ID and returns that System Settings', () => {
+describe('PUT /UpdateSystemSettings\nUpdate an System Settings by ID and returns that System Settings', () => {
 
   it('returns 200, creating a new System Settings, when the request body params match the specification and the specified Key is not in the DB', (done) => {
     api()

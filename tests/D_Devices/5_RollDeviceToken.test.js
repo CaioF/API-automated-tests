@@ -11,8 +11,7 @@ function api() {
     .del(`/RollDeviceToken`)
 }
 
-// DELETE /api/v1/RollDeviceToken
-describe('Deletes all previous authorization tokens of a Device by ID', () => {
+describe('DEL /RollDeviceToken\nDeletes all previous authorization tokens of a Device by ID', () => {
 
   it('returns 200 when the specified Device ID is in the DB', (done) => {
     api()

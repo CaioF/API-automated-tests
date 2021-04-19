@@ -12,8 +12,7 @@ function api() {
     .post(`/CreateEmployee`)
 }
 
-// POST /api/v1/CreateEmployee
-describe('Creates an Employee and returns that Employee and a Token', () => {
+describe('POST /CreateEmployee\nCreates an Employee and returns that Employee and a Token', () => {
 
   it('returns 200 when the request body params match the specification', (done) => {
     api()

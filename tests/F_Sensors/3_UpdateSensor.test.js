@@ -11,8 +11,7 @@ function api() {
     .put(`/UpdateSensor`)
 }
 
-// PUT /api/v1/UpdateSensor
-describe('Update a Sensor by ID and returns that Sensor', () => {
+describe('PUT /UpdateSensor\nUpdate a Sensor by ID and returns that Sensor', () => {
 
   it('returns 200 when the request body params do match the specification', (done) => {
     api()

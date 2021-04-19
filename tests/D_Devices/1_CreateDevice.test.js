@@ -21,8 +21,7 @@ function api() {
     .post(`/CreateDevice`)
 }
 
-// POST /api/v1/CreateDevice
-describe('Creates a Device and returns that Device and a Token', () => {
+describe('POST /CreateDevice\nCreates a Device and returns that Device and a Token', () => {
 
   it('returns 200 when the request body params match the specification', (done) => {
     api()

@@ -11,8 +11,7 @@ function api() {
     .del(`/DeleteEmployeeGroup`)
 }
 
-// DELETE /api/v1/DeleteEmployeeGroup
-describe('Deletes an Employee Group by ID', () => {
+describe('DEL /DeleteEmployeeGroup\nDeletes an Employee Group by ID', () => {
 
   it('returns 200 when the specified Employee Group ID is in the DB', (done) => {
     api()

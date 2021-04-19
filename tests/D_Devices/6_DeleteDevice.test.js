@@ -11,8 +11,7 @@ function api() {
     .del(`/DeleteDevice`)
 }
 
-// DELETE /api/v1/DeleteDevice
-describe('Deletes a Device by ID', () => {
+describe('DEL /DeleteDevice\nDeletes a Device by ID', () => {
 
   it('returns 200 when the specified Device ID is in the DB', (done) => {
     api()
