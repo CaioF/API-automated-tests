@@ -27,8 +27,8 @@ describe('POST /AuthManagerLogin\nLogs in a manager user, returns a token and us
     api()
       .post(`/AuthManagerLogin`)
       .send({
-          "email": "admin@admin.com",
-          "password": "admin123"
+          "email": config.manager.email,
+          "password": config.manager.password
         })
       .expectStatus(200)
       .expectValue('data.email', 'admin@admin.com')

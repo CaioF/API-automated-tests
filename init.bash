@@ -20,10 +20,14 @@ cat > tests/tokens.json <<EOF
 
 }
 EOF
-## Create and initialize config.json with an url to be used by all tests
+## Create and initialize config.json with an url to be used by all tests and the default manager login
 cat > tests/config.json <<EOF
 {
-  "url": "http://localhost:3000/api/v1"
+  "url": "http://localhost:3000/api/v1",
+  "manager": {
+    "email": "admin@admin.com",
+    "password": "admin123"
+  }
 }
 EOF
 
