@@ -17,10 +17,10 @@ function api() {
 describe('GET /GetEmployeeGroup\nReturns an Employee Group by ID', () => {
 
   it('returns 200 when the specified Employee Group ID is in the DB', (done) => {
-    group_ID = 1;
+    group_ID = createdIDs.employeeGroup;
     api()
     .expectStatus(200)
-    .expectValue('employeeGroup.slug', 'worker')
+    .expectValue('employeeGroup.slug', 'group1')
     .end( (err, res, body) =>
     {  
       if (err) {
