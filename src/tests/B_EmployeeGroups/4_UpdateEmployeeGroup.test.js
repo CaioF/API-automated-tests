@@ -18,7 +18,7 @@ describe('PUT /UpdateEmployeeGroup\nUpdate an Employee Group by ID and returns t
   it('returns 200 when the request body params do match the specification', (done) => {
     api()
     .send({
-      "ID": 3,
+      "ID": createdIDs.employeeGroup,
       "title": "up_group_1",
       "description": "up_group_1",
       "slug": "up_group_1"
@@ -40,7 +40,7 @@ describe('PUT /UpdateEmployeeGroup\nUpdate an Employee Group by ID and returns t
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
-    .get(`/GetEmployeeGroup?ID=3`)
+    .get(`/GetEmployeeGroup?ID=${createdIDs.employeeGroup}`)
     .expectStatus(200)
     .expectValue('employeeGroup.slug', 'up_group_1')
     .end( (err, res, body) =>
@@ -56,7 +56,7 @@ describe('PUT /UpdateEmployeeGroup\nUpdate an Employee Group by ID and returns t
   it('returns 200 when the optional request body params match are null', (done) => {
     api()
     .send({
-      "ID": 3,
+      "ID": createdIDs.employeeGroup,
       "title": null,
       "description": null,
       "slug": null
@@ -78,7 +78,7 @@ describe('PUT /UpdateEmployeeGroup\nUpdate an Employee Group by ID and returns t
   it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
-      "ID": 3,
+      "ID": createdIDs.employeeGroup,
       "title": 'a',
       "description": 'a',
       "slug": 'a'
@@ -98,9 +98,10 @@ describe('PUT /UpdateEmployeeGroup\nUpdate an Employee Group by ID and returns t
   it('returns 400 when the specified slug is already attached to another Employee Group', (done) => {
     api()
     .send({
-      "title": "group1",
-      "description": "group1",
-      "slug": "group1"
+      "ID": createdIDs.employeeGroup,
+      "title": "up_group1",
+      "description": "up_group1",
+      "slug": "group2"
     })
     .expectStatus(400)
     .expectValue('code', 9)
