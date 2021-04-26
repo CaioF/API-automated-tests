@@ -2,11 +2,12 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .del(`/DeleteManager`)
 }
@@ -32,7 +33,7 @@ describe('DEL /DeleteManager\nDeletes a Manager by ID', () => {
   it('check to see if the Manager was truly deleted', (done) => {
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/GetManager?ID=2`)
     .expectStatus(404)

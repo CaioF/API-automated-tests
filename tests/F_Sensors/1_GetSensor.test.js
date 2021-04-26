@@ -2,12 +2,13 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 var SensorType_ID;
 
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/GetSensorType?ID=${SensorType_ID}`)
 }

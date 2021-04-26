@@ -2,12 +2,13 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 const base64 = require('../base64.json');
 
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .put(`/UpdateZone`)
 }
@@ -44,7 +45,7 @@ describe('PUT /UpdateZone\nUpdate a Zone by ID and returns that Zone', () => {
   it('check to see if the Zone was truly updated', (done) => {
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/GetZone?ID=2`)
     .expectStatus(200)

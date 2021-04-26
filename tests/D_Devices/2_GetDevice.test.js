@@ -2,12 +2,13 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 var Device_ID;
 
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/GetDevice?ID=${Device_ID}`)
 }
@@ -32,7 +33,7 @@ describe('GET /GetDevice\nReturns an Device by ID', () => {
   it('returns 200 with additional sensor data when the load params are specified', (done) => {
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/GetDevice?ID=1&loadInfo.loadAttributes=true&loadInfo.loadSensors=true&loadInfo.loadSensorsValues=true`)
     .expectStatus(200)

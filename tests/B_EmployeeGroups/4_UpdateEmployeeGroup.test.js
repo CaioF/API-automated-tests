@@ -2,11 +2,12 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .put(`/UpdateEmployeeGroup`)
 }
@@ -36,7 +37,7 @@ describe('PUT /UpdateEmployeeGroup\nUpdate an Employee Group by ID and returns t
   it('check to see if the Employee Group was truly updated', (done) => {
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/GetEmployeeGroup?ID=3`)
     .expectStatus(200)

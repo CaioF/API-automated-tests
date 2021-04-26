@@ -2,11 +2,12 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .put(`/UpdateDevice`)
 }
@@ -40,7 +41,7 @@ describe('PUT /UpdateDevice\nUpdate an Device by ID and returns that Device ', (
   it('check to see if the Device was truly updated', (done) => {
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/GetDevice?ID=2`)
     .expectStatus(200)

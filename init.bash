@@ -14,9 +14,16 @@ EOF
 echo 'CREATE DATA FILES'
 touch logs/server_report.log
 touch logs/tests_report.log
+## Create and initialize tokens.json with a blank JSON object
 cat > tests/tokens.json <<EOF
 {
 
+}
+EOF
+## Create and initialize config.json with an url to be used by all tests
+cat > tests/config.json <<EOF
+{
+  "url": "http://localhost:3000/api/v1"
 }
 EOF
 

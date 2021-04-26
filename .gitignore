@@ -3,3 +3,4 @@ api_test_server
 config.yml
 *.log
 tokens.json
+config.json

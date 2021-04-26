@@ -2,6 +2,7 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 var sensorID;
 var startDate;
 var endDate;
@@ -9,7 +10,7 @@ var endDate;
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/ListMetrics?sensorID=${sensorID}&startDate=${startDate}&endDate=${endDate}`)
 }
@@ -36,7 +37,7 @@ describe('GET /ListMetrics\nReturns a list of all Metrics with pagination', () =
   it('returns 404 when the path params are omitted', (done) => {
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/ListMetrics`)
     .expectStatus(404)

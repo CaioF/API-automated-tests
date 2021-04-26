@@ -2,12 +2,13 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 const base64 = require('../base64.json');
 
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .put(`/UpdateManager`)
 }
@@ -66,7 +67,7 @@ describe('PUT /UpdateManager\nUpdate a Manager by ID and returns that Manager ',
   it('check to see if the Manager was truly updated', (done) => {
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/GetManager?ID=2`)
     .expectStatus(200)

@@ -2,13 +2,14 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 var pageNumber;
 var resultPerPage;
 
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/ListDevices?pagination.pageNumber=${pageNumber}&pagination.resultPerPage=${resultPerPage}`)
 }
@@ -34,7 +35,7 @@ describe('GET /ListDevices\nReturns a list of all Devices with pagination', () =
   it('returns 200 when the path params are omitted', (done) => {
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/ListDevices`)
     .expectStatus(200)
@@ -52,7 +53,7 @@ describe('GET /ListDevices\nReturns a list of all Devices with pagination', () =
   it('returns 200 with additional sensor data when the load params are specified', (done) => {
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/ListDevices?pagination.pageNumber=0&pagination.resultPerPage=1&loadInfo.loadAttributes=true&loadInfo.loadSensors=true&loadInfo.loadSensorsValues=true`)
     .expectStatus(200)

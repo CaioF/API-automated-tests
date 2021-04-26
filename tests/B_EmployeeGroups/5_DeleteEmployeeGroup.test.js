@@ -2,11 +2,12 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .del(`/DeleteEmployeeGroup`)
 }
@@ -32,7 +33,7 @@ describe('DEL /DeleteEmployeeGroup\nDeletes an Employee Group by ID', () => {
   it('check to see if the Employee Group was truly deleted', (done) => {
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/GetEmployeeGroup?ID=4`)
     .expectStatus(404)

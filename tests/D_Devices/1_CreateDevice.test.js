@@ -3,6 +3,7 @@
 const hippie = require('hippie');
 const fs = require('fs');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 
 function updateTokens()
 {
@@ -16,7 +17,7 @@ function updateTokens()
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .post(`/CreateDevice`)
 }

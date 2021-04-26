@@ -2,6 +2,7 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 var pageNumber;
 var resultPerPage;
 var employee_ID;
@@ -9,7 +10,7 @@ var employee_ID;
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/ListChatMessages?pagination.pageNumber=${pageNumber}&pagination.resultPerPage=${resultPerPage}&employeeID=${employee_ID}`)
 }
@@ -38,7 +39,7 @@ describe('GET /ListChatMessages\nReturns a list of all Chat Messages with pagina
     employee_ID = 1;
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/ListChatMessages?employeeID=${employee_ID}`)
     .expectStatus(200)

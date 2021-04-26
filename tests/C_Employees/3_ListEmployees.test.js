@@ -2,13 +2,14 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 var pageNumber;
 var resultPerPage;
 
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/ListEmployees?pagination.pageNumber=${pageNumber}&pagination.resultPerPage=${resultPerPage}`)
 }
@@ -34,7 +35,7 @@ describe('GET /ListEmployees\nReturns a list of all Employees with pagination', 
   it('returns 200 when the path params are omitted', (done) => {
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/ListEmployees`)
     .expectStatus(200)

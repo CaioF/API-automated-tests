@@ -2,11 +2,12 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .put(`/UpdateSensor`)
 }
@@ -36,7 +37,7 @@ describe('PUT /UpdateSensor\nUpdate a Sensor by ID and returns that Sensor', () 
   it('check to see if the Sensor was truly updated', (done) => {
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/GetSensor?ID=1`)
     .expectStatus(200)

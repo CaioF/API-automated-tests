@@ -2,12 +2,13 @@
 
 const hippie = require('hippie');
 const tokens = require('../tokens.json');
+const config = require('../config.json');
 const base64 = require('../base64.json');
 
 function api() {
   return hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .put(`/UpdateEmployee`)
 }
@@ -47,7 +48,7 @@ describe('PUT /UpdateEmployee\nUpdate an Employee by ID and returns that Employe
   it('check to see if the Employee was truly updated', (done) => {
     hippie()
     .json()
-    .base('http://localhost:3000/api/v1')
+    .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/GetEmployee?ID=2`)
     .expectStatus(200)
