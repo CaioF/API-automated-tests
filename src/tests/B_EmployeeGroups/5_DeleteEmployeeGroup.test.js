@@ -18,7 +18,7 @@ describe('DEL /DeleteEmployeeGroup\nDeletes an Employee Group by ID', () => {
   it('returns 200 when the specified Employee Group ID is in the DB', (done) => {
     api()
     .send({
-      "ID": 4
+      "ID": `${createdIDs.employeeGroup+1}`
     })
     .expectStatus(200)
     .end( (err, res, body) =>
@@ -36,7 +36,7 @@ describe('DEL /DeleteEmployeeGroup\nDeletes an Employee Group by ID', () => {
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
-    .get(`/GetEmployeeGroup?ID=4`)
+    .get(`/GetEmployeeGroup?ID=${createdIDs.employeeGroup+1}`)
     .expectStatus(404)
     .expectValue('code', 5)
     .end( (err, res, body) =>

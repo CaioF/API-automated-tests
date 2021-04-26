@@ -5,6 +5,7 @@ const tokens = require('../../tokens.json');
 const config = require('../../config.json');
 const createdIDs = require('../../createdIDs.json');
 const base64 = require('../../base64.json');
+const util = require ('../../util');
 
 function api() {
   return hippie()
@@ -40,6 +41,8 @@ describe('POST /CreateEmployee\nCreates an Employee and returns that Employee an
       if (err) {
         throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
+        createdIDs.employee = body.employee.ID;
+        util.updateCreatedIDs(createdIDs);
         done()
       }
     })
@@ -121,6 +124,34 @@ describe('POST /CreateEmployee\nCreates an Employee and returns that Employee an
     })
     .expectStatus(400)
     .expectValue('code', 3)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('returns 400 when the specified email is already attached to another Employee', (done) => {
+    api()
+    .send({
+      "description": "Ivan Ivanovich",
+      "person": {
+        "firstName": "Ivan",
+        "lastName": "Ivanovich",
+        "image": base64.image,
+        "email": "ivanxxx@mail.com",
+        "phone": "string"
+      },
+      "credentials": {
+        "password": "ivanxxx123"
+      },
+      "group": 1
+    })
+    .expectStatus(400)
+    .expectValue('code', 9)
     .end( (err, res, body) =>
     {  
       if (err) {
