@@ -3,8 +3,12 @@ Battery of automated tests for the CRUD endpoints of the LifeGuard API
 > Tested on Ubuntu 20.04
 
 ### Requirements 
-1.    PostgreSQL 13.2
-2.    Node 14.16
+1.    PostgreSQL 13.2    
+    a.    psql
+2.    Node 14.16    
+    a.    npm    
+    b.    npx
+
 
 ### Usage
 1.    `git clone git@lab.qoollo.com:lifeguard/backend/integration-tests.git`

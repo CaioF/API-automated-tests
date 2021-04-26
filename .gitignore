@@ -4,3 +4,4 @@ config.yml
 *.log
 tokens.json
 config.json
+createdIDs.json

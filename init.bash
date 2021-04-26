@@ -15,13 +15,19 @@ echo 'CREATE DATA FILES'
 touch logs/server_report.log
 touch logs/tests_report.log
 ## Create and initialize tokens.json with a blank JSON object
-cat > tests/tokens.json <<EOF
+cat > src/tokens.json <<EOF
+{
+
+}
+EOF
+## Create and initialize createdIDs.json with a blank JSON object
+cat > src/createdIDs.json <<EOF
 {
 
 }
 EOF
 ## Create and initialize config.json with an url to be used by all tests and the default manager login
-cat > tests/config.json <<EOF
+cat > src/config.json <<EOF
 {
   "url": "http://localhost:3000/api/v1",
   "manager": {
@@ -44,7 +50,7 @@ echo 'RUN TESTS'
 # Use the following command for a json-stream into tests_report.log file:
 ## npx mocha -R json-stream  "./tests/**/*test.js" > ./logs/tests_report.log
 # Use the following command for a formated/colored output into console:
-npx mocha "tests/**/*test.js" 
+npx mocha "src/tests/**/*test.js" 
 
 # Kill the errant process
 echo 'KILL SERVER'
