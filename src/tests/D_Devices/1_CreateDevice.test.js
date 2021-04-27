@@ -1,19 +1,10 @@
 'use strict'
 
 const hippie = require('hippie');
-const fs = require('fs');
+const util = require('../../util');
 const tokens = require('../../tokens.json');
 const config = require('../../config.json');
 const createdIDs = require('../../createdIDs.json');
-
-function updateTokens()
-{
-  fs.writeFile(
-    './src/tokens.json', 
-    JSON.stringify(tokens, null, 2), 
-    function writeJSON(err) {if (err) return console.log(err)}
-    )
-}
 
 function api() {
   return hippie()
@@ -32,20 +23,22 @@ describe('POST /CreateDevice\nCreates a Device and returns that Device and a Tok
       "description": "device_1_description",
       "physicalID": "device_1_ID",
       "type": "mobile", // creates a sensor
-      "employeeID": 1,
+      "employeeID": createdIDs.employee,
       "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
     .expectStatus(200)
     .expectValue('device.title', 'device_1_title')
-    .expectValue('device.employee.ID', 1)
-    .expectValue('device.sensors[0].ID', 1)
+    .expectValue('device.employee.ID', createdIDs.employee)
+    .expectKey('device.sensors[0].ID')
     .end( (err, res, body) =>
     {  
       if (err) {
         throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
           tokens.deviceToken = body.token;
-          updateTokens(tokens);
+          createdIDs.device = body.device.ID;
+          util.updateTokens(tokens);
+          util.updateCreatedIDs(createdIDs);
           done()
       }
     })
@@ -58,12 +51,12 @@ describe('POST /CreateDevice\nCreates a Device and returns that Device and a Tok
       "description": null,
       "physicalID": "device_2_ID",
       "type": "mobile", // creates a sensor
-      "employeeID": 3,
+      "employeeID": createdIDs.employee+2,
       "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
     .expectStatus(200)
     .expectValue('device.title', 'device_2_title')
-    .expectValue('device.employee.ID', 3)
+    .expectValue('device.employee.ID', createdIDs.employee+2)
     .expectKey('device.sensors[0].ID')
     .end( (err, res, body) =>
     {  
@@ -84,6 +77,28 @@ describe('POST /CreateDevice\nCreates a Device and returns that Device and a Tok
       "type": "a",
       "employeeID": 1,
       "data": "a"
+    })
+    .expectStatus(400)
+    .expectValue('code', 3)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('returns 400 when the specified base64 json data is incorrect', (done) => {
+    api()
+    .send({
+      "title": "device_3_title",
+      "description": null,
+      "physicalID": "device_3_ID",
+      "type": "mobile", // creates a sensor
+      "employeeID": createdIDs.employee+3,
+      "data": "eyAia2V5IjogInZhbH9"
     })
     .expectStatus(400)
     .expectValue('code', 3)
@@ -164,7 +179,6 @@ describe('POST /CreateDevice\nCreates a Device and returns that Device and a Tok
     })
   });
 
-  // FIXME: This needs to be updated once a fix has been pushed to the API
   it('returns 409 when the specified Physical ID is already attached to another device', (done) => {
     api()
     .send({
@@ -172,7 +186,7 @@ describe('POST /CreateDevice\nCreates a Device and returns that Device and a Tok
       "description": "device_3_description",
       "physicalID": "device_1_ID",
       "type": "device_3",
-      "employeeID": 1, // Update this
+      "employeeID": createdIDs.employee+4, // Update this
       "data": "eyAia2V5IjogInZhbHVlIiB9"
     })
     .expectStatus(409)

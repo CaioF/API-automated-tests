@@ -106,6 +106,35 @@ describe('POST /CreateEmployee\nCreates an Employee and returns that Employee an
     })
   });
 
+  it('create another employee so that the other tests do not fail', (done) => {
+    api()
+    .send({
+      "description": "Ivan Ivanovich 4",
+      "person": {
+        "firstName": "Ivan4",
+        "lastName": "Ivanovich4",
+        "image": base64.image,
+        "email": "ivanxxx4@mail.com",
+        "phone": "string4"
+      },
+      "credentials": {
+        "password": "ivanxxx4123"
+      },
+      "group": 1
+    })
+    .expectStatus(200)
+    .expectValue('employee.person.email', 'ivanxxx4@mail.com')
+    .expectValue('employee.credentials.password', '')
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+
   it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({

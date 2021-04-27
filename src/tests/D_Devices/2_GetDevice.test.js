@@ -17,29 +17,10 @@ function api() {
 describe('GET /GetDevice\nReturns an Device by ID', () => {
 
   it('returns 200 when the specified Device ID is in the DB', (done) => {
-    Device_ID = 1;
+    Device_ID = createdIDs.device;
     api()
     .expectStatus(200)
     .expectValue('device.employee.person.email', 'ivanxxx@mail.com')
-    .end( (err, res, body) =>
-    {  
-      if (err) {
-        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
-      } else {
-          done()
-      }
-    })
-  });
-
-  it('returns 200 with additional sensor data when the load params are specified', (done) => {
-    hippie()
-    .json()
-    .base(config.url)
-    .header('Authorization', tokens.managerToken)
-    .get(`/GetDevice?ID=1&loadInfo.loadAttributes=true&loadInfo.loadSensors=true&loadInfo.loadSensorsValues=true`)
-    .expectStatus(200)
-    .expectValue('device.ID', 1)
-    .expectKey('device.sensors[0]')
     .end( (err, res, body) =>
     {  
       if (err) {
