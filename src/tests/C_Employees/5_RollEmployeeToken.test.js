@@ -18,7 +18,7 @@ describe('DEL /RollEmployeeToken\nDeletes all previous authorization tokens of a
   it('returns 200 when the specified Employee ID is in the DB', (done) => {
     api()
     .send({
-      "ID": 2
+      "ID": createdIDs.employee+1
     })
     .expectStatus(200)
     .end( (err, res, body) =>
