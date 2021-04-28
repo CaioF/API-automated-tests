@@ -52,8 +52,8 @@ describe('GET /ListSensorTypes\nReturns a list of all SensorTypes with paginatio
   });
 
   it('returns 200 and the same result array as if params are omitted when they equal 0', (done) => {
-    pageNumber = '0';
-    resultPerPage = '0';
+    pageNumber = 0;
+    resultPerPage = 0;
     api()
     .expectStatus(200)
     .expectValue('sensorTypes[0].ID', 1)
@@ -68,8 +68,8 @@ describe('GET /ListSensorTypes\nReturns a list of all SensorTypes with paginatio
   });
 
   it('returns 200 and an empty object when the path params are out of range', (done) => {
-    pageNumber = '10000000';
-    resultPerPage = '10';
+    pageNumber = 10000000;
+    resultPerPage = 10;
     api()
     .expectStatus(200)
     .end( (err, res, body) =>
