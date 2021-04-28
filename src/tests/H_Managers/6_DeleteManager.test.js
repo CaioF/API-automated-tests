@@ -18,7 +18,7 @@ describe('DEL /DeleteManager\nDeletes a Manager by ID', () => {
   it('returns 200 when the specified Manager ID is in the DB', (done) => {
     api()
     .send({
-      "ID": 2
+      "ID": createdIDs.manager,
     })
     .expectStatus(200)
     .end( (err, res, body) =>
@@ -36,7 +36,7 @@ describe('DEL /DeleteManager\nDeletes a Manager by ID', () => {
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
-    .get(`/GetManager?ID=2`)
+    .get(`/GetManager?ID=${createdIDs.manager}`)
     .expectStatus(404)
     .expectValue('code', 5)
     .end( (err, res, body) =>
@@ -52,7 +52,7 @@ describe('DEL /DeleteManager\nDeletes a Manager by ID', () => {
   it('returns 404 when the specified Manager ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99
+      "ID": createdIDs.manager+99,
     })
     .expectStatus(404)
     .expectValue('code', 5)

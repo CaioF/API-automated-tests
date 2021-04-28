@@ -52,7 +52,7 @@ describe('DEL /DeleteEmployeeGroup\nDeletes an Employee Group by ID', () => {
   it('returns 404 when the specified Employee Group ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99
+      "ID": createdIDs.employeeGroup+99
     })
     .expectStatus(404)
     .expectValue('code', 5)

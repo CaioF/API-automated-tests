@@ -32,7 +32,7 @@ describe('GET /GetDevice\nReturns an Device by ID', () => {
   });
 
   it('returns 404 when the specified Device ID is not in the DB', (done) => {
-    Device_ID = 99;
+    Device_ID = createdIDs.device+99;
     api()
     .expectStatus(404)
     .expectValue('code', 5)

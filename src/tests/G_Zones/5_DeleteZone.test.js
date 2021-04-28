@@ -18,7 +18,7 @@ describe('DEL /DeleteZone\nDeletes a Zone by ID', () => {
   it('returns 200 when the specified Zone ID is in the DB', (done) => {
     api()
     .send({
-      "ID": 2
+      "ID": createdIDs.zone+1
     })
     .expectStatus(200)
     .end( (err, res, body) =>
@@ -36,7 +36,7 @@ describe('DEL /DeleteZone\nDeletes a Zone by ID', () => {
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
-    .get(`/GetZone?ID=2`)
+    .get(`/GetZone?ID=${createdIDs.zone+1}`)
     .expectStatus(404)
     .expectValue('code', 5)
     .end( (err, res, body) =>
@@ -52,7 +52,7 @@ describe('DEL /DeleteZone\nDeletes a Zone by ID', () => {
   it('returns 404 when the specified Zone ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99
+      "ID": createdIDs.zone+99
     })
     .expectStatus(404)
     .expectValue('code', 5)

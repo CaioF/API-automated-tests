@@ -17,7 +17,7 @@ function api() {
 describe('GET /GetEmployee\nReturns an Employee by ID', () => {
 
   it('returns 200 when the specified Employee ID is in the DB', (done) => {
-    Employee_ID = 1;
+    Employee_ID = createdIDs.employee;
     api()
     .expectStatus(200)
     .expectValue('employee.person.email', 'ivanxxx@mail.com')
@@ -32,7 +32,7 @@ describe('GET /GetEmployee\nReturns an Employee by ID', () => {
   });
 
   it('returns 404 when the specified Employee ID is not in the DB', (done) => {
-    Employee_ID = 99;
+    Employee_ID = createdIDs.employee+99;
     api()
     .expectStatus(404)
     .expectValue('code', 5)

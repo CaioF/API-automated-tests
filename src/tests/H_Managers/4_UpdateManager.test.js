@@ -19,7 +19,7 @@ describe('PUT /UpdateManager\nUpdate a Manager by ID and returns that Manager ',
   it('returns 200 when the request body params do match the specification', (done) => {
     api()
     .send({
-      "ID": 2,
+      "ID": createdIDs.manager,
       "description": "up_manager_2",
       "person": {
         "firstName": "up_manager_2",
@@ -70,9 +70,10 @@ describe('PUT /UpdateManager\nUpdate a Manager by ID and returns that Manager ',
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
-    .get(`/GetManager?ID=2`)
+    .get(`/GetManager?ID=${createdIDs.manager}`)
     .expectStatus(200)
     .expectValue('manager.person.email', 'up_manager_2@mail.com')
+    .expectValue('manager.credentials.password', '')
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -86,7 +87,7 @@ describe('PUT /UpdateManager\nUpdate a Manager by ID and returns that Manager ',
   it('returns 200 when the optional request body params match are null', (done) => {
     api()
     .send({
-      "ID": 2,
+      "ID": createdIDs.manager,
       "description": null,
       "person": null,
       "credentials": null,
@@ -98,6 +99,7 @@ describe('PUT /UpdateManager\nUpdate a Manager by ID and returns that Manager ',
     .expectValue('manager.person.firstName', 'up_manager_2')
     .expectValue('manager.person.lastName', 'up_manager_2')
     .expectValue('manager.person.phone', 'up_string')
+    .expectValue('manager.credentials.password', '')
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -111,7 +113,7 @@ describe('PUT /UpdateManager\nUpdate a Manager by ID and returns that Manager ',
   it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
-      "ID": 2,
+      "ID": createdIDs.manager,
       "description": 'a',
       "person": 'a',
       "credentials": 'a',
@@ -132,7 +134,7 @@ describe('PUT /UpdateManager\nUpdate a Manager by ID and returns that Manager ',
   it('returns 404 when the specified Manager ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99,
+      "ID": createdIDs.manager+99,
       "description": null,
       "person": null,
       "credentials": null,

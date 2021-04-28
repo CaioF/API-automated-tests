@@ -1,6 +1,7 @@
 'use strict'
 
 const hippie = require('hippie');
+const util = require('../../util');
 const tokens = require('../../tokens.json');
 const config = require('../../config.json');
 const createdIDs = require('../../createdIDs.json');
@@ -38,6 +39,8 @@ describe('POST /CreateZone\nCreates  a Zone and returns that Zone', () => {
       if (err) {
         throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
+          createdIDs.zone = body.zone.ID;
+          util.updateCreatedIDs(createdIDs);
           done()
       }
     })

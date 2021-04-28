@@ -17,10 +17,10 @@ function api() {
 describe('GET /GetZone\nReturns an Zone by ID', () => {
 
   it('returns 200 when the specified Zone ID is in the DB', (done) => {
-    Zone_ID = 1;
+    Zone_ID = createdIDs.zone;
     api()
     .expectStatus(200)
-    .expectValue('zone.ID', 1)
+    .expectValue('zone.ID', createdIDs.zone)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -32,7 +32,7 @@ describe('GET /GetZone\nReturns an Zone by ID', () => {
   });
 
   it('returns 404 when the specified Zone ID is not in the DB', (done) => {
-    Zone_ID = 99;
+    Zone_ID = createdIDs.zone+99;
     api()
     .expectStatus(404)
     .expectValue('code', 5)

@@ -32,7 +32,7 @@ describe('GET /GetEmployeeGroup\nReturns an Employee Group by ID', () => {
   });
 
   it('returns 404 when the specified Employee Group ID is not in the DB', (done) => {
-    group_ID = 99;
+    group_ID = createdIDs.employeeGroup+99;
     api()
     .expectStatus(404)
     .expectValue('code', 5)

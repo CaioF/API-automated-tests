@@ -19,7 +19,7 @@ describe('PUT /UpdateZone\nUpdate a Zone by ID and returns that Zone', () => {
   it('returns 200 when the request body params do match the specification', (done) => {
     api()
     .send({
-      "ID": 2,
+      "ID": createdIDs.zone+1,
       "title": "up_zone_2",
       "description": "up_zone_2",
       "permissions": {
@@ -48,7 +48,7 @@ describe('PUT /UpdateZone\nUpdate a Zone by ID and returns that Zone', () => {
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
-    .get(`/GetZone?ID=2`)
+    .get(`/GetZone?ID=${createdIDs.zone+1}`)
     .expectStatus(200)
     .expectValue('zone.title', 'up_zone_2')
     .end( (err, res, body) =>
@@ -64,7 +64,7 @@ describe('PUT /UpdateZone\nUpdate a Zone by ID and returns that Zone', () => {
   it('returns 200 when the optional request body params match are null', (done) => {
     api()
     .send({
-      "ID": 2,
+      "ID": createdIDs.zone+1,
       "title": null,
       "description": null,
       "permissions": null,
@@ -86,7 +86,7 @@ describe('PUT /UpdateZone\nUpdate a Zone by ID and returns that Zone', () => {
   it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
-      "ID": 2,
+      "ID": createdIDs.zone+1,
       "title": 'a',
       "description": 'a',
       "permissions": 'a',
@@ -107,7 +107,7 @@ describe('PUT /UpdateZone\nUpdate a Zone by ID and returns that Zone', () => {
   it('returns 404 when the specified Zone ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99,
+      "ID": createdIDs.zone+99,
       "title": null,
       "description": null,
       "permissions": null,

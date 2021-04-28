@@ -17,10 +17,10 @@ function api() {
 describe('GET /GetManager\nReturns a Manager by ID', () => {
 
   it('returns 200 when the specified Manager ID is in the DB', (done) => {
-    Manager_ID = 1;
+    Manager_ID = createdIDs.manager;
     api()
     .expectStatus(200)
-    .expectValue('manager.ID', 1)
+    .expectValue('manager.ID', createdIDs.manager)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -32,7 +32,7 @@ describe('GET /GetManager\nReturns a Manager by ID', () => {
   });
 
   it('returns 404 when the specified Manager ID is not in the DB', (done) => {
-    Manager_ID = 99;
+    Manager_ID = createdIDs.manager+99;
     api()
     .expectStatus(404)
     .expectValue('code', 5)

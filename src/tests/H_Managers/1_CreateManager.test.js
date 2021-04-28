@@ -1,6 +1,7 @@
 'use strict'
 
 const hippie = require('hippie');
+const util = require('../../util');
 const tokens = require('../../tokens.json');
 const config = require('../../config.json');
 const createdIDs = require('../../createdIDs.json');
@@ -59,6 +60,8 @@ describe('POST /CreateManager\nCreates  a Manager and returns that Manager', () 
       if (err) {
         throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
+          createdIDs.manager = body.manager.ID;
+          util.updateCreatedIDs(createdIDs);
           done()
       }
     })
@@ -149,6 +152,53 @@ describe('POST /CreateManager\nCreates  a Manager and returns that Manager', () 
     })
     .expectStatus(400)
     .expectValue('code', 3)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+  
+  it('returns 400 when the specified email is already attached to another Manager', (done) => {
+    api()
+    .send({
+      "description": null,
+      "person": {
+        "firstName": "manager_4",
+        "lastName": "manager_4",
+        "image": base64.image,
+        "email": "manager_3@mail.com",
+        "phone": "string"
+      },
+      "credentials": {
+        "password": "manager_4_123"
+      },
+      "capabilities": {
+        "viewSingle": [
+          "a"
+        ],
+        "viewSeveral": [
+          "a"
+        ],
+        "editSingle": [
+          "a"
+        ],
+        "editSeveral": [
+          "a"
+        ],
+        "create": [
+          "a"
+        ],
+        "delete": [
+          "a"
+        ]
+      }
+    })
+    .expectStatus(400)
+    .expectValue('code', 9)
     .end( (err, res, body) =>
     {  
       if (err) {

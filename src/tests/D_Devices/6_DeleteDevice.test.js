@@ -18,7 +18,7 @@ describe('DEL /DeleteDevice\nDeletes a Device by ID', () => {
   it('returns 200 when the specified Device ID is in the DB', (done) => {
     api()
     .send({
-      "ID": 2
+      "ID": createdIDs.device+1
     })
     .expectStatus(200)
     .end( (err, res, body) =>
@@ -36,7 +36,7 @@ describe('DEL /DeleteDevice\nDeletes a Device by ID', () => {
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
-    .get(`/GetDevice?ID=2`)
+    .get(`/GetDevice?ID=${createdIDs.device+1}`)
     .expectStatus(404)
     .expectValue('code', 5)
     .end( (err, res, body) =>
@@ -52,7 +52,7 @@ describe('DEL /DeleteDevice\nDeletes a Device by ID', () => {
   it('returns 404 when the specified Device ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99
+      "ID": createdIDs.device+99
     })
     .expectStatus(404)
     .expectValue('code', 5)
