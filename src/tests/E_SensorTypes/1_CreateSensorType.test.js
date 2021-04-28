@@ -60,6 +60,121 @@ describe('POST /CreateSensorType\nCreates a Sensor Type and returns that Sensor 
     })
   });
 
+  it('check that the enum DATA_TYPE_INT64 returns 200 correctly', (done) => {
+    api()
+    .send({
+      "title": "sensor_type_3",
+      "description": "string",
+      "slug": "sensor_type_3",
+      "graphType": "GRAPH_TYPE_LINE",
+      "dataType": "DATA_TYPE_INT64"
+    })
+    .expectStatus(200)
+    .expectValue('sensorType.slug', 'sensor_type_3')
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          createdIDs.sensorType = body.sensorType.ID;
+          util.updateCreatedIDs(createdIDs);
+          done()
+      }
+    })
+  });
+
+  it('check that the enum DATA_TYPE_FLOAT returns 200 correctly', (done) => {
+    api()
+    .send({
+      "title": "sensor_type_4",
+      "description": "string",
+      "slug": "sensor_type_4",
+      "graphType": "GRAPH_TYPE_LINE",
+      "dataType": "DATA_TYPE_FLOAT"
+    })
+    .expectStatus(200)
+    .expectValue('sensorType.slug', 'sensor_type_4')
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          createdIDs.sensorType = body.sensorType.ID;
+          util.updateCreatedIDs(createdIDs);
+          done()
+      }
+    })
+  });
+
+  it('check that the enum DATA_TYPE_DOUBLE returns 200 correctly', (done) => {
+    api()
+    .send({
+      "title": "sensor_type_5",
+      "description": "string",
+      "slug": "sensor_type_5",
+      "graphType": "GRAPH_TYPE_LINE",
+      "dataType": "DATA_TYPE_DOUBLE"
+    })
+    .expectStatus(200)
+    .expectValue('sensorType.slug', 'sensor_type_5')
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          createdIDs.sensorType = body.sensorType.ID;
+          util.updateCreatedIDs(createdIDs);
+          done()
+      }
+    })
+  });
+
+  it('check that the enum DATA_TYPE_STRING returns 200 correctly', (done) => {
+    api()
+    .send({
+      "title": "sensor_type_6",
+      "description": "string",
+      "slug": "sensor_type_6",
+      "graphType": "GRAPH_TYPE_LINE",
+      "dataType": "DATA_TYPE_STRING"
+    })
+    .expectStatus(200)
+    .expectValue('sensorType.slug', 'sensor_type_6')
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          createdIDs.sensorType = body.sensorType.ID;
+          util.updateCreatedIDs(createdIDs);
+          done()
+      }
+    })
+  });
+
+  it('check that the enum DATA_TYPE_BOOL returns 200 correctly', (done) => {
+    api()
+    .send({
+      "title": "sensor_type_7",
+      "description": "string",
+      "slug": "sensor_type_7",
+      "graphType": "GRAPH_TYPE_LINE",
+      "dataType": "DATA_TYPE_BOOL"
+    })
+    .expectStatus(200)
+    .expectValue('sensorType.slug', 'sensor_type_7')
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          createdIDs.sensorType = body.sensorType.ID;
+          util.updateCreatedIDs(createdIDs);
+          done()
+      }
+    })
+  });
+
   it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
