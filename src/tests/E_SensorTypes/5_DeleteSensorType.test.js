@@ -18,7 +18,7 @@ describe('DEL /DeleteSensorType\nDeletes a Sensor Type by ID', () => {
   it('returns 200 when the specified Sensor Type ID is in the DB', (done) => {
     api()
     .send({
-      "ID": 2
+      "ID": createdIDs.sensorType
     })
     .expectStatus(200)
     .end( (err, res, body) =>
@@ -36,7 +36,7 @@ describe('DEL /DeleteSensorType\nDeletes a Sensor Type by ID', () => {
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
-    .get(`/GetSensorType?ID=2`)
+    .get(`/GetSensorType?ID=${createdIDs.sensorType}`)
     .expectStatus(404)
     .expectValue('code', 5)
     .end( (err, res, body) =>
@@ -52,7 +52,7 @@ describe('DEL /DeleteSensorType\nDeletes a Sensor Type by ID', () => {
   it('returns 404 when the specified Sensor Type ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99
+      "ID": createdIDs.sensorType+99
     })
     .expectStatus(404)
     .expectValue('code', 5)

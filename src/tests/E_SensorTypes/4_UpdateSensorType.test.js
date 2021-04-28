@@ -18,12 +18,10 @@ describe('PUT /UpdateSensorType\nUpdate a Sensor Type by ID and returns that Sen
   it('returns 200 when the request body params do match the specification', (done) => {
     api()
     .send({
-      "ID": 12,
+      "ID": createdIDs.sensorType,
       "title": "up_sensor_type_1",
       "description": "up_string",
-      "slug": "up_sensor_type_1",
-      "graphType": "GRAPH_TYPE_LINE",
-      "dataType": "DATA_TYPE_INT32"
+      "graphType": "GRAPH_TYPE_LINE"
     })
     .expectStatus(200)
     .expectValue('sensorType.title', 'up_sensor_type_1')
@@ -42,7 +40,7 @@ describe('PUT /UpdateSensorType\nUpdate a Sensor Type by ID and returns that Sen
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
-    .get(`/GetSensorType?ID=12`)
+    .get(`/GetSensorType?ID=${createdIDs.sensorType}`)
     .expectStatus(200)
     .expectValue('sensorType.title', 'up_sensor_type_1')
     .end( (err, res, body) =>
@@ -58,12 +56,10 @@ describe('PUT /UpdateSensorType\nUpdate a Sensor Type by ID and returns that Sen
   it('returns 200 when the optional request body params match are null', (done) => {
     api()
     .send({
-      "ID": 12,
+      "ID": createdIDs.sensorType,
       "title": null,
       "description": null,
-      "slug": null,
-      "graphType": "GRAPH_TYPE_LINE",
-      "dataType": "DATA_TYPE_INT32"
+      "graphType": null
     })
     .expectStatus(200)
     .expectValue('sensorType.description', 'up_string')
@@ -81,12 +77,10 @@ describe('PUT /UpdateSensorType\nUpdate a Sensor Type by ID and returns that Sen
   it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
-      "ID": 12,
+      "ID": createdIDs.sensorType,
       "title": 'a',
       "description": 'a',
-      "slug": 'a',
-      "graphType": 'a',
-      "dataType": 'a'
+      "graphType": 'a'
     })
     .expectStatus(400)
     .expectValue('code', 3)
@@ -103,12 +97,10 @@ describe('PUT /UpdateSensorType\nUpdate a Sensor Type by ID and returns that Sen
   it('returns 404 when the specified Sensor Type ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99,
+      "ID": createdIDs.sensorType+99,
       "title": null,
       "description": null,
-      "slug": null,
-      "graphType": "GRAPH_TYPE_NUMBER",
-      "dataType": "DATA_TYPE_INT32"
+      "graphType": "GRAPH_TYPE_NUMBER"
     })
     .expectStatus(404)
     .expectValue('code', 5)
