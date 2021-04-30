@@ -3,38 +3,38 @@
 const hippie = require('hippie');
 const tokens = require('../../tokens.json');
 const config = require('../../config.json');
-const createdIDs = require('../../createdIDs.json');
 
 function api() {
   return hippie()
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
-    .del(`/RollDeviceToken`)
+    .post(`/GenerateAuthQR`)  
 }
 
-describe('DEL /RollDeviceToken\nDeletes all previous authorization tokens of a Device by ID', () => {
+describe('POST /GenerateAuthQR\nShould get an QR code', () => {
 
-  it('returns 200 when the specified Device ID is in the DB', (done) => {
+  it('returns 200 when the request body params match the DB entry', (done) => {
     api()
+    .post(`/GenerateAuthQR`)
     .send({
-      "ID": 2
-    })
+        "employeeID": 1
+      })
     .expectStatus(200)
     .end( (err, res, body) =>
     {  
       if (err) {
-        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`);
       } else {
           done()
       }
     })
   });
 
-  it('returns 404 when the specified Device ID is not in the DB', (done) => {
+  it('returns 404 when the specified Employee ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99
+      "employeeID": 99
     })
     .expectStatus(404)
     .expectValue('code', 5)
@@ -51,7 +51,7 @@ describe('DEL /RollDeviceToken\nDeletes all previous authorization tokens of a D
   it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
-      "ID": 'a'
+      "employeeID": 'a'
     })
     .expectStatus(400)
     .expectValue('code', 3)
@@ -68,7 +68,7 @@ describe('DEL /RollDeviceToken\nDeletes all previous authorization tokens of a D
   it('returns 404 when the request body params are null', (done) => {
     api()
     .send({
-      "ID": null
+      "employeeID": null
     })
     .expectStatus(404)
     .expectValue('code', 5)

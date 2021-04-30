@@ -134,7 +134,7 @@ describe('PUT /UpdateDevice\nUpdate an Device by ID and returns that Device ', (
   it('returns 404 when the specified Device ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99,
+      "ID": createdIDs.device+99,
       "title": "up_device_2_title",
       "description": "up_device_2_description",
       "physicalID": "up_device_2_ID",

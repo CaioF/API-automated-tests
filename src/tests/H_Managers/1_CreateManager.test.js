@@ -29,7 +29,7 @@ describe('POST /CreateManager\nCreates  a Manager and returns that Manager', () 
         "phone": "string"
       },
       "credentials": {
-        "password": "manager_2_123"
+        "password": "manager2123"
       },
       "capabilities": {
         "viewSingle": [
@@ -79,7 +79,7 @@ describe('POST /CreateManager\nCreates  a Manager and returns that Manager', () 
         "phone": "string"
       },
       "credentials": {
-        "password": "manager_3_123"
+        "password": "manager3123"
       },
       "capabilities": {
         "viewSingle": [
@@ -174,7 +174,7 @@ describe('POST /CreateManager\nCreates  a Manager and returns that Manager', () 
         "phone": "string"
       },
       "credentials": {
-        "password": "manager_4_123"
+        "password": "manager4123"
       },
       "capabilities": {
         "viewSingle": [
@@ -246,53 +246,6 @@ describe('POST /CreateManager\nCreates  a Manager and returns that Manager', () 
     })
     .expectStatus(400)
     .expectValue('code', 3)
-    .end( (err, res, body) =>
-    {  
-      if (err) {
-        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
-      } else {
-          done()
-      }
-    })
-  });
-
-  it('returns 400 when the specified email is already in use', (done) => {
-    api()
-    .send({
-      "description": null,
-      "person": {
-        "firstName": "manager_2",
-        "lastName": "manager_2",
-        "image": base64.image,
-        "email": "manager_2@mail.com",
-        "phone": "string"
-      },
-      "credentials": {
-        "password": "manager_2_123"
-      },
-      "capabilities": {
-        "viewSingle": [
-          "a"
-        ],
-        "viewSeveral": [
-          "a"
-        ],
-        "editSingle": [
-          "a"
-        ],
-        "editSeveral": [
-          "a"
-        ],
-        "create": [
-          "a"
-        ],
-        "delete": [
-          "a"
-        ]
-      }
-    })
-    .expectStatus(400)
-    .expectValue('code', 9)
     .end( (err, res, body) =>
     {  
       if (err) {

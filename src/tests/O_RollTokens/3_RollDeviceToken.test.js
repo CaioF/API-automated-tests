@@ -10,32 +10,31 @@ function api() {
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
-    .post(`/GenerateAuthQR`)  
+    .del(`/RollDeviceToken`)
 }
 
-describe('POST /GenerateAuthQR\nShould get an QR code', () => {
+describe('DEL /RollDeviceToken\nDeletes all previous authorization tokens of a Device by ID', () => {
 
-  it('returns 200 when the request body params match the DB entry', (done) => {
+  it('returns 200 when the specified Device ID is in the DB', (done) => {
     api()
-    .post(`/GenerateAuthQR`)
     .send({
-        "employeeID": 1
-      })
+      "ID": createdIDs.device
+    })
     .expectStatus(200)
     .end( (err, res, body) =>
     {  
       if (err) {
-        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`);
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
           done()
       }
     })
   });
 
-  it('returns 404 when the specified Employee ID is not in the DB', (done) => {
+  it('returns 404 when the specified Device ID is not in the DB', (done) => {
     api()
     .send({
-      "employeeID": 99
+      "ID": createdIDs.device+99
     })
     .expectStatus(404)
     .expectValue('code', 5)
@@ -52,7 +51,7 @@ describe('POST /GenerateAuthQR\nShould get an QR code', () => {
   it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
-      "employeeID": 'a'
+      "ID": 'a'
     })
     .expectStatus(400)
     .expectValue('code', 3)
@@ -69,7 +68,7 @@ describe('POST /GenerateAuthQR\nShould get an QR code', () => {
   it('returns 404 when the request body params are null', (done) => {
     api()
     .send({
-      "employeeID": null
+      "ID": null
     })
     .expectStatus(404)
     .expectValue('code', 5)

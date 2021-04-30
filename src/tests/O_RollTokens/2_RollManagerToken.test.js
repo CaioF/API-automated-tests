@@ -15,10 +15,27 @@ function api() {
 
 describe('DEL /RollManagerToken\nDeletes all previous authorization tokens of a Manager by ID', () => {
 
-  it('returns 200 when the specified Manager ID is in the DB', (done) => {
+  it('check to see if the Manager has a valid token', (done) => {
+    hippie()
+    .json()
+    .base(config.url)
+    .header('Authorization', tokens.managerToken2)
+    .get(`/GetEmployeeGroup?ID=${createdIDs.employeeGroup}`)
+    .expectStatus(200)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+        done()
+      }
+    })
+  });
+
+  it('returns 200 when the specified Manager ID is in the DB and is logged in', (done) => {
     api()
     .send({
-      "ID": 2
+      "ID": createdIDs.manager
     })
     .expectStatus(200)
     .end( (err, res, body) =>
@@ -31,10 +48,27 @@ describe('DEL /RollManagerToken\nDeletes all previous authorization tokens of a 
     })
   });
 
+  it('check to see if the Manager token is no longer valid', (done) => {
+    hippie()
+    .json()
+    .base(config.url)
+    .header('Authorization', tokens.managerToken2)
+    .get(`/GetEmployeeGroup?ID=${createdIDs.employeeGroup}`)
+    .expectStatus(401)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+        done()
+      }
+    })
+  });
+
   it('returns 404 when the specified Manager ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99
+      "ID": createdIDs.manager+99
     })
     .expectStatus(404)
     .expectValue('code', 5)
