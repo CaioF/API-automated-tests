@@ -20,7 +20,175 @@ describe('POST /CreateMetrics\nCreates a Sensor Metric', () => {
     .send({
       "ts": "2021-04-03T12:20:27.330Z",
       "data": {
-        "latitude": {
+        "magnetic": {
+          "bool": true
+        }
+      }
+    })
+    .expectStatus(200)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('check to see if Sensor of type "fall_detection" returns 200 correctly', (done) => {
+    api()
+    .send({
+      "ts": "2021-04-03T12:20:27.330Z",
+      "data": {
+        "fall_detection": {
+          "bool": true
+        }
+      }
+    })
+    .expectStatus(200)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('check to see if Sensor of type "altitude" returns 200 correctly', (done) => {
+    api()
+    .send({
+      "ts": "2021-04-03T12:20:27.330Z",
+      "data": {
+        "altitude": {
+          "bool": true
+        }
+      }
+    })
+    .expectStatus(200)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('check to see if Sensor of type "longitude" returns 200 correctly', (done) => {
+    api()
+    .send({
+      "ts": "2021-04-03T12:20:27.330Z",
+      "data": {
+        "altitude": {
+          "bool": true
+        }
+      }
+    })
+    .expectStatus(200)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('check to see if Sensor of type "latitude" returns 200 correctly', (done) => {
+    api()
+    .send({
+      "ts": "2021-04-03T12:20:27.330Z",
+      "data": {
+        "altitude": {
+          "bool": true
+        }
+      }
+    })
+    .expectStatus(200)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('check to see if Sensor of type "signal_sim_2" returns 200 correctly', (done) => {
+    api()
+    .send({
+      "ts": "2021-04-03T12:20:27.330Z",
+      "data": {
+        "signal_sim_2": {
+          "bool": true
+        }
+      }
+    })
+    .expectStatus(200)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('check to see if Sensor of type "signal_sim_1" returns 200 correctly', (done) => {
+    api()
+    .send({
+      "ts": "2021-04-03T12:20:27.330Z",
+      "data": {
+        "signal_sim_1": {
+          "bool": true
+        }
+      }
+    })
+    .expectStatus(200)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('check to see if Sensor of type "smartphone_battery" returns 200 correctly', (done) => {
+    api()
+    .send({
+      "ts": "2021-04-03T12:20:27.330Z",
+      "data": {
+        "smartphone_battery": {
+          "bool": true
+        }
+      }
+    })
+    .expectStatus(200)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+          done()
+      }
+    })
+  });
+
+  it('check to see if Sensor of type "pressure" returns 200 correctly', (done) => {
+    api()
+    .send({
+      "ts": "2021-04-03T12:20:27.330Z",
+      "data": {
+        "pressure": {
           "bool": true
         }
       }

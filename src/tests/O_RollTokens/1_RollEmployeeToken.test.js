@@ -16,12 +16,29 @@ function api() {
 
 describe('DEL /RollEmployeeToken\nDeletes all previous authorization tokens of an Employee by ID', () => {
 
-  it('check to see if the Employee has a valid Token', (done) => {
+  it('start Device tracking to check to see if the Employee has a valid Token', (done) => {
     hippie()
     .json()
     .base(config.url)
     .header('Authorization', tokens.employeeToken)
     .post(`/StartDeviceTracking`)
+    .expectStatus(200)
+    .end( (err, res, body) =>
+    {  
+      if (err) {
+        throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
+      } else {
+        done()
+      }
+    })
+  });
+
+  it('Stop Device tracking', (done) => {
+    hippie()
+    .json()
+    .base(config.url)
+    .header('Authorization', tokens.employeeToken)
+    .post(`/StopDeviceTracking`)
     .expectStatus(200)
     .end( (err, res, body) =>
     {  
@@ -54,7 +71,7 @@ describe('DEL /RollEmployeeToken\nDeletes all previous authorization tokens of a
     .json()
     .base(config.url)
     .header('Authorization', tokens.employeeToken)
-    .post(`/StopDeviceTracking`)
+    .post(`/StartDeviceTracking`)
     .expectStatus(401)
     .end( (err, res, body) =>
     {  
