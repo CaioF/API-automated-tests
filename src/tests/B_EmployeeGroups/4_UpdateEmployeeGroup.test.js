@@ -118,7 +118,7 @@ describe('PUT /UpdateEmployeeGroup\nUpdate an Employee Group by ID and returns t
   it('returns 404 when the specified Employee Group ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99,
+      "ID": createdIDs.employeeGroup+99,
       "title": "up_group_1",
       "description": "up_group_1",
       "slug": "up_group_1"

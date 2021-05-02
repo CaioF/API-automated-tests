@@ -97,7 +97,7 @@ describe('PUT /UpdateSensor\nUpdate a Sensor by ID and returns that Sensor', () 
   it('returns 404 when the specified Sensor ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99,
+      "ID": 999,
       "title": null,
       "description": null,
       "graph": "GRAPH_TYPE_NUMBER"

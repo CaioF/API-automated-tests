@@ -152,7 +152,7 @@ describe('PUT /UpdateEmployee\nUpdate an Employee by ID and returns that Employe
   it('returns 404 when the specified Employee ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99,
+      "ID": createdIDs.employee+99,
       "description": "up_employee_2",
       "person": {
         "firstName": "up_Ivan2",

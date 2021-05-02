@@ -52,7 +52,7 @@ describe('DEL /DeleteEmployee\nDeletes an Employee by ID', () => {
   it('returns 404 when the specified Employee ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 99
+      "ID": createdIDs.employee+99
     })
     .expectStatus(404)
     .expectValue('code', 5)
