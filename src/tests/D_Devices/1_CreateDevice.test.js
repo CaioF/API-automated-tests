@@ -30,6 +30,7 @@ describe('POST /CreateDevice\nCreates a Device and returns that Device and a Tok
     .expectValue('device.title', 'device_1_title')
     .expectValue('device.employee.ID', createdIDs.employee)
     .expectKey('device.sensors[0].ID')
+    .expectKey('device.currentZone.ID')
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -58,6 +59,7 @@ describe('POST /CreateDevice\nCreates a Device and returns that Device and a Tok
     .expectValue('device.title', 'device_2_title')
     .expectValue('device.employee.ID', createdIDs.employee+2)
     .expectKey('device.sensors[0].ID')
+    .expectKey('device.currentZone.ID')
     .end( (err, res, body) =>
     {  
       if (err) {
