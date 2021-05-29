@@ -19,7 +19,7 @@ describe('PUT /UpdateManager\nUpdate a Manager by ID and returns that Manager ',
   it('returns 200 when the request body params do match the specification', (done) => {
     api()
     .send({
-      "ID": createdIDs.manager,
+      "ID": createdIDs.manager+1,
       "description": "up_manager_2",
       "person": {
         "firstName": "up_manager_2",
@@ -70,7 +70,7 @@ describe('PUT /UpdateManager\nUpdate a Manager by ID and returns that Manager ',
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
-    .get(`/GetManager?ID=${createdIDs.manager}`)
+    .get(`/GetManager?ID=${createdIDs.manager+1}`)
     .expectStatus(200)
     .expectValue('manager.person.email', 'up_manager_2@mail.com')
     .expectValue('manager.credentials.password', '')
@@ -87,7 +87,7 @@ describe('PUT /UpdateManager\nUpdate a Manager by ID and returns that Manager ',
   it('returns 200 when the optional request body params match are null', (done) => {
     api()
     .send({
-      "ID": createdIDs.manager,
+      "ID": createdIDs.manager+1,
       "description": null,
       "person": null,
       "credentials": null,
@@ -113,7 +113,7 @@ describe('PUT /UpdateManager\nUpdate a Manager by ID and returns that Manager ',
   it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
-      "ID": createdIDs.manager,
+      "ID": createdIDs.manager+1,
       "description": 'a',
       "person": 'a',
       "credentials": 'a',

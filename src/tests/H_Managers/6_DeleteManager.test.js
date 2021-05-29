@@ -18,7 +18,7 @@ describe('DEL /DeleteManager\nDeletes a Manager by ID', () => {
   it('returns 200 when the specified Manager ID is in the DB', (done) => {
     api()
     .send({
-      "ID": createdIDs.manager,
+      "ID": createdIDs.manager+1,
     })
     .expectStatus(200)
     .end( (err, res, body) =>
@@ -36,7 +36,7 @@ describe('DEL /DeleteManager\nDeletes a Manager by ID', () => {
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
-    .get(`/GetManager?ID=${createdIDs.manager}`)
+    .get(`/GetManager?ID=${createdIDs.manager+1}`)
     .expectStatus(404)
     .expectValue('code', 5)
     .end( (err, res, body) =>
