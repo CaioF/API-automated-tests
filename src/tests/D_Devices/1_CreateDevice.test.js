@@ -38,6 +38,7 @@ describe('POST /CreateDevice\nCreates a Device and returns that Device and a Tok
       } else {
           tokens.deviceToken = body.token;
           createdIDs.device = body.device.ID;
+          createdIDs.sensor = body.device.sensors[0].ID; // This should be the first sensor created in the DB
           util.updateTokens(tokens);
           util.updateCreatedIDs(createdIDs);
           done()

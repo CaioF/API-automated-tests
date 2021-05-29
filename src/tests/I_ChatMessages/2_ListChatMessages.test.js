@@ -55,13 +55,14 @@ describe('GET /ListChatMessages\nReturns a list of all Chat Messages with pagina
     })
   });
 
-  it('returns 200 and the same result array as if params are omitted when they equal 0', (done) => {
+  it('returns 200, as if params were omitted, when params equal 0', (done) => {
     pageNumber = 0;
     resultPerPage = 0;
     employee_ID = createdIDs.employee;
     api()
     .expectStatus(200)
-    .expectValue('managers[0].ID', 1)
+    .expectValue('messages[0].ID', 1)
+    .expectValue('messages[0].employee.ID', createdIDs.employee)
     .end( (err, res, body) =>
     {  
       if (err) {

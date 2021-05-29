@@ -24,7 +24,7 @@ describe('PUT /UpdateZone\nUpdate a Zone by ID and returns that Zone', () => {
       "description": "up_zone_2",
       "permissions": {
         "allowedEmployees": [
-          1, 3
+          createdIDs.employee, createdIDs.employee+2 // Also tests if more than 1 Allowed Employee works properly
         ]
       },
       "path": {

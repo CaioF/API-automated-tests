@@ -18,7 +18,7 @@ describe('PUT /UpdateSensor\nUpdate a Sensor by ID and returns that Sensor', () 
   it('returns 200 when the request body params do match the specification', (done) => {
     api()
     .send({
-      "ID": 1,
+      "ID": createdIDs.sensor,
       "title": "UP Smartphone battery",
       "description": "UP Smartphone battery",
       "graph": "GRAPH_TYPE_NUMBER"
@@ -56,7 +56,7 @@ describe('PUT /UpdateSensor\nUpdate a Sensor by ID and returns that Sensor', () 
   it('returns 200 when the optional request body params match are null', (done) => {
     api()
     .send({
-      "ID": 1,
+      "ID": createdIDs.sensor,
       "title": null,
       "description": null,
       "graph": "GRAPH_TYPE_NUMBER"
@@ -77,7 +77,7 @@ describe('PUT /UpdateSensor\nUpdate a Sensor by ID and returns that Sensor', () 
   it('returns 400 when the request body params do not match the specification', (done) => {
     api()
     .send({
-      "ID": 1,
+      "ID": createdIDs.sensor,
       "title": 'a',
       "description": 'a',
       "graph": 'a'
@@ -97,7 +97,7 @@ describe('PUT /UpdateSensor\nUpdate a Sensor by ID and returns that Sensor', () 
   it('returns 404 when the specified Sensor ID is not in the DB', (done) => {
     api()
     .send({
-      "ID": 999,
+      "ID": createdIDs.sensor+99,
       "title": null,
       "description": null,
       "graph": "GRAPH_TYPE_NUMBER"

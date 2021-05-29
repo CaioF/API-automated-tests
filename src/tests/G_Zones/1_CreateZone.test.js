@@ -24,7 +24,7 @@ describe('POST /CreateZone\nCreates  a Zone and returns that Zone', () => {
       "description": "zone_1",
       "permissions": {
         "allowedEmployees": [
-          1
+          createdIDs.employee
         ]
       },
       "path": {
@@ -53,7 +53,7 @@ describe('POST /CreateZone\nCreates  a Zone and returns that Zone', () => {
       "description": null,
       "permissions": {
         "allowedEmployees": [
-          3
+          createdIDs.employee
         ]
       },
       "path": {
@@ -62,7 +62,7 @@ describe('POST /CreateZone\nCreates  a Zone and returns that Zone', () => {
     })
     .expectStatus(200)
     .expectValue('zone.title', 'zone_2')
-    .expectValue('zone.allowedEmployees[0].employee.ID', 3)
+    .expectValue('zone.allowedEmployees[0].employee.ID', createdIDs.employee)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -80,7 +80,7 @@ describe('POST /CreateZone\nCreates  a Zone and returns that Zone', () => {
       "description": "a",
       "permissions": {
         "allowedEmployees": [
-          1
+          createdIDs.employee
         ]
       },
       "path": {
@@ -124,7 +124,7 @@ describe('POST /CreateZone\nCreates  a Zone and returns that Zone', () => {
       "description": "zone_3",
       "permissions": {
         "allowedEmployees": [
-          99
+          createdIDs.employee+99
         ]
       },
       "path": {

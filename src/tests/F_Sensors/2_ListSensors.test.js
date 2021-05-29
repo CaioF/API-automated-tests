@@ -18,11 +18,11 @@ function api() {
 describe('GET /ListSensors\nReturns a list of all Sensors with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
-    pageNumber = 2;
+    pageNumber = 1;
     resultPerPage = 1;
     api()
     .expectStatus(200)
-    .expectValue('sensors[0].ID', 2)
+    .expectValue('sensors[0].ID', createdIDs.sensor)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -40,7 +40,7 @@ describe('GET /ListSensors\nReturns a list of all Sensors with pagination', () =
     .header('Authorization', tokens.managerToken)
     .get(`/ListSensors`)
     .expectStatus(200)
-    .expectValue('sensors[0].ID', 1)
+    .expectValue('sensors[0].ID', createdIDs.sensor)
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -51,12 +51,12 @@ describe('GET /ListSensors\nReturns a list of all Sensors with pagination', () =
     })
   });
 
-  it('returns 200 and the same result array as if params are omitted when they equal 0', (done) => {
+  it('returns 200, as if params are omitted, when params equal 0', (done) => {
     pageNumber = 0;
     resultPerPage = 0;
     api()
     .expectStatus(200)
-    .expectValue('sensors[0].ID', 1)
+    .expectValue('sensors[0].ID', createdIDs.sensor)
     .end( (err, res, body) =>
     {  
       if (err) {

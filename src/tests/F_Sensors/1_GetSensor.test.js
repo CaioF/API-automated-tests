@@ -17,7 +17,7 @@ function api() {
 describe('GET /GetSensorType\nReturns a SensorType by ID', () => {
 
   it('returns 200 when the specified SensorType ID is in the DB', (done) => {
-    SensorType_ID = 1;
+    SensorType_ID = createdIDs.sensor;
     api()
     .expectStatus(200)
     .expectValue('sensorType.ID', 1)
@@ -32,7 +32,7 @@ describe('GET /GetSensorType\nReturns a SensorType by ID', () => {
   });
 
   it('returns 404 when the specified SensorType ID is not in the DB', (done) => {
-    SensorType_ID = 99;
+    SensorType_ID = createdIDs.sensor+99;
     api()
     .expectStatus(404)
     .expectValue('code', 5)
