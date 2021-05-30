@@ -18,11 +18,11 @@ function api() {
 describe('GET /ListSensorTypes\nReturns a list of all SensorTypes with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
-    pageNumber = 2;
-    resultPerPage = 1;
+    pageNumber = 1;
+    resultPerPage = 100;
     api()
     .expectStatus(200)
-    .expectValue('sensorTypes[0].ID', 2)
+    .expectBody(new RegExp(`"ID":${createdIDs.sensorType}`)) // Checks to see if created ID is in array
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -33,16 +33,16 @@ describe('GET /ListSensorTypes\nReturns a list of all SensorTypes with paginatio
     })
   });
 
-  it('returns 200 when the path params are omitted', (done) => {
+  it('returns 200, and an array of length <= 10, when the path params are omitted', (done) => {
     hippie()
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/ListSensorTypes`)
     .expectStatus(200)
-    .expectValue('sensorTypes[0].ID', 1)
-    .end( (err, res, body) =>
-    {  
+    .expectValue('sensorTypes[0].ID', 1) // Server creates default sensorTypes, this should always be true
+    .end( (err, res, body) =>            // NOTE: The above hardcoded ID is required in place of a regex check for the created ID
+    {                                    // This is becase this request returns an array of length <= 10, and the created ID in this case > 10
       if (err) {
         throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {
@@ -51,14 +51,14 @@ describe('GET /ListSensorTypes\nReturns a list of all SensorTypes with paginatio
     })
   });
 
-  it('returns 200 and the same result array as if params are omitted when they equal 0', (done) => {
+  it('returns 200, as if params are omitted, when they equal 0', (done) => {
     pageNumber = 0;
     resultPerPage = 0;
     api()
     .expectStatus(200)
-    .expectValue('sensorTypes[0].ID', 1)
-    .end( (err, res, body) =>
-    {  
+    .expectValue('sensorTypes[0].ID', 1) // Server creates default sensorTypes, this should always be true
+    .end( (err, res, body) =>            // NOTE: The above hardcoded ID is required in place of a regex check for the created ID
+    {                                    // This is becase this request returns an array of length <= 10, and the created ID in this case > 10
       if (err) {
         throw new Error(`\nMOCHA ERR:\n${err.message}\n\nRESPONSE ERR:\n${JSON.stringify(body)}`)
       } else {

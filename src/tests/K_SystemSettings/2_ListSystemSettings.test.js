@@ -21,7 +21,7 @@ describe('GET /ListSystemSettings\nReturns a list of all System Settings with pa
     section = 'devices_1';
     api()
     .expectStatus(200)
-    .expectValue('settings[0].key', 'devices_1')
+    .expectValue('settings[0].key', section)
     .end( (err, res, body) =>
     {  
       if (err) {

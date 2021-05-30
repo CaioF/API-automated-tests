@@ -19,10 +19,10 @@ describe('GET /ListSensors\nReturns a list of all Sensors with pagination', () =
 
   it('returns 200 when the path params match the specification', (done) => {
     pageNumber = 1;
-    resultPerPage = 1;
+    resultPerPage = 100;
     api()
     .expectStatus(200)
-    .expectValue('sensors[0].ID', createdIDs.sensor)
+    .expectBody(new RegExp(`"ID":${createdIDs.sensor}`)) // Checks to see if created ID is in array
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -33,14 +33,14 @@ describe('GET /ListSensors\nReturns a list of all Sensors with pagination', () =
     })
   });
 
-  it('returns 200 when the path params are omitted', (done) => {
+  it('returns 200, and an array of length <= 10, when the path params are omitted', (done) => {
     hippie()
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/ListSensors`)
     .expectStatus(200)
-    .expectValue('sensors[0].ID', createdIDs.sensor)
+    .expectBody(new RegExp(`"ID":${createdIDs.sensor}`)) // Checks to see if created ID is in array
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -51,12 +51,12 @@ describe('GET /ListSensors\nReturns a list of all Sensors with pagination', () =
     })
   });
 
-  it('returns 200, as if params are omitted, when params equal 0', (done) => {
+  it('returns 200, as if params are omitted, when they equal 0', (done) => {
     pageNumber = 0;
     resultPerPage = 0;
     api()
     .expectStatus(200)
-    .expectValue('sensors[0].ID', createdIDs.sensor)
+    .expectBody(new RegExp(`"ID":${createdIDs.sensor}`)) // Checks to see if created ID is in array
     .end( (err, res, body) =>
     {  
       if (err) {

@@ -1,5 +1,5 @@
 'use strict'
-
+const assert = require('assert');
 const hippie = require('hippie');
 const tokens = require('../../tokens.json');
 const config = require('../../config.json');
@@ -18,11 +18,11 @@ function api() {
 describe('GET /ListEmployeeGroups\nReturns a list of all Employee Groups with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
-    pageNumber = 2;
-    resultPerPage = 1;
+    pageNumber = 1;
+    resultPerPage = 100;
     api()
     .expectStatus(200)
-    .expectValue('employeeGroups[0].ID', 2)
+    .expectBody(new RegExp(`"ID":${createdIDs.employeeGroup}`)) // Checks to see if created ID is in array
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -33,14 +33,14 @@ describe('GET /ListEmployeeGroups\nReturns a list of all Employee Groups with pa
     })
   });
 
-  it('returns 200 when the path params are omitted', (done) => {
+  it('returns 200, and an array of length <= 10, when the path params are omitted', (done) => {
     hippie()
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/ListEmployeeGroups`)
     .expectStatus(200)
-    .expectValue('employeeGroups[0].ID', 1)
+    .expectBody(new RegExp(`"ID":${createdIDs.employeeGroup}`)) // Checks to see if created ID is in array
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -51,12 +51,12 @@ describe('GET /ListEmployeeGroups\nReturns a list of all Employee Groups with pa
     })
   });
 
-  it('returns 200 and the same result array as if params are omitted when they equal 0', (done) => {
+  it('returns 200, as if params are omitted, when they equal 0', (done) => {
     pageNumber = 0;
     resultPerPage = 0;
     api()
     .expectStatus(200)
-    .expectValue('employeeGroups[0].ID', 1)
+    .expectBody(new RegExp(`"ID":${createdIDs.employeeGroup}`)) // Checks to see if created ID is in array
     .end( (err, res, body) =>
     {  
       if (err) {

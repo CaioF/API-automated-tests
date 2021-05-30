@@ -31,7 +31,7 @@ describe('PUT /UpdateEmployee\nUpdate an Employee by ID and returns that Employe
       "credentials": {
         "password": "up_ivanxxx2123"
       },
-      "group": 1
+      "group": createdIDs.employeeGroup
     })
     .expectStatus(200)
     .expectValue('employee.person.email', 'up_ivanxxx2@mail.com')
@@ -75,7 +75,7 @@ describe('PUT /UpdateEmployee\nUpdate an Employee by ID and returns that Employe
     })
     .expectStatus(200)
     .expectValue('employee.description', 'up_employee_2')
-    .expectValue('employee.group.ID', 1)
+    .expectValue('employee.group.ID', createdIDs.employeeGroup)
     .expectValue('employee.person.email', 'up_ivanxxx2@mail.com')
     .expectValue('employee.person.firstName', 'up_Ivan2')
     .expectValue('employee.person.lastName', 'up_Ivanovich2')

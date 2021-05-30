@@ -20,11 +20,11 @@ describe('GET /ListChatMessages\nReturns a list of all Chat Messages with pagina
 
   it('returns 200 when the path params match the specification', (done) => {
     pageNumber = 1;
-    resultPerPage = 1;
+    resultPerPage = 100;
     employee_ID = createdIDs.employee;
     api()
     .expectStatus(200)
-    .expectValue('messages[0].ID', 1)
+    .expectValue('messages[0].ID', createdIDs.message)
     .expectValue('messages[0].employee.ID', createdIDs.employee)
     .end( (err, res, body) =>
     {  
@@ -43,7 +43,7 @@ describe('GET /ListChatMessages\nReturns a list of all Chat Messages with pagina
     .header('Authorization', tokens.managerToken)
     .get(`/ListChatMessages?employeeID=${createdIDs.employee}`)
     .expectStatus(200)
-    .expectValue('messages[0].ID', 1)
+    .expectValue('messages[0].ID', createdIDs.message)
     .expectValue('messages[0].employee.ID', createdIDs.employee)
     .end( (err, res, body) =>
     {  
@@ -55,13 +55,13 @@ describe('GET /ListChatMessages\nReturns a list of all Chat Messages with pagina
     })
   });
 
-  it('returns 200, as if params were omitted, when params equal 0', (done) => {
+  it('returns 200, as if params were omitted, when they equal 0', (done) => {
     pageNumber = 0;
     resultPerPage = 0;
     employee_ID = createdIDs.employee;
     api()
     .expectStatus(200)
-    .expectValue('messages[0].ID', 1)
+    .expectValue('messages[0].ID', createdIDs.message)
     .expectValue('messages[0].employee.ID', createdIDs.employee)
     .end( (err, res, body) =>
     {  
@@ -91,7 +91,7 @@ describe('GET /ListChatMessages\nReturns a list of all Chat Messages with pagina
 
   it('returns 404 when the Employee ID is not in the DB', (done) => {
     pageNumber = 1;
-    resultPerPage = 1;
+    resultPerPage = 100;
     employee_ID = createdIDs.employee+99;
     api()
     .expectStatus(404)

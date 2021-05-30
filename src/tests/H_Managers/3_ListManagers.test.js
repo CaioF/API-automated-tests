@@ -18,11 +18,11 @@ function api() {
 describe('GET /ListManagers\nReturns a list of all Managers with pagination', () => {
 
   it('returns 200 when the path params match the specification', (done) => {
-    pageNumber = 2;
-    resultPerPage = 1;
+    pageNumber = 1; // createdManager is the second manager
+    resultPerPage = 100;
     api()
     .expectStatus(200)
-    .expectValue('managers[0].ID', 2)
+    .expectBody(new RegExp(`"ID":${createdIDs.manager}`)) // Checks to see if created ID is in array
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -33,14 +33,14 @@ describe('GET /ListManagers\nReturns a list of all Managers with pagination', ()
     })
   });
 
-  it('returns 200 when the path params are omitted', (done) => {
+  it('returns 200, and an array of length <= 10, when the path params are omitted', (done) => {
     hippie()
     .json()
     .base(config.url)
     .header('Authorization', tokens.managerToken)
     .get(`/ListManagers`)
     .expectStatus(200)
-    .expectValue('managers[0].ID', 1)
+    .expectBody(new RegExp(`"ID":${createdIDs.manager}`)) // Checks to see if created ID is in array
     .end( (err, res, body) =>
     {  
       if (err) {
@@ -51,12 +51,12 @@ describe('GET /ListManagers\nReturns a list of all Managers with pagination', ()
     })
   });
 
-  it('returns 200 and the same result array as if params are omitted when they equal 0', (done) => {
+  it('returns 200, as if params are omitted, when they equal 0', (done) => {
     pageNumber = 0;
     resultPerPage = 0;
     api()
     .expectStatus(200)
-    .expectValue('managers[0].ID', 1)
+    .expectBody(new RegExp(`"ID":${createdIDs.manager}`)) // Checks to see if created ID is in array
     .end( (err, res, body) =>
     {  
       if (err) {

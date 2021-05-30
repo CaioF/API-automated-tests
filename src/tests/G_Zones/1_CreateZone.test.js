@@ -33,7 +33,7 @@ describe('POST /CreateZone\nCreates  a Zone and returns that Zone', () => {
     })
     .expectStatus(200)
     .expectValue('zone.title', 'zone_1')
-    .expectValue('zone.allowedEmployees[0].employee.ID', 1)
+    .expectValue('zone.allowedEmployees[0].employee.ID', createdIDs.employee)
     .end( (err, res, body) =>
     {  
       if (err) {
