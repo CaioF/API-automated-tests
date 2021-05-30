@@ -20,7 +20,7 @@ describe('GET /GetSensorType\nReturns a SensorType by ID', () => {
     SensorType_ID = createdIDs.sensor;
     api()
     .expectStatus(200)
-    .expectValue('sensorType.ID', 1)
+    .expectValue('sensorType.ID', createdIDs.sensor)
     .end( (err, res, body) =>
     {  
       if (err) {
