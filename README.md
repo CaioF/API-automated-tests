@@ -11,11 +11,11 @@ Battery of automated tests for the CRUD endpoints of the LifeGuard API
 
 
 ### Usage
-1.    `git clone git@lab.qoollo.com:lifeguard/backend/integration-tests.git`
+1.    `git clone git@github.com:CaioF/API-automated-tests.git`
 2.    `cd integration-tests/`
-3.    `git checkout feature/LGS-177-hippie-API-tests`
-4.    `npm install`
-5.    download api server and rename it to `/test_server/api_test_server`
+3.    `npm install`
+4.    download api server and rename it to `/test_server/api_test_server`
+5.    make sure you have PostgreSQL service running, but not connected to the test database
 6.    `./init.bash`
 
 > When running the `init.bash` script for the first time, it might fail due to the fact that the database migration takes longer during the first initialization
