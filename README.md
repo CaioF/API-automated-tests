@@ -12,7 +12,7 @@ Battery of automated tests for the CRUD endpoints of the LifeGuard API
 
 ### Usage
 1.    `git clone git@github.com:CaioF/API-automated-tests.git`
-2.    `cd integration-tests/`
+2.    `cd API-automated-tests/`
 3.    `npm install`
 4.    download api server and rename it to `/test_server/api_test_server`
 5.    make sure you have PostgreSQL service running, but not connected to the test database
